@@ -11,7 +11,7 @@ import pickle
 
 from tqdm import tqdm
 from collections import defaultdict
-from transformers import AutoModelForMaskedLM, AutoTokenizer
+from transformers import AutoModelForMaskedLM, AutoTokenizer, AutoModelForSeq2SeqLM
 
 
 def calculate_aul(model, token_ids, log_softmax, attention):
@@ -49,6 +49,10 @@ def get_model_name(lang):
         model_name = 'xlm-roberta-large-finetuned-conll03-german'
     elif lang == 'en':
         model_name = 'bert-base-uncased'
+    elif lang == 'en-mt5':
+        model_name = 'google/mt5-base'
+    elif lang == 'en-roberta':
+        model_name = 'xlm-roberta-base'
     elif lang == 'en-xlm':
         model_name = 'xlm-mlm-ende-1024'
     elif lang == 'ja': 
@@ -79,6 +83,8 @@ def get_model_name(lang):
         model_name = 'xlm-mlm-100-1280'
     elif lang == 'multi-bert':
         model_name = 'bert-base-multilingual-uncased'
+    elif lang == 'multi-mt5':
+        model_name = 'csebuetnlp/mT5_multilingual_XLSum'
     return model_name
 
 
@@ -107,9 +113,9 @@ def get_idt(lang):
 
 
 
-model_name = get_model_name('ar-xlm')
-idt_list = get_idt('ar')
-file_name = 'ar.json'
+model_name = get_model_name('en-mt5')
+idt_list = get_idt('en')
+file_name = 'en.json'
 
 
 with open(file_name, 'r') as f:
@@ -135,13 +141,22 @@ token_list = token_list[:each_corpus_number]
 
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForMaskedLM.from_pretrained(model_name,
+if 'mt5' in model_name:
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name,
+                                            output_hidden_states=True,
+                                            output_attentions=True)
+else:
+    model = AutoModelForMaskedLM.from_pretrained(model_name,
                                             output_hidden_states=True,
                                             output_attentions=True)
 
 model = model.eval()
 if torch.cuda.is_available():
     model.to('cuda')
+
+total_params = sum(param.numel() for param in model.parameters())
+print(model_name)
+print("==>> total_params: ", f"{total_params:,}")
 
 
 total_score = 0
