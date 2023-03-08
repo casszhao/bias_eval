@@ -51,6 +51,7 @@ def load_tokenizer_and_model(args):
         model_name = 'xlm-mlm-100-1280'
     elif args.lang == 'multi-bert':
         model_name = 'bert-base-multilingual-uncased'
+
     model = AutoModelForMaskedLM.from_pretrained(model_name,
                                                  output_hidden_states=True,
                                                  output_attentions=True)
@@ -68,7 +69,9 @@ def calculate_aul(model, token_ids, log_softmax, attention):
     Given token ids of a sequence, return the averaged log probability of
     unmasked sequence (AULA or AUL).
     '''
+    
     output = model(token_ids)
+
     logits = output.logits.squeeze(0)
     log_probs = log_softmax(logits)
     token_ids = token_ids.view(-1, 1).detach()
@@ -133,7 +136,7 @@ def main(args):
     female_scores = female_scores.reshape([-1, 1])
     male_scores = np.array(male_scores)
     male_scores = male_scores.reshape([1, -1])
-    bias_scores = male_scores > female_scores
+    bias_scores = male_scores > female_scores 
 
     female_embes = np.concatenate(female_embes)
     male_embes = np.concatenate(male_embes)
