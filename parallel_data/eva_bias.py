@@ -42,44 +42,50 @@ def cos_sim(v1, v2):
 
 
 def get_model_name(lang_model):
-    if lang_model == 'de':
+    if lang_model == 'de-bert':
         model_name = 'deepset/gbert-base' 
     elif lang_model == 'de-distilbert':
         model_name ='distilbert-base-german-cased'
 
 
-    elif lang_model == 'en':
+    elif lang_model == 'en-bert':
         model_name = 'bert-base-uncased'
     elif lang_model == 'en-deberta':
         model_name = 'microsoft/deberta-v3-base'
     elif lang_model == 'en-distilbert':
         model_name = 'distilbert-base-cased'
+    elif lang_model == 'en-roberta':
+        model_name = 'roberta-base'
 
 
-    elif lang_model == 'ja': 
+    elif lang_model == 'ja-bert': 
         model_name = 'cl-tohoku/bert-base-japanese-whole-word-masking'
+    elif lang_model == 'ja-distilbert': 
+        model_name = 'laboro-ai/distilbert-base-japanese'
 
-    elif lang_model == 'ar': # Arabic
+    elif lang_model == 'ar-bert': # Arabic
         model_name = 'aubmindlab/bert-base-arabertv02' 
 
-    elif lang_model == 'es': 
+    elif lang_model == 'es-bert': 
         model_name = 'dccuchile/bert-base-spanish-wwm-uncased'
 
-    elif lang_model == 'pt': 
-        model_name = 'pablocosta/bertabaporu-base-uncased' #'neuralmind/bert-base-portuguese-cased'
+    elif lang_model == 'pt-bert': 
+        model_name = 'pablocosta/bertabaporu-base-uncased' # pablocosta/bertabaporu-base-uncased neuralmind/bert-base-portuguese-cased #'neuralmind/bert-base-portuguese-cased'
     elif lang_model == 'pt-xlm':
         model_name = "thegoodfellas/tgf-xlm-roberta-base-pt-br" 
 
-    elif lang_model == 'ru': 
-        model_name = 'blinoff/roberta-base-russian-v0'
+    elif lang_model == 'ru-roberta': 
+        model_name = 'blinoff/roberta-base-russian-v0' 
+    elif lang_model == 'ru-distilbert': 
+        model_name = 'Geotrend/distilbert-base-ru-cased'
 
-    elif lang_model == 'id':
+    elif lang_model == 'id-bert':
         model_name = 'cahya/bert-base-indonesian-1.5G'
 
-    elif lang_model == 'zh':
+    elif lang_model == 'zh-bert':
         model_name = 'hfl/chinese-bert-wwm-ext'
 
-    elif lang_model == 'it':
+    elif lang_model == 'it-bert':
         model_name = "dbmdz/bert-base-italian-uncased"
     elif lang_model == 'it-xlm':
         model_name = "MilaNLProc/hate-ita-xlm-r-base"
@@ -94,8 +100,8 @@ def get_model_name(lang_model):
     return model_name
 
 
-lang = 'en'
-model = 'distilbert' # mdeberta
+lang = 'es'
+model = 'bert' # mdeberta
 mono = False # True False
 
 if mono == True:
@@ -108,26 +114,32 @@ else:
     print(' Multi lingual !   ', model_name)
 
 
-# df = pd.read_json('../translated_data/russian.json')
+
+
+# df = pd.read_json('../translated_data/japanese.json')
 # disadv_text_list = list(df['anti-stereotype'])
 # adv_text_list = list(df['stereotype'])
 
 
-# adv_corpus = f'hate/{lang}/hate_idt.json'
-# disadv_corpus = f'hate/{lang}/nonhate_idt.json'
+adv_corpus = f'hateB/{lang}/hate_idt.json'
+disadv_corpus = f'hateB/{lang}/nonhate_idt.json'
+#disadv_corpus = f'hateB/{lang}/hate_nonidt.json'
+with open(adv_corpus, 'r') as f:
+    adv_text_list = json.load(f)
+with open(disadv_corpus, 'r') as f:
+    disadv_text_list = json.load(f)
+
+
+# #  stereo --> disadv
+# ########## adv > disadv as expected
+# adv_corpus = f'./gender/{lang}/male.json'
+# disadv_corpus = f'./gender/{lang}/female.json'
 # with open(adv_corpus, 'r') as f:
 #     adv_text_list = json.load(f)
 # with open(disadv_corpus, 'r') as f:
 #     disadv_text_list = json.load(f)
 
 
-########## adv > disadv as expected
-adv_corpus = f'./gender/{lang}/male.json'
-disadv_corpus = f'./gender/{lang}/female.json'
-with open(adv_corpus, 'r') as f:
-    adv_text_list = json.load(f)
-with open(disadv_corpus, 'r') as f:
-    disadv_text_list = json.load(f)
 
 
 
@@ -196,5 +208,5 @@ weighted_bias_scores = bias_scores * weights
 bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
 
 print('model_name : ', model_name)
-print('language and corpus -->', lang, adv_corpus, disadv_corpus)
+print('language and corpus -->', lang)
 print('bias score (emb):', round(bias_score * 100, 2))
