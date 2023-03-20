@@ -41,64 +41,89 @@ def cos_sim(v1, v2):
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
 
-def get_model_name(lang):
-    if lang == 'de':
+def get_model_name(lang_model):
+    if lang_model == 'de':
         model_name = 'deepset/gbert-base' 
-    elif lang == 'de-xlm':
-        model_name = 'xlm-roberta-large-finetuned-conll03-german'
-    elif lang == 'en':
+    elif lang_model == 'de-distilbert':
+        model_name ='distilbert-base-german-cased'
+
+
+    elif lang_model == 'en':
         model_name = 'bert-base-uncased'
-    elif lang == 'en-mt5':
-        model_name = 'google/mt5-base'
-    elif lang == 'en-roberta':
-        model_name = 'xlm-roberta-base'
-    elif lang == 'en-xlm':
-        model_name = 'xlm-mlm-ende-1024'
-    elif lang == 'ja': 
+    elif lang_model == 'en-deberta':
+        model_name = 'microsoft/deberta-v3-base'
+    elif lang_model == 'en-distilbert':
+        model_name = 'distilbert-base-cased'
+
+
+    elif lang_model == 'ja': 
         model_name = 'cl-tohoku/bert-base-japanese-whole-word-masking'
-    elif lang == 'ar': # Arabic
+
+    elif lang_model == 'ar': # Arabic
         model_name = 'aubmindlab/bert-base-arabertv02' 
-    elif lang == 'ar-xlm': # Arabic
-        model_name = '3ebdola/Dialectal-Arabic-XLM-R-Base'
-    elif lang == 'es': 
+
+    elif lang_model == 'es': 
         model_name = 'dccuchile/bert-base-spanish-wwm-uncased'
-    elif lang == 'es-xlm': 
-        model_name = 'MMG/xlm-roberta-large-ner-spanish' 
-    elif lang == 'pt': 
+
+    elif lang_model == 'pt': 
         model_name = 'pablocosta/bertabaporu-base-uncased' #'neuralmind/bert-base-portuguese-cased'
-    elif lang == 'pt-xlm':
+    elif lang_model == 'pt-xlm':
         model_name = "thegoodfellas/tgf-xlm-roberta-base-pt-br" 
-    elif lang == 'ru': 
+
+    elif lang_model == 'ru': 
         model_name = 'blinoff/roberta-base-russian-v0'
-    elif lang == 'id':
+
+    elif lang_model == 'id':
         model_name = 'cahya/bert-base-indonesian-1.5G'
-    elif lang == 'zh':
+
+    elif lang_model == 'zh':
         model_name = 'hfl/chinese-bert-wwm-ext'
-    elif lang == 'it':
+
+    elif lang_model == 'it':
         model_name = "dbmdz/bert-base-italian-uncased"
-    elif lang == 'it-xlm':
+    elif lang_model == 'it-xlm':
         model_name = "MilaNLProc/hate-ita-xlm-r-base"
-    elif lang == 'multi-xlm':
-        model_name = 'xlm-mlm-100-1280'
-    elif lang == 'multi-bert':
+
+
+    elif lang_model == 'multi-bert':
         model_name = 'bert-base-multilingual-uncased'
-    elif lang == 'multi-mt5':
-        model_name = 'csebuetnlp/mT5_multilingual_XLSum'
+    elif lang_model == 'multi-deberta':
+        model_name = 'microsoft/mdeberta-v3-base' # large 
+    elif lang_model == 'multi-distilbert':
+        model_name ='distilbert-base-multilingual-cased'
     return model_name
 
 
-lang = 'de'
-model_name = get_model_name(lang) # "multi-bert" lang
+lang = 'en'
+model = 'distilbert' # mdeberta
+mono = False # True False
+
+if mono == True:
+    model_name = get_model_name(lang + '-' + model) # "multi-bert" lang
+    print(' ')
+    print(' Mono lingual !   ', model_name)
+else: 
+    model_name = get_model_name('multi-' + model) # "multi-bert"
+    print(' ')
+    print(' Multi lingual !   ', model_name)
 
 
 # df = pd.read_json('../translated_data/russian.json')
 # disadv_text_list = list(df['anti-stereotype'])
 # adv_text_list = list(df['stereotype'])
 
+
+# adv_corpus = f'hate/{lang}/hate_idt.json'
+# disadv_corpus = f'hate/{lang}/nonhate_idt.json'
+# with open(adv_corpus, 'r') as f:
+#     adv_text_list = json.load(f)
+# with open(disadv_corpus, 'r') as f:
+#     disadv_text_list = json.load(f)
+
+
+########## adv > disadv as expected
 adv_corpus = f'./gender/{lang}/male.json'
 disadv_corpus = f'./gender/{lang}/female.json'
-
-########### adv > disadv as expected
 with open(adv_corpus, 'r') as f:
     adv_text_list = json.load(f)
 with open(disadv_corpus, 'r') as f:
@@ -169,4 +194,7 @@ weights = cos_sim(disadv_embes, adv_embes.T)
 
 weighted_bias_scores = bias_scores * weights
 bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
+
+print('model_name : ', model_name)
+print('language and corpus -->', lang, adv_corpus, disadv_corpus)
 print('bias score (emb):', round(bias_score * 100, 2))
