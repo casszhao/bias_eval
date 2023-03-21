@@ -60,7 +60,7 @@ def get_scores_embed(tokens_list):
     
     return scores, embes
 
-def get_model_name(lang_model):
+def get_model_name_cased(lang_model):
     if lang_model == 'de-bert':
         model_name = "TurkuNLP/wikibert-base-de-cased" # 'deepset/gbert-base' 
     elif lang_model == 'de-distilbert':
@@ -125,15 +125,88 @@ def get_model_name(lang_model):
         model_name ='distilbert-base-multilingual-cased'
     return model_name
 
+def get_model_name_uncased(lang_model):
+    if lang_model == 'de-bert':
+        model_name = 'deepset/gbert-base' 
+    elif lang_model == 'de-distilbert':
+        model_name ='distilbert-base-german-cased'
 
-lang = 'es'
+
+
+    elif lang_model == 'en-bert':
+        model_name = 'bert-base-uncased'
+    elif lang_model == 'en-deberta':
+        model_name = 'microsoft/deberta-v3-base'
+    elif lang_model == 'en-distilbert':
+        model_name = 'distilbert-base-cased'
+    elif lang_model == 'en-roberta':
+        model_name = 'roberta-base'
+        
+    elif lang_model == 'it-bert':
+        model_name = "dbmdz/bert-base-italian-uncased"
+    elif lang_model == 'it-xlm':
+        model_name = "MilaNLProc/hate-ita-xlm-r-base"
+    
+    elif lang_model == 'es-bert': 
+        model_name = 'dccuchile/bert-base-spanish-wwm-uncased'
+
+    elif lang_model == 'pt-bert': 
+        model_name = "pablocosta/bertabaporu-base-uncased" # pablocosta/bertabaporu-base-uncased neuralmind/bert-base-portuguese-cased 
+    elif lang_model == 'pt-xlm':
+        model_name = "thegoodfellas/tgf-xlm-roberta-base-pt-br" 
+
+
+
+
+    elif lang_model == 'ru-bert': 
+        model_name = 'blinoff/roberta-base-russian-v0' 
+    elif lang_model == 'ru-distilbert': 
+        model_name = 'Geotrend/distilbert-base-ru-cased'
+
+    elif lang_model == 'ja-bert': 
+        model_name = 'cl-tohoku/bert-base-japanese-whole-word-masking'
+    elif lang_model == 'ja-distilbert': 
+        model_name = 'laboro-ai/distilbert-base-japanese'
+
+
+
+    elif lang_model == 'ar-bert': # Arabic
+        model_name = 'aubmindlab/bert-base-arabertv02' 
+
+    elif lang_model == 'id-bert':
+        model_name = 'cahya/bert-base-indonesian-1.5G'
+
+    elif lang_model == 'zh-bert':
+        model_name = 'hfl/chinese-bert-wwm-ext'
+
+
+
+
+    elif lang_model == 'multi-bert':
+        model_name = 'bert-base-multilingual-uncased' # bert-base-multilingual-uncased
+    elif lang_model == 'multi-deberta':
+        model_name = 'microsoft/mdeberta-v3-base' # large 
+    elif lang_model == 'multi-distilbert':
+        model_name ='distilbert-base-multilingual-cased'
+    return model_name
+
+
+lang = 'pt'
 model = 'bert' # mdeberta
-mono = True # True False
+mono = False # True False
+second_set = True
+cased_model = False
 
 if mono == True:
-    model_name = get_model_name(lang + '-' + model) # "multi-bert" lang
-else: 
-    model_name = get_model_name('multi-' + model) # "multi-bert"
+    if cased_model == True:
+        model_name = get_model_name_cased(lang + '-' + model)
+    else:
+        model_name = get_model_name_uncased(lang + '-' + model) # "multi-bert" lang
+else:
+    if  cased_model == True:
+        model_name = get_model_name_cased('multi-' + model) # "multi-bert"
+    else:
+        model_name = get_model_name_uncased('multi-' + model) # "multi-bert"
 
 
 
@@ -142,9 +215,14 @@ else:
 # disadv_text_list = list(df['anti-stereotype'])
 # adv_text_list = list(df['stereotype'])
 
+disadv = 'hate_nonidt' # nonhate_idt hate_nonidt
 
-adv_corpus = f'./hateB/{lang}/hate_idt.json'
-disadv_corpus = f'./hateB/{lang}/hate_nonidt.json'
+if second_set == True:
+    adv_corpus = f'./hateB/{lang}/hate_idt.json'
+    disadv_corpus = f'./hateB/{lang}/{disadv}.json'
+else: 
+    adv_corpus = f'./hate/{lang}/hate_idt.json'
+    disadv_corpus = f'./hate/{lang}/{disadv}.json'
 #disadv_corpus = f'hateB/{lang}/hate_nonidt.json'
 with open(adv_corpus, 'r') as f:
     adv_text_list = json.load(f)
