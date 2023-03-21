@@ -62,7 +62,7 @@ def get_scores_embed(tokens_list):
 
 def get_model_name(lang_model):
     if lang_model == 'de-bert':
-        model_name = 'deepset/gbert-base' 
+        model_name = "TurkuNLP/wikibert-base-de-cased" # 'deepset/gbert-base' 
     elif lang_model == 'de-distilbert':
         model_name ='distilbert-base-german-cased'
 
@@ -86,20 +86,20 @@ def get_model_name(lang_model):
         model_name = "TurkuNLP/wikibert-base-es-cased" #'dccuchile/bert-base-spanish-wwm-uncased'
 
     elif lang_model == 'pt-bert': 
-        model_name = "TurkuNLP/wikibert-base-pt-cased" # pablocosta/bertabaporu-base-uncased neuralmind/bert-base-portuguese-cased #'neuralmind/bert-base-portuguese-cased'
+        model_name = "TurkuNLP/wikibert-base-pt-cased" # pablocosta/bertabaporu-base-uncased neuralmind/bert-base-portuguese-cased 
     elif lang_model == 'pt-xlm':
         model_name = "thegoodfellas/tgf-xlm-roberta-base-pt-br" 
 
 
 
 
-    elif lang_model == 'ru-roberta': 
-        model_name = 'blinoff/roberta-base-russian-v0' 
+    elif lang_model == 'ru-bert': 
+        model_name = "TurkuNLP/wikibert-base-ru-cased" #'blinoff/roberta-base-russian-v0' 
     elif lang_model == 'ru-distilbert': 
         model_name = 'Geotrend/distilbert-base-ru-cased'
 
     elif lang_model == 'ja-bert': 
-        model_name = 'cl-tohoku/bert-base-japanese-whole-word-masking'
+        model_name = "TurkuNLP/wikibert-base-ja-cased" #'cl-tohoku/bert-base-japanese-whole-word-masking'
     elif lang_model == 'ja-distilbert': 
         model_name = 'laboro-ai/distilbert-base-japanese'
 
@@ -128,7 +128,7 @@ def get_model_name(lang_model):
 
 lang = 'es'
 model = 'bert' # mdeberta
-mono = False # True False
+mono = True # True False
 
 if mono == True:
     model_name = get_model_name(lang + '-' + model) # "multi-bert" lang
@@ -138,13 +138,13 @@ else:
 
 
 
-# df = pd.read_json('../translated_data/japanese.json')
+# df = pd.read_json('../translated_data/russian.json')
 # disadv_text_list = list(df['anti-stereotype'])
 # adv_text_list = list(df['stereotype'])
 
 
-adv_corpus = f'./hate/{lang}/hate_idt.json'
-disadv_corpus = f'./hate/{lang}/hate_nonidt.json'
+adv_corpus = f'./hateB/{lang}/hate_idt.json'
+disadv_corpus = f'./hateB/{lang}/hate_nonidt.json'
 #disadv_corpus = f'hateB/{lang}/hate_nonidt.json'
 with open(adv_corpus, 'r') as f:
     adv_text_list = json.load(f)
@@ -152,14 +152,6 @@ with open(disadv_corpus, 'r') as f:
     disadv_text_list = json.load(f)
 
 
-# #  stereo --> disadv
-# ########## adv > disadv as expected
-# adv_corpus = f'./gender/{lang}/male.json'
-# disadv_corpus = f'./gender/{lang}/female.json'
-# with open(adv_corpus, 'r') as f:
-#     adv_text_list = json.load(f)
-# with open(disadv_corpus, 'r') as f:
-#     disadv_text_list = json.load(f)
 
 
 
