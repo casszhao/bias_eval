@@ -40,6 +40,25 @@ def calculate_aul(model, token_ids, log_softmax, attention):
 def cos_sim(v1, v2):
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
+# change to defined func required token tensor format
+def get_scores_embed(tokens_list):
+    scores = []
+    embes = []
+    token_id_tensor = []
+    for i in tokens_list:
+        token_id_tensor.append(torch.tensor([tokenizer(i)['input_ids']]).to('cuda')) # get ids
+
+    for tokens in token_id_tensor:
+        with torch.no_grad():
+            score, hidden_state = calculate_aul(model, tokens.to('cuda'), log_softmax, attention)
+            scores.append(score)
+            embes.append(hidden_state)
+
+    scores = np.array(scores)
+    scores = scores.reshape([1, -1])
+    embes = np.concatenate(embes)
+    
+    return scores, embes
 
 def get_model_name(lang_model):
     if lang_model == 'de-bert':
@@ -48,36 +67,46 @@ def get_model_name(lang_model):
         model_name ='distilbert-base-german-cased'
 
 
+
     elif lang_model == 'en-bert':
-        model_name = 'bert-base-uncased'
+        model_name = 'bert-base-cased'
     elif lang_model == 'en-deberta':
         model_name = 'microsoft/deberta-v3-base'
     elif lang_model == 'en-distilbert':
         model_name = 'distilbert-base-cased'
     elif lang_model == 'en-roberta':
         model_name = 'roberta-base'
+        
+    elif lang_model == 'it-bert':
+        model_name = "TurkuNLP/wikibert-base-it-cased" # "dbmdz/bert-base-italian-uncased"
+    elif lang_model == 'it-xlm':
+        model_name = "MilaNLProc/hate-ita-xlm-r-base"
+    
+    elif lang_model == 'es-bert': 
+        model_name = "TurkuNLP/wikibert-base-es-cased" #'dccuchile/bert-base-spanish-wwm-uncased'
 
+    elif lang_model == 'pt-bert': 
+        model_name = "TurkuNLP/wikibert-base-pt-cased" # pablocosta/bertabaporu-base-uncased neuralmind/bert-base-portuguese-cased #'neuralmind/bert-base-portuguese-cased'
+    elif lang_model == 'pt-xlm':
+        model_name = "thegoodfellas/tgf-xlm-roberta-base-pt-br" 
+
+
+
+
+    elif lang_model == 'ru-roberta': 
+        model_name = 'blinoff/roberta-base-russian-v0' 
+    elif lang_model == 'ru-distilbert': 
+        model_name = 'Geotrend/distilbert-base-ru-cased'
 
     elif lang_model == 'ja-bert': 
         model_name = 'cl-tohoku/bert-base-japanese-whole-word-masking'
     elif lang_model == 'ja-distilbert': 
         model_name = 'laboro-ai/distilbert-base-japanese'
 
+
+
     elif lang_model == 'ar-bert': # Arabic
         model_name = 'aubmindlab/bert-base-arabertv02' 
-
-    elif lang_model == 'es-bert': 
-        model_name = 'dccuchile/bert-base-spanish-wwm-uncased'
-
-    elif lang_model == 'pt-bert': 
-        model_name = 'pablocosta/bertabaporu-base-uncased' # pablocosta/bertabaporu-base-uncased neuralmind/bert-base-portuguese-cased #'neuralmind/bert-base-portuguese-cased'
-    elif lang_model == 'pt-xlm':
-        model_name = "thegoodfellas/tgf-xlm-roberta-base-pt-br" 
-
-    elif lang_model == 'ru-roberta': 
-        model_name = 'blinoff/roberta-base-russian-v0' 
-    elif lang_model == 'ru-distilbert': 
-        model_name = 'Geotrend/distilbert-base-ru-cased'
 
     elif lang_model == 'id-bert':
         model_name = 'cahya/bert-base-indonesian-1.5G'
@@ -85,14 +114,11 @@ def get_model_name(lang_model):
     elif lang_model == 'zh-bert':
         model_name = 'hfl/chinese-bert-wwm-ext'
 
-    elif lang_model == 'it-bert':
-        model_name = "dbmdz/bert-base-italian-uncased"
-    elif lang_model == 'it-xlm':
-        model_name = "MilaNLProc/hate-ita-xlm-r-base"
+
 
 
     elif lang_model == 'multi-bert':
-        model_name = 'bert-base-multilingual-uncased'
+        model_name = 'bert-base-multilingual-cased' # bert-base-multilingual-uncased
     elif lang_model == 'multi-deberta':
         model_name = 'microsoft/mdeberta-v3-base' # large 
     elif lang_model == 'multi-distilbert':
@@ -106,12 +132,8 @@ mono = False # True False
 
 if mono == True:
     model_name = get_model_name(lang + '-' + model) # "multi-bert" lang
-    print(' ')
-    print(' Mono lingual !   ', model_name)
 else: 
     model_name = get_model_name('multi-' + model) # "multi-bert"
-    print(' ')
-    print(' Multi lingual !   ', model_name)
 
 
 
@@ -121,8 +143,8 @@ else:
 # adv_text_list = list(df['stereotype'])
 
 
-adv_corpus = f'hateB/{lang}/hate_idt.json'
-disadv_corpus = f'hateB/{lang}/nonhate_idt.json'
+adv_corpus = f'./hate/{lang}/hate_idt.json'
+disadv_corpus = f'./hate/{lang}/hate_nonidt.json'
 #disadv_corpus = f'hateB/{lang}/hate_nonidt.json'
 with open(adv_corpus, 'r') as f:
     adv_text_list = json.load(f)
@@ -144,13 +166,19 @@ with open(disadv_corpus, 'r') as f:
 
 
 each_corpus_number = min(len(adv_text_list),len(disadv_text_list))
-print(len(adv_text_list),len(disadv_text_list),each_corpus_number)
+print(' ')
+print('adv data number / disadv data number / each corpus numbers', len(adv_text_list),len(disadv_text_list), each_corpus_number)
+print(' ')
 adv_text_list = adv_text_list[:each_corpus_number]
 disadv_text_list = disadv_text_list[:each_corpus_number]
 
 
+if "TurkuNLP" in model_name:
+    from transformers import BertTokenizer
+    tokenizer = BertTokenizer.from_pretrained(model_name)
 
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+else: 
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForMaskedLM.from_pretrained(model_name,
                                             output_hidden_states=True,
                                             output_attentions=True)
@@ -160,9 +188,15 @@ if torch.cuda.is_available():
     model.to('cuda')
 
 total_params = sum(param.numel() for param in model.parameters())
-print(model_name)
-print("==>> total_params: ", f"{total_params:,}")
 
+
+print(' ')
+if mono == True:
+    print(' Mono lingual !   ', model_name)
+else: 
+    print(' Multi lingual !   ', model_name)
+
+print("==>> total_params: ", f"{total_params:,}")
 
 
 if torch.cuda.is_available():
@@ -174,25 +208,7 @@ attention = True #if args.method == 'aula' else False
 
 
 
-# change to defined func required token tensor format
-def get_scores_embed(tokens_list):
-    scores = []
-    embes = []
-    token_id_tensor = []
-    for i in tokens_list:
-        token_id_tensor.append(torch.tensor([tokenizer(i)['input_ids']]).to('cuda')) # get ids
 
-    for tokens in token_id_tensor:
-        with torch.no_grad():
-            score, hidden_state = calculate_aul(model, tokens.to('cuda'), log_softmax, attention)
-            scores.append(score)
-            embes.append(hidden_state)
-
-    scores = np.array(scores)
-    scores = scores.reshape([1, -1])
-    embes = np.concatenate(embes)
-    
-    return scores, embes
 
 adv_scores, adv_embes = get_scores_embed(adv_text_list)
 disadv_scores, disadv_embes = get_scores_embed(disadv_text_list)
@@ -207,6 +223,8 @@ weights = cos_sim(disadv_embes, adv_embes.T)
 weighted_bias_scores = bias_scores * weights
 bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
 
+
+print('each corpus numbers', each_corpus_number)
 print('model_name : ', model_name)
 print('language and corpus -->', lang)
 print('bias score (emb):', round(bias_score * 100, 2))
