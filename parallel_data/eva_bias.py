@@ -114,7 +114,10 @@ def get_model_name_cased(lang_model):
     elif lang_model == 'zh-bert':
         model_name = 'hfl/chinese-bert-wwm-ext'
 
-
+    elif lang_model == 'du-bert':
+        model_name = 'GroNLP/bert-base-dutch-cased'
+    elif lang_model == 'fr-bert':
+        model_name = 'dbmdz/bert-base-french-europeana-cased'
 
 
     elif lang_model == 'multi-bert':
@@ -127,7 +130,7 @@ def get_model_name_cased(lang_model):
 
 def get_model_name_uncased(lang_model):
     if lang_model == 'de-bert':
-        model_name = 'deepset/gbert-base' 
+        model_name = 'deepset/gbert-base' # s
     elif lang_model == 'de-distilbert':
         model_name ='distilbert-base-german-cased'
 
@@ -148,38 +151,34 @@ def get_model_name_uncased(lang_model):
         model_name = "MilaNLProc/hate-ita-xlm-r-base"
     
     elif lang_model == 'es-bert': 
-        model_name = 'dccuchile/bert-base-spanish-wwm-uncased'
+        model_name = 'dccuchile/bert-base-spanish-wwm-uncased' # s
 
     elif lang_model == 'pt-bert': 
-        model_name = "pablocosta/bertabaporu-base-uncased" # pablocosta/bertabaporu-base-uncased neuralmind/bert-base-portuguese-cased 
+        model_name = "pablocosta/bertabaporu-base-uncased" # ns neuralmind/bert-base-portuguese-cased 
     elif lang_model == 'pt-xlm':
         model_name = "thegoodfellas/tgf-xlm-roberta-base-pt-br" 
 
-
+    elif lang_model == 'ar-bert': 
+        model_name = 'aubmindlab/bert-base-arabertv02' # s
 
 
     elif lang_model == 'ru-bert': 
-        model_name = 'blinoff/roberta-base-russian-v0' 
+        model_name = 'blinoff/roberta-base-russian-v0' # s
     elif lang_model == 'ru-distilbert': 
         model_name = 'Geotrend/distilbert-base-ru-cased'
 
     elif lang_model == 'ja-bert': 
-        model_name = 'cl-tohoku/bert-base-japanese-whole-word-masking'
+        model_name = 'cl-tohoku/bert-base-japanese-whole-word-masking' # s
     elif lang_model == 'ja-distilbert': 
         model_name = 'laboro-ai/distilbert-base-japanese'
 
 
 
-    elif lang_model == 'ar-bert': # Arabic
-        model_name = 'aubmindlab/bert-base-arabertv02' 
-
     elif lang_model == 'id-bert':
-        model_name = 'cahya/bert-base-indonesian-1.5G'
+        model_name = 'cahya/bert-base-indonesian-1.5G' # s
 
     elif lang_model == 'zh-bert':
-        model_name = 'hfl/chinese-bert-wwm-ext'
-
-
+        model_name = 'hfl/chinese-bert-wwm-ext' # s
 
 
     elif lang_model == 'multi-bert':
@@ -193,9 +192,9 @@ def get_model_name_uncased(lang_model):
 
 lang = 'ar'
 model = 'bert' # mdeberta
-mono = True # True False
+mono = False # True False
 second_set = False
-cased_model = False
+cased_model = True
 
 if mono == True:
     if cased_model == True:
@@ -215,7 +214,7 @@ else:
 # disadv_text_list = list(df['anti-stereotype'])
 # adv_text_list = list(df['stereotype'])
 
-disadv = 'hate_nonidt' # nonhate_idt hate_nonidt
+disadv = 'nonhate_idt' # nonhate_idt hate_nonidt
 
 if second_set == True:
     adv_corpus = f'./hateB/{lang}/hate_idt.json'
