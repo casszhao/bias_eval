@@ -8,7 +8,7 @@ import numpy as np
 import MeCab
 import pickle
 import logging
-
+import datetime
 from tqdm import tqdm
 from collections import defaultdict
 from transformers import AutoModelForMaskedLM, AutoTokenizer
@@ -106,12 +106,16 @@ def cos_sim(v1, v2):
 
 def convert_ids(female_inputs, tokenizer, tokenizer_2):
     temp_female_inputs = []
-    for ids in female_inputs:
+    for i, ids in enumerate(female_inputs):
+        if i == 0: print(ids)
         text = tokenizer.convert_ids_to_tokens(ids[0])
         text = text[1:-1]
         if args.lang == 'zh': text = ''.join(text)
+        elif args.lang == 'ja': text = ''.join(text)
         else: text = ' '.join(text)
+        if i == 0: print(text)
         text = torch.tensor([tokenizer_2(text)['input_ids']]).to('cuda')
+        if i == 0: print(text)
         temp_female_inputs.append(text)
     return temp_female_inputs
 
@@ -195,13 +199,19 @@ def main(args):
     weighted_bias_scores = bias_scores * weights
     bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
     final_bias_score = round(bias_score * 100, 2)
-    with open('./results/gender.txt', 'w') as writer:
+
+    date_time = str(datetime.date.today()) + "_" + ":".join(str(datetime.datetime.now()).split()[1].split(":")[:2])
+    with open('./results/gender.txt', 'a') as writer:
+        writer.write('\n')
+        writer.write('\n')
+        writer.write(date_time)
         writer.write(str(args.lang) + ' ')
         writer.write(str(args.corpus) + ' ')
         writer.write(str(args.if_cased) + ' ')
         writer.write(str(args.if_multilingual) + ' ')
         writer.write(model_name + ' ')
         writer.write(f'bias score (emb): {final_bias_score}')
+        writer.write('\n')
 
     print('bias score (emb):', round(bias_score * 100, 2))
 
