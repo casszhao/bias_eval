@@ -1,7 +1,9 @@
-
-
 2023-03-22_22:03
 zh ted uncased multi bert-base-multilingual-uncased bias score (emb): 45.74
 zh ted uncased mono hfl/chinese-bert-wwm-ext bias score (emb): 52.78
 zh news uncased multi bert-base-multilingual-uncased bias score (emb): 50.16
 zh news uncased mono hfl/chinese-bert-wwm-ext bias score (emb): 51.52
+
+
+
+2023-03-22-22:16:41

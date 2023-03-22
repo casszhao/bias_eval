@@ -203,14 +203,15 @@ def main(args):
     date_time = str(datetime.date.today()) + "_" + ":".join(str(datetime.datetime.now()).split()[1].split(":")[:2])
     with open('./results/gender.txt', 'a') as writer:
         writer.write('\n')
-        writer.write('\n')
-        writer.write(date_time)
+        #writer.write(date_time)
         writer.write(str(args.lang) + ' ')
+        writer.write('\n')
         writer.write(str(args.corpus) + ' ')
         writer.write(str(args.if_cased) + ' ')
         writer.write(str(args.if_multilingual) + ' ')
         writer.write(model_name + ' ')
         writer.write(f'bias score (emb): {final_bias_score}')
+        writer.write('\n')
         writer.write('\n')
 
     print('bias score (emb):', round(bias_score * 100, 2))
