@@ -15,16 +15,22 @@ from transformers import AutoModelForMaskedLM, AutoTokenizer
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--lang', type=str, required=True,
+    parser.add_argument('--lang', type=str, #required=True,
                         choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                         help='Path to evaluation dataset.',
                         default='zh')
-    parser.add_argument('--method', type=str, required=True,
+    parser.add_argument('--method', type=str, #required=True,
                         choices=['aula', 'aul'],
                         default='aula')
-    parser.add_argument('--corpus', type=str, required=True,
+    parser.add_argument('--corpus', type=str, #required=True,
                         choices=['ted', 'news'],
                         default='ted')
+    parser.add_argument('--if_cased', type=str, #required=True,
+                        choices=['cased', 'uncased'],
+                        default='uncased')
+    parser.add_argument('--if_multilingual', type=str, #required=True,
+                        choices=['multi', 'mono'],
+                        default='multi')
     args = parser.parse_args()
 
     return args
@@ -97,6 +103,17 @@ def cos_sim(v1, v2):
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
 
+def convert_ids(female_inputs, tokenizer, tokenizer_2):
+    temp_female_inputs = []
+    for ids in female_inputs:
+        text = tokenizer.convert_ids_to_tokens(ids[0])
+        text = text[1:-1]
+        if args.lang == 'zh': text = ''.join(text)
+        else: text = ' '.join(text)
+        text = torch.tensor([tokenizer_2(text)['input_ids']]).to('cuda')
+        temp_female_inputs.append(text)
+    return temp_female_inputs
+
 def main(args):
     '''
     Evaluate the bias in masked language models.
@@ -115,6 +132,37 @@ def main(args):
 
     female_inputs = pickle.load(open(f'parallel_data/{corpus}/{lang}_f.bin', 'rb'))
     male_inputs = pickle.load(open(f'parallel_data/{corpus}/{lang}_m.bin', 'rb'))
+
+    # decode back to text
+
+
+    from func import get_model_name_uncased, get_model_name_cased
+
+    if args.if_multilingual == 'mono':
+        if args.if_cased == 'cased': model_name = get_model_name_cased(lang + '-bert')
+        else: model_name = get_model_name_uncased(lang + '-bert') # "multi-bert" lang
+    elif args.if_multilingual == 'multi':
+        if args.if_cased == 'cased': model_name = get_model_name_cased('multi-bert') # "multi-bert"
+        else: model_name = get_model_name_uncased('multi-bert') # "multi-bert"
+
+    
+    if "TurkuNLP" in model_name:
+        from transformers import BertTokenizer
+        tokenizer_2 = BertTokenizer.from_pretrained(model_name)
+
+    else: 
+        tokenizer_2 = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForMaskedLM.from_pretrained(model_name,
+                                                output_hidden_states=True,
+                                                output_attentions=True)
+
+    model = model.eval()
+    if torch.cuda.is_available():
+        model.to('cuda')
+    
+    female_inputs = convert_ids(female_inputs, tokenizer, tokenizer_2)
+    male_inputs = convert_ids(male_inputs, tokenizer, tokenizer_2)
+
 
     attention = True if args.method == 'aula' else False
 

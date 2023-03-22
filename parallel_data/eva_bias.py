@@ -216,12 +216,16 @@ else:
 
 disadv = 'nonhate_idt' # nonhate_idt hate_nonidt
 
+import os
+pwd = os.getcwd()
+print(pwd)
 if second_set == True:
     adv_corpus = f'./hateB/{lang}/hate_idt.json'
     disadv_corpus = f'./hateB/{lang}/{disadv}.json'
 else: 
-    adv_corpus = f'./hate/{lang}/hate_idt.json'
-    disadv_corpus = f'./hate/{lang}/{disadv}.json'
+    adv_corpus = str(pwd) + f'/parallel_data/hate/{lang}/hate_idt.json'
+    disadv_corpus = str(pwd) + f'/parallel_data/hate/{lang}/{disadv}.json' 
+
 
 with open(adv_corpus, 'r') as f:
     adv_text_list = json.load(f)
