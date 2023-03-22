@@ -191,10 +191,10 @@ def get_model_name_uncased(lang_model):
     return model_name
 
 
-lang = 'pt'
+lang = 'ar'
 model = 'bert' # mdeberta
-mono = False # True False
-second_set = True
+mono = True # True False
+second_set = False
 cased_model = False
 
 if mono == True:
@@ -223,7 +223,7 @@ if second_set == True:
 else: 
     adv_corpus = f'./hate/{lang}/hate_idt.json'
     disadv_corpus = f'./hate/{lang}/{disadv}.json'
-#disadv_corpus = f'hateB/{lang}/hate_nonidt.json'
+
 with open(adv_corpus, 'r') as f:
     adv_text_list = json.load(f)
 with open(disadv_corpus, 'r') as f:
