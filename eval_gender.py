@@ -7,6 +7,7 @@ import regex as re
 import numpy as np
 import MeCab
 import pickle
+import logging
 
 from tqdm import tqdm
 from collections import defaultdict
@@ -134,8 +135,6 @@ def main(args):
     male_inputs = pickle.load(open(f'parallel_data/{corpus}/{lang}_m.bin', 'rb'))
 
     # decode back to text
-
-
     from func import get_model_name_uncased, get_model_name_cased
 
     if args.if_multilingual == 'mono':
@@ -162,7 +161,7 @@ def main(args):
     
     female_inputs = convert_ids(female_inputs, tokenizer, tokenizer_2)
     male_inputs = convert_ids(male_inputs, tokenizer, tokenizer_2)
-
+    ########## done convert ids
 
     attention = True if args.method == 'aula' else False
 
@@ -195,6 +194,15 @@ def main(args):
 
     weighted_bias_scores = bias_scores * weights
     bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
+    final_bias_score = round(bias_score * 100, 2)
+    with open('./results/gender.txt', 'w') as writer:
+        writer.write(str(args.lang) + ' ')
+        writer.write(str(args.corpus) + ' ')
+        writer.write(str(args.if_cased) + ' ')
+        writer.write(str(args.if_multilingual) + ' ')
+        writer.write(model_name + ' ')
+        writer.write(f'bias score (emb): {final_bias_score}')
+
     print('bias score (emb):', round(bias_score * 100, 2))
 
 
