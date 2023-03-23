@@ -7,3 +7,53 @@ zh news uncased mono hfl/chinese-bert-wwm-ext bias score (emb): 51.52
 
 
 2023-03-22-22:16:41
+
+de 
+ted uncased multi bert-base-multilingual-uncased bias score (emb): 46.24
+
+
+de 
+ted uncased mono deepset/gbert-base bias score (emb): 51.58
+
+
+de 
+news uncased multi bert-base-multilingual-uncased bias score (emb): 49.08
+
+
+de 
+news uncased mono deepset/gbert-base bias score (emb): 53.37
+
+
+es 
+news uncased multi bert-base-multilingual-uncased bias score (emb): 50.84
+
+
+es 
+news uncased mono dccuchile/bert-base-spanish-wwm-uncased bias score (emb): 52.21
+
+\n
+2023-03-23-06:22:16
+
+pt 
+ted uncased multi bert-base-multilingual-uncased bias score (emb): 47.89
+
+
+pt 
+ted uncased mono pablocosta/bertabaporu-base-uncased bias score (emb): 50.98
+
+
+pt 
+news uncased multi bert-base-multilingual-uncased bias score (emb): 47.12
+
+
+pt 
+news uncased mono pablocosta/bertabaporu-base-uncased bias score (emb): 49.04
+
+
+es 
+news uncased multi bert-base-multilingual-uncased bias score (emb): 50.84
+
+
+es 
+news uncased mono dccuchile/bert-base-spanish-wwm-uncased bias score (emb): 52.21
+

@@ -107,15 +107,15 @@ def cos_sim(v1, v2):
 def convert_ids(female_inputs, tokenizer, tokenizer_2):
     temp_female_inputs = []
     for i, ids in enumerate(female_inputs):
-        if i == 0: print(ids)
+        if i == 0: print('1 -->', ids)
         text = tokenizer.convert_ids_to_tokens(ids[0])
         text = text[1:-1]
         if args.lang == 'zh': text = ''.join(text)
         elif args.lang == 'ja': text = ''.join(text)
         else: text = ' '.join(text)
-        if i == 0: print(text)
+        if i == 0: print('2 -->',text)
         text = torch.tensor([tokenizer_2(text)['input_ids']]).to('cuda')
-        if i == 0: print(text)
+        if i == 0: print('3 -->',text)
         temp_female_inputs.append(text)
     return temp_female_inputs
 
