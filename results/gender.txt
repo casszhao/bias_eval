@@ -1,59 +1,218 @@
-2023-03-22_22:03
-zh ted uncased multi bert-base-multilingual-uncased bias score (emb): 45.74
-zh ted uncased mono hfl/chinese-bert-wwm-ext bias score (emb): 52.78
-zh news uncased multi bert-base-multilingual-uncased bias score (emb): 50.16
-zh news uncased mono hfl/chinese-bert-wwm-ext bias score (emb): 51.52
+  
+  
+  
+2023-03-23-12:08:52
+  
+  
+de
 
 
+Namespace(lang='de', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 2373 2373 
+original_id_length 23 text_length 21 converted_id_length 32 
 
-2023-03-22-22:16:41
+Namespace(lang='de', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:109,960,318
+num 2373 2373 
+original_id_length 23 text_length 21 converted_id_length 29 
 
-de 
-ted uncased multi bert-base-multilingual-uncased bias score (emb): 46.24
+Namespace(lang='de', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 1057 1057 
+original_id_length 29 text_length 27 converted_id_length 43 
 
-
-de 
-ted uncased mono deepset/gbert-base bias score (emb): 51.58
-
-
-de 
-news uncased multi bert-base-multilingual-uncased bias score (emb): 49.08
-
-
-de 
-news uncased mono deepset/gbert-base bias score (emb): 53.37
-
-
-es 
-news uncased multi bert-base-multilingual-uncased bias score (emb): 50.84
+Namespace(lang='de', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:109,960,318
+num 1057 1057 
+original_id_length 29 text_length 27 converted_id_length 40   
+  
+ja
 
 
-es 
-news uncased mono dccuchile/bert-base-spanish-wwm-uncased bias score (emb): 52.21
-
-\n
-2023-03-23-06:22:16
-
-pt 
-ted uncased multi bert-base-multilingual-uncased bias score (emb): 47.89
-
-
-pt 
-ted uncased mono pablocosta/bertabaporu-base-uncased bias score (emb): 50.98
+Namespace(lang='ja', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 3082 3082 
+original_id_length 24 text_length 1 converted_id_length 33   
+  
+  
+2023-03-23-12:11:00
+  
+  
+de
 
 
-pt 
-news uncased multi bert-base-multilingual-uncased bias score (emb): 47.12
+Namespace(lang='de', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 2373 2373 
+original_id_length 23 text_length 21 converted_id_length 32 
+bert-base-multilingual-uncased   bias score (emb): 46.24
+
+Namespace(lang='de', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:109,960,318
+num 2373 2373 
+original_id_length 23 text_length 21 converted_id_length 29 
+deepset/gbert-base   bias score (emb): 51.58
+
+Namespace(lang='de', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 1057 1057 
+original_id_length 29 text_length 27 converted_id_length 43 
+bert-base-multilingual-uncased   bias score (emb): 49.08
+
+Namespace(lang='de', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:109,960,318
+num 1057 1057 
+original_id_length 29 text_length 27 converted_id_length 40 
+deepset/gbert-base   bias score (emb): 53.37  
+  
+ja
 
 
-pt 
-news uncased mono pablocosta/bertabaporu-base-uncased bias score (emb): 49.04
+Namespace(lang='ja', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 3082 3082 
+original_id_length 24 text_length 1 converted_id_length 33 
+bert-base-multilingual-uncased   bias score (emb): 49.79
+
+Namespace(lang='ja', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:110,650,880
+num 3082 3082 
+original_id_length 24 text_length 1 converted_id_length 28 
+cl-tohoku/bert-base-japanese-whole-word-masking   bias score (emb): 53.58
+
+Namespace(lang='ja', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 913 913 
+original_id_length 32 text_length 1 converted_id_length 45 
+bert-base-multilingual-uncased   bias score (emb): 52.23
+
+Namespace(lang='ja', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:110,650,880
+num 913 913 
+original_id_length 32 text_length 1 converted_id_length 38 
+cl-tohoku/bert-base-japanese-whole-word-masking   bias score (emb): 48.97  
+  
+ar
 
 
-es 
-news uncased multi bert-base-multilingual-uncased bias score (emb): 50.84
+Namespace(lang='ar', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 3497 3497 
+original_id_length 19 text_length 17 converted_id_length 34 
+bert-base-multilingual-uncased   bias score (emb): 50.59
+
+Namespace(lang='ar', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:135,258,880
+num 3497 3497 
+original_id_length 19 text_length 17 converted_id_length 23 
+aubmindlab/bert-base-arabertv02   bias score (emb): 55.71
+
+Namespace(lang='ar', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 861 861 
+original_id_length 24 text_length 22 converted_id_length 46 
+bert-base-multilingual-uncased   bias score (emb): 55.13
+
+Namespace(lang='ar', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:135,258,880
+num 861 861 
+original_id_length 24 text_length 22 converted_id_length 31 
+aubmindlab/bert-base-arabertv02   bias score (emb): 52.96  
+  
+es
 
 
-es 
-news uncased mono dccuchile/bert-base-spanish-wwm-uncased bias score (emb): 52.21
+Namespace(lang='es', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 3578 3578 
+original_id_length 22 text_length 20 converted_id_length 28 
+bert-base-multilingual-uncased   bias score (emb): 48.34
 
+Namespace(lang='es', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:109,883,418
+num 3578 3578 
+original_id_length 22 text_length 20 converted_id_length 25 
+dccuchile/bert-base-spanish-wwm-uncased   bias score (emb): 51.84
+
+Namespace(lang='es', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 8669 8669 
+original_id_length 28 text_length 26 converted_id_length 37 
+bert-base-multilingual-uncased   bias score (emb): 50.84
+
+Namespace(lang='es', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:109,883,418
+num 8669 8669 
+original_id_length 28 text_length 26 converted_id_length 34 
+dccuchile/bert-base-spanish-wwm-uncased   bias score (emb): 52.21  
+  
+pt
+
+
+Namespace(lang='pt', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 2828 2828 
+original_id_length 23 text_length 21 converted_id_length 32 
+bert-base-multilingual-uncased   bias score (emb): 47.89
+
+Namespace(lang='pt', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:135,258,880
+num 2828 2828 
+original_id_length 23 text_length 21 converted_id_length 30 
+pablocosta/bertabaporu-base-uncased   bias score (emb): 50.98
+
+Namespace(lang='pt', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 1078 1078 
+original_id_length 29 text_length 27 converted_id_length 42 
+bert-base-multilingual-uncased   bias score (emb): 47.12
+
+Namespace(lang='pt', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:135,258,880
+num 1078 1078 
+original_id_length 29 text_length 27 converted_id_length 38 
+pablocosta/bertabaporu-base-uncased   bias score (emb): 49.04  
+  
+ru
+
+
+Namespace(lang='ru', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 3349 3349 
+original_id_length 26 text_length 24 converted_id_length 99 
+bert-base-multilingual-uncased   bias score (emb): 50.61
+
+Namespace(lang='ru', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:124,509,797
+num 3349 3349 
+original_id_length 26 text_length 24 converted_id_length 285 
+blinoff/roberta-base-russian-v0   bias score (emb): 53.94
+
+Namespace(lang='ru', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 1970 1970 
+original_id_length 32 text_length 30 converted_id_length 120 
+bert-base-multilingual-uncased   bias score (emb): 49.62
+
+Namespace(lang='ru', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:124,509,797
+num 1970 1970 
+original_id_length 32 text_length 30 converted_id_length 336 
+blinoff/roberta-base-russian-v0   bias score (emb): 51.89  
+  
+id
+
+
+Namespace(lang='id', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 1438 1438 
+original_id_length 19 text_length 17 converted_id_length 26 
+bert-base-multilingual-uncased   bias score (emb): 48.66
+
+Namespace(lang='id', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:110,650,880
+num 1438 1438 
+original_id_length 19 text_length 17 converted_id_length 21 
+
+Namespace(lang='id', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 241 241 
+original_id_length 24 text_length 22 converted_id_length 34 
+bert-base-multilingual-uncased   bias score (emb): 42.79
+
+Namespace(lang='id', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:110,650,880
+num 241 241 
+original_id_length 24 text_length 22 converted_id_length 28 
+cahya/bert-base-indonesian-1.5G   bias score (emb): 43.53  
+  
+zh
+
+
+Namespace(lang='zh', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 3406 3406 
+original_id_length 29 text_length 1 converted_id_length 30 
+bert-base-multilingual-uncased   bias score (emb): 45.74
+
+Namespace(lang='zh', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:102,290,312
+num 3406 3406 
+original_id_length 29 text_length 1 converted_id_length 30 
+hfl/chinese-bert-wwm-ext   bias score (emb): 52.78
+
+Namespace(lang='zh', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 1686 1686 
+original_id_length 19 text_length 1 converted_id_length 21 
+bert-base-multilingual-uncased   bias score (emb): 50.16
+
+Namespace(lang='zh', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:102,290,312
+num 1686 1686 
+original_id_length 19 text_length 1 converted_id_length 21 
+hfl/chinese-bert-wwm-ext   bias score (emb): 51.52

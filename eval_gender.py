@@ -19,7 +19,7 @@ def parse_args():
     parser.add_argument('--lang', type=str, #required=True,
                         choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                         help='Path to evaluation dataset.',
-                        default='zh')
+                        default='ja')
     parser.add_argument('--method', type=str, #required=True,
                         choices=['aula', 'aul'],
                         default='aula')
@@ -33,6 +33,9 @@ def parse_args():
                         choices=['multi', 'mono'],
                         default='multi')
     args = parser.parse_args()
+    print(' ')
+    print(' ')
+    print(args)
 
     return args
 
@@ -62,16 +65,15 @@ def load_tokenizer_and_model(args):
     elif args.lang == 'multi-bert':
         model_name = 'bert-base-multilingual-uncased'
 
-    model = AutoModelForMaskedLM.from_pretrained(model_name,
-                                                 output_hidden_states=True,
-                                                 output_attentions=True)
+    #model = AutoModelForMaskedLM.from_pretrained(model_name,output_hidden_states=True,output_attentions=True)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-    model = model.eval()
-    if torch.cuda.is_available():
-        model.to('cuda')
+    # model = model.eval()
+    # if torch.cuda.is_available():
+    #     model.to('cuda')
+    
 
-    return tokenizer, model
+    return tokenizer#, model
 
 
 def calculate_aul(model, token_ids, log_softmax, attention):
@@ -106,24 +108,38 @@ def cos_sim(v1, v2):
 
 def convert_ids(female_inputs, tokenizer, tokenizer_2):
     temp_female_inputs = []
+    original_id_length = 0
+    converted_id_length = 0
+    text_length = 0
     for i, ids in enumerate(female_inputs):
-        if i == 0: print('1 -->', ids)
+        
+        original_id_length += int(ids.size()[-1])
+        if i == 0: print('original ids -->', ids, original_id_length)
+
         text = tokenizer.convert_ids_to_tokens(ids[0])
         text = text[1:-1]
         if args.lang == 'zh': text = ''.join(text)
         elif args.lang == 'ja': text = ''.join(text)
         else: text = ' '.join(text)
-        if i == 0: print('2 -->',text)
-        text = torch.tensor([tokenizer_2(text)['input_ids']]).to('cuda')
-        if i == 0: print('3 -->',text)
+        text_length += int(len(text.split()))
+        if i == 0: print('original text -->',text, text_length)
+
+        text = torch.tensor([tokenizer_2(text, truncation=True)['input_ids']]).to('cuda')
+        converted_id_length += int(text.size()[-1])
+        if text.size()[-1] > 512: 
+            print(' one input longer than 512!!!')
+        if i == 0: print('converted ids -->',text, converted_id_length)
         temp_female_inputs.append(text)
-    return temp_female_inputs
+
+
+    return temp_female_inputs, int(original_id_length/(i+1)), int(text_length/(i+1)), int(converted_id_length/(i+1)), i+1
+
 
 def main(args):
     '''
     Evaluate the bias in masked language models.
     '''
-    tokenizer, model = load_tokenizer_and_model(args)
+    tokenizer = load_tokenizer_and_model(args) #\, model 
     total_score = 0
     stereo_score = 0
     corpus = args.corpus
@@ -151,10 +167,11 @@ def main(args):
     
     if "TurkuNLP" in model_name:
         from transformers import BertTokenizer
-        tokenizer_2 = BertTokenizer.from_pretrained(model_name)
+        tokenizer_2 = BertTokenizer.from_pretrained(model_name,truncation=True)
 
     else: 
-        tokenizer_2 = AutoTokenizer.from_pretrained(model_name)
+        tokenizer_2 = AutoTokenizer.from_pretrained(model_name,truncation=True)
+    
     model = AutoModelForMaskedLM.from_pretrained(model_name,
                                                 output_hidden_states=True,
                                                 output_attentions=True)
@@ -162,10 +179,26 @@ def main(args):
     model = model.eval()
     if torch.cuda.is_available():
         model.to('cuda')
+
+    total_params = sum(param.numel() for param in model.parameters())
     
-    female_inputs = convert_ids(female_inputs, tokenizer, tokenizer_2)
-    male_inputs = convert_ids(male_inputs, tokenizer, tokenizer_2)
-    ########## done convert ids
+    female_inputs, female_origi_id_len, female_text_len, female_id_len, female_num = convert_ids(female_inputs, tokenizer, tokenizer_2)
+    male_inputs, male_origi_id_len, male_text_len, male_id_len, male_num = convert_ids(male_inputs, tokenizer, tokenizer_2)
+    with open('./results/gender.txt', 'a') as writer:
+        writer.write('\n' )
+        writer.write('\n' )
+        writer.write(str(args))
+        writer.write(' model size:' + str(f"{total_params:,}"))
+        writer.write('\n' )
+        writer.write('num ' + str(female_num) + ' ' + str(male_num) + ' ')
+        writer.write('\n' )
+        writer.write('original_id_length ' )
+        writer.write(str(int((female_origi_id_len+male_origi_id_len)/2)) + ' ' )
+        writer.write('text_length ' )
+        writer.write(str(int((female_text_len+male_text_len)/2)) + ' ')
+        writer.write('converted_id_length ' )
+        writer.write(str(int((female_id_len+male_id_len)/2)) + ' ')
+        ########## done convert ids
 
     attention = True if args.method == 'aula' else False
 
@@ -176,6 +209,7 @@ def main(args):
 
     for female_tokens in female_inputs:
         with torch.no_grad():
+            #print(female_tokens)
             female_score, female_hidden_state = calculate_aul(model, female_tokens, log_softmax, attention)
             female_scores.append(female_score)
             female_embes.append(female_hidden_state)
@@ -200,19 +234,12 @@ def main(args):
     bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
     final_bias_score = round(bias_score * 100, 2)
 
-    date_time = str(datetime.date.today()) + "_" + ":".join(str(datetime.datetime.now()).split()[1].split(":")[:2])
+    # date_time = str(datetime.date.today()) + "_" + ":".join(str(datetime.datetime.now()).split()[1].split(":")[:2])
     with open('./results/gender.txt', 'a') as writer:
         writer.write('\n')
-        #writer.write(date_time)
-        writer.write(str(args.lang) + ' ')
-        writer.write('\n')
-        writer.write(str(args.corpus) + ' ')
-        writer.write(str(args.if_cased) + ' ')
-        writer.write(str(args.if_multilingual) + ' ')
         writer.write(model_name + ' ')
-        writer.write(f'bias score (emb): {final_bias_score}')
-        writer.write('\n')
-        writer.write('\n')
+        writer.write(f'  bias score (emb): {final_bias_score}')
+        
 
     print('bias score (emb):', round(bias_score * 100, 2))
 
