@@ -73,7 +73,10 @@ def get_model_name_uncased(lang_model):
     elif lang_model == 'de-distilbert':
         model_name ='distilbert-base-german-cased'
 
-
+    elif lang_model == 'du-bert':
+        model_name = 'GroNLP/bert-base-dutch-cased'
+    elif lang_model == 'fr-bert':
+        model_name = 'dbmdz/bert-base-french-europeana-cased'
 
     elif lang_model == 'en-bert':
         model_name = 'bert-base-uncased'
@@ -91,6 +94,10 @@ def get_model_name_uncased(lang_model):
     
     elif lang_model == 'es-bert': 
         model_name = 'dccuchile/bert-base-spanish-wwm-uncased' # s
+
+
+    elif lang_model == 'po-bert': 
+        model_name = 'dkleczek/bert-base-polish-uncased-v1'
 
     elif lang_model == 'pt-bert': 
         model_name = "pablocosta/bertabaporu-base-uncased" # ns neuralmind/bert-base-portuguese-cased 

@@ -1,0 +1,150 @@
+
+  
+  
+2023-03-23-15:23:29
+  
+  
+ar
+
+
+Namespace(lang='ar', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 782
+id_length 16 
+bert-base-multilingual-uncased   bias score (emb): 55.55
+
+Namespace(lang='ar', method='aula', if_cased='uncased', if_multilingual='mono') model size:135,258,880
+num 782
+id_length 11 
+aubmindlab/bert-base-arabertv02   bias score (emb): 55.2  
+  
+de
+
+
+Namespace(lang='de', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 800
+id_length 15 
+bert-base-multilingual-uncased   bias score (emb): 58.07
+
+Namespace(lang='de', method='aula', if_cased='uncased', if_multilingual='mono') model size:109,960,318
+num 800
+id_length 13 
+deepset/gbert-base   bias score (emb): 60.0  
+  
+du
+
+
+Namespace(lang='du', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 830
+id_length 16 
+bert-base-multilingual-uncased   bias score (emb): 57.97  
+  
+en
+
+
+Namespace(lang='en', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 873
+id_length 13 
+bert-base-multilingual-uncased   bias score (emb): 50.07
+
+Namespace(lang='en', method='aula', if_cased='uncased', if_multilingual='mono') model size:109,514,298
+num 873
+id_length 12 
+bert-base-uncased   bias score (emb): 58.8  
+  
+es
+
+
+Namespace(lang='es', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 818
+id_length 14 
+bert-base-multilingual-uncased   bias score (emb): 51.97
+
+Namespace(lang='es', method='aula', if_cased='uncased', if_multilingual='mono') model size:109,883,418
+num 818
+id_length 12 
+dccuchile/bert-base-spanish-wwm-uncased   bias score (emb): 52.99  
+  
+
+  
+it
+
+
+Namespace(lang='it', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 812
+id_length 15 
+bert-base-multilingual-uncased   bias score (emb): 50.98
+
+Namespace(lang='it', method='aula', if_cased='uncased', if_multilingual='mono') model size:109,960,318
+num 812
+id_length 13 
+dbmdz/bert-base-italian-uncased   bias score (emb): 52.49  
+  
+  
+pt
+
+
+Namespace(lang='pt', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 325
+id_length 15 
+bert-base-multilingual-uncased   bias score (emb): 52.11
+
+Namespace(lang='pt', method='aula', if_cased='uncased', if_multilingual='mono') model size:135,258,880
+num 325
+id_length 12 
+pablocosta/bertabaporu-base-uncased   bias score (emb): 55.09  
+  
+  
+2023-03-23-15:51:47
+  
+  
+zh
+
+
+Namespace(lang='zh', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 818
+id_length 16 
+bert-base-multilingual-uncased   bias score (emb): 54.06
+
+Namespace(lang='zh', method='aula', if_cased='uncased', if_multilingual='mono') model size:102,290,312
+num 818
+id_length 16 
+hfl/chinese-bert-wwm-ext   bias score (emb): 54.41  
+  
+du
+
+
+Namespace(lang='du', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 830
+id_length 16 
+bert-base-multilingual-uncased   bias score (emb): 57.97
+
+Namespace(lang='du', method='aula', if_cased='uncased', if_multilingual='mono') model size:109,169,017
+num 830
+id_length 13 
+GroNLP/bert-base-dutch-cased   bias score (emb): 51.15  
+  
+fr
+
+
+Namespace(lang='fr', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 823
+id_length 16 
+bert-base-multilingual-uncased   bias score (emb): 54.53
+
+Namespace(lang='fr', method='aula', if_cased='uncased', if_multilingual='mono') model size:110,650,880
+num 823
+id_length 15 
+dbmdz/bert-base-french-europeana-cased   bias score (emb): 50.62  
+  
+po
+
+
+Namespace(lang='po', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 842
+id_length 18 
+bert-base-multilingual-uncased   bias score (emb): 58.93
+
+Namespace(lang='po', method='aula', if_cased='uncased', if_multilingual='mono') model size:132,182,880
+num 842
+id_length 13 
+dkleczek/bert-base-polish-uncased-v1   bias score (emb): 55.52

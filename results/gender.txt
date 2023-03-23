@@ -1,36 +1,4 @@
-  
-  
-  
-2023-03-23-12:08:52
-  
-  
-de
 
-
-Namespace(lang='de', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
-num 2373 2373 
-original_id_length 23 text_length 21 converted_id_length 32 
-
-Namespace(lang='de', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:109,960,318
-num 2373 2373 
-original_id_length 23 text_length 21 converted_id_length 29 
-
-Namespace(lang='de', method='aula', corpus='news', if_cased='uncased', if_multilingual='multi') model size:167,463,831
-num 1057 1057 
-original_id_length 29 text_length 27 converted_id_length 43 
-
-Namespace(lang='de', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:109,960,318
-num 1057 1057 
-original_id_length 29 text_length 27 converted_id_length 40   
-  
-ja
-
-
-Namespace(lang='ja', method='aula', corpus='ted', if_cased='uncased', if_multilingual='multi') model size:167,463,831
-num 3082 3082 
-original_id_length 24 text_length 1 converted_id_length 33   
-  
-  
 2023-03-23-12:11:00
   
   
@@ -215,4 +183,26 @@ bert-base-multilingual-uncased   bias score (emb): 50.16
 Namespace(lang='zh', method='aula', corpus='news', if_cased='uncased', if_multilingual='mono') model size:102,290,312
 num 1686 1686 
 original_id_length 19 text_length 1 converted_id_length 21 
-hfl/chinese-bert-wwm-ext   bias score (emb): 51.52
+hfl/chinese-bert-wwm-ext   bias score (emb): 51.522023-03-23-15:08:08
+
+
+Namespace(lang='ar', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:135,258,880
+num 3497 3497 
+original_id_length 19 text_length 17 converted_id_length 23 
+aubmindlab/bert-base-arabertv02   bias score (emb): 55.71
+
+Namespace(lang='de', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:109,960,318
+num 2373 2373 
+original_id_length 23 text_length 21 converted_id_length 29 
+deepset/gbert-base   bias score (emb): 51.58
+
+Namespace(lang='es', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:109,883,418
+num 3578 3578 
+original_id_length 22 text_length 20 converted_id_length 25 2023-03-23-15:10:23
+2023-03-23-15:11:12
+2023-03-23-15:19:16
+
+
+Namespace(lang='id', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:110,650,880
+num 1438 1438 
+original_id_length 19 text_length 17 converted_id_length 21 

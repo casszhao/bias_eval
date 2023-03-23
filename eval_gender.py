@@ -19,7 +19,7 @@ def parse_args():
     parser.add_argument('--lang', type=str, #required=True,
                         choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                         help='Path to evaluation dataset.',
-                        default='ja')
+                        default='id')
     parser.add_argument('--method', type=str, #required=True,
                         choices=['aula', 'aul'],
                         default='aula')
@@ -31,7 +31,7 @@ def parse_args():
                         default='uncased')
     parser.add_argument('--if_multilingual', type=str, #required=True,
                         choices=['multi', 'mono'],
-                        default='multi')
+                        default='mono')
     args = parser.parse_args()
     print(' ')
     print(' ')
