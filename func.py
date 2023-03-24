@@ -6,6 +6,8 @@ def get_model_name_cased(lang_model):
         model_name ='distilbert-base-german-cased'
 
 
+    elif lang_model == 'hi-bert':
+        'l3cube-pune/hindi-bert-scratch'
 
     elif lang_model == 'en-bert':
         model_name = 'bert-base-cased'

@@ -83,7 +83,11 @@ args = parser.parse_args()
 model = 'bert' # mdeberta
 
 
-
+print(' ')
+print(' ')
+print(' ')
+print(' ')
+print(' -------- ', str(args.lang))
 
 import os
 pwd = os.getcwd()
@@ -240,4 +244,4 @@ with open(str(args.log_name), 'a') as writer:
     writer.write(str(p_value_mono))
     writer.write(',')
     writer.write(str(p_value))
-    writer.write(',')
+    writer.write('\n')

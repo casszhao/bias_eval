@@ -2,7 +2,7 @@
 
 
 filename="results/idt"
-date=$(date +"%%m-%d_%H-%M")
+date=$(date +"%m-%d_%H-%M")
 extension=".txt"
 
 # Concatenate variables to create filename
