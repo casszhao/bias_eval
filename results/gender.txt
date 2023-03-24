@@ -206,3 +206,7 @@ original_id_length 22 text_length 20 converted_id_length 25 2023-03-23-15:10:23
 Namespace(lang='id', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:110,650,880
 num 1438 1438 
 original_id_length 19 text_length 17 converted_id_length 21 
+
+Namespace(lang='id', method='aula', corpus='ted', if_cased='uncased', if_multilingual='mono') model size:110,650,880
+num 1438 1438 
+original_id_length 19 text_length 17 converted_id_length 21 
