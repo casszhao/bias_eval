@@ -68,19 +68,13 @@ attention = True
 from func import get_model_name_uncased, get_model_name_cased
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--lang', type=str, #required=True,
-                    # choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
+parser.add_argument('--lang', type=str, #required=True, choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                     help='Path to evaluation dataset.',
                     default='zh')
-parser.add_argument('--method', type=str, #required=True,
-                    # choices=['aula', 'aul'],
+parser.add_argument('--method', type=str, #required=True, choices=['aula', 'aul'],
                     default='aula')
-parser.add_argument('--if_cased', type=str, #required=True,
-                    # choices=['cased', 'uncased'],
+parser.add_argument('--if_cased', type=str, #required=True, choices=['cased', 'uncased'],
                     default='uncased')
-# parser.add_argument('--if_multilingual', type=str, #required=True,
-#                     choices=['multi', 'mono'],
-#                     default='mono')
 parser.add_argument('--log_name', type=str)
 
 args = parser.parse_args()
@@ -107,17 +101,14 @@ with open(disadv_corpus, 'r') as f:
 
 ############# for mono first
 
-if args.if_cased == 'cased':
-    model_name_mono = get_model_name_cased(args.lang + '-' + model)
-else:
-    model_name_mono = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
+if args.if_cased == 'cased': model_name_mono = get_model_name_cased(args.lang + '-' + model)
+else: model_name_mono = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
 print(model_name_mono)
 
 if "TurkuNLP" in model_name_mono:
     from transformers import BertTokenizer
     tokenizer_mono = BertTokenizer.from_pretrained(model_name_mono)
-else: 
-    tokenizer_mono = AutoTokenizer.from_pretrained(model_name_mono)
+else: tokenizer_mono = AutoTokenizer.from_pretrained(model_name_mono)
 model_mono = AutoModelForMaskedLM.from_pretrained(model_name_mono,
                                             output_hidden_states=True,
                                             output_attentions=True)
@@ -128,7 +119,6 @@ if torch.cuda.is_available():
 
 total_params_mono = sum(param.numel() for param in model_mono.parameters())
 print("==>> total_params: ", f"{total_params_mono:,}")
-
 
 if torch.cuda.is_available():
     torch.set_default_tensor_type('torch.cuda.FloatTensor')
@@ -142,8 +132,38 @@ disadv_scores, disadv_embes, disadv_token_len = get_scores_embed(disadv_text_lis
 avg_token_num_mono = int((adv_token_len+disadv_token_len)/2)
 
 bias_scores = adv_scores > disadv_scores
+print("==>> 777777777777 (bias_scores): ", adv_scores)
 weights = cos_sim(disadv_embes, adv_embes.T)
 weighted_bias_scores = bias_scores * weights
+print("==>> after multiple weights: ", weighted_bias_scores)
+
+
+shape = adv_scores.shape
+print('2222222 shape -> ',shape)
+print('333333333 333333333333333 -> ', min(adv_scores[0]))
+min = min(adv_scores[0])
+max = max(adv_scores[0])
+adv_scores_random = np.random.uniform(low=min, high=max, size=shape)
+disadv_scores_random = np.random.uniform(low=min, high=max, size=shape)
+
+bias_scores_random = adv_scores_random > disadv_scores_random
+weighted_bias_scores_random = bias_scores_random * weights
+print("==>> 333333 (weighted_bias_scores random after multple weights): ", weighted_bias_scores_random)
+
+random_list = list(map(bool,weighted_bias_scores_random[0]*100))
+bias_list = list(map(bool,weighted_bias_scores[0]*100))
+df = pd.DataFrame(list(zip(random_list, bias_list)), columns =['Random', 'MBE'])
+
+myCross = pd.crosstab(df['Random'], df['MBE'])
+print(myCross)
+from statsmodels.stats.api import SquareTable
+stats = SquareTable(myCross, shift_zeros=False).symmetry()
+print(stats)
+chi_squared = stats.statistic
+p_value = stats.pvalue
+degree_freedom = stats.df
+
+
 bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
 bias_score_mono = round(bias_score * 100, 2)
 print("==>> (bias_score_mono): ", bias_score_mono)
