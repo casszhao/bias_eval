@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import argparse
 import torch
+import random
 import difflib
 import nltk
 import regex as re
@@ -70,7 +71,7 @@ from func import get_model_name_uncased, get_model_name_cased
 parser = argparse.ArgumentParser()
 parser.add_argument('--lang', type=str, #required=True, choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                     help='Path to evaluation dataset.',
-                    default='zh')
+                    default='pt')
 parser.add_argument('--method', type=str, #required=True, choices=['aula', 'aul'],
                     default='aula')
 parser.add_argument('--if_cased', type=str, #required=True, choices=['cased', 'uncased'],
@@ -132,41 +133,36 @@ disadv_scores, disadv_embes, disadv_token_len = get_scores_embed(disadv_text_lis
 avg_token_num_mono = int((adv_token_len+disadv_token_len)/2)
 
 bias_scores = adv_scores > disadv_scores
-print("==>> 777777777777 (bias_scores): ", adv_scores)
 weights = cos_sim(disadv_embes, adv_embes.T)
 weighted_bias_scores = bias_scores * weights
-print("==>> after multiple weights: ", weighted_bias_scores)
-
-
-shape = adv_scores.shape
-print('2222222 shape -> ',shape)
-print('333333333 333333333333333 -> ', min(adv_scores[0]))
-min = min(adv_scores[0])
-max = max(adv_scores[0])
-adv_scores_random = np.random.uniform(low=min, high=max, size=shape)
-disadv_scores_random = np.random.uniform(low=min, high=max, size=shape)
-
-bias_scores_random = adv_scores_random > disadv_scores_random
-weighted_bias_scores_random = bias_scores_random * weights
-print("==>> 333333 (weighted_bias_scores random after multple weights): ", weighted_bias_scores_random)
-
-random_list = list(map(bool,weighted_bias_scores_random[0]*100))
-bias_list = list(map(bool,weighted_bias_scores[0]*100))
-df = pd.DataFrame(list(zip(random_list, bias_list)), columns =['Random', 'MBE'])
-
-myCross = pd.crosstab(df['Random'], df['MBE'])
-print(myCross)
-from statsmodels.stats.api import SquareTable
-stats = SquareTable(myCross, shift_zeros=False).symmetry()
-print(stats)
-chi_squared = stats.statistic
-p_value = stats.pvalue
-degree_freedom = stats.df
-
-
 bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
 bias_score_mono = round(bias_score * 100, 2)
 print("==>> (bias_score_mono): ", bias_score_mono)
+
+from statsmodels.stats.api import SquareTable
+def sig_test(bias_scores, weighted_bias_scores, weights):
+    shape = bias_scores.shape
+    bias_scores_random = [random.choice([True, False]) for _ in range(shape[1])]
+    bias_scores_random = np.array(bias_scores_random)
+    bias_scores_random = bias_scores_random.reshape([1, -1])
+    weighted_bias_scores_random = bias_scores_random * weights
+
+    bias_list = list(map(bool,weighted_bias_scores[0]*100))
+    bias_list_random = list(map(bool,weighted_bias_scores_random[0]*100))
+    df = pd.DataFrame(list(zip(bias_list_random, bias_list)), columns =['Random', 'MBE'])
+    myCross = pd.crosstab(df['Random'], df['MBE'])
+    stats = SquareTable(myCross, shift_zeros=False).symmetry()
+    print(stats)
+    chi_squared = stats.statistic
+    p_value = stats.pvalue
+    degree_freedom = stats.df
+    return p_value, chi_squared, degree_freedom
+
+
+p_value_mono, chi_squared_mono, degree_freedom_mono = sig_test(bias_scores, weighted_bias_scores, weights)
+
+
+
 
 
 
@@ -218,7 +214,7 @@ bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
 bias_score_multi = round(bias_score * 100, 2)
 print("==>> (bias_score_multi): ", bias_score_multi)
 
-
+p_value, chi_squared, degree_freedom = sig_test(bias_scores, weighted_bias_scores, weights)
 #  "Language,Corpus Size,Monolingual,Multilingual,Diff_in_Scores,
 #  MonoModel_Size,MultiModel_Size,Mono_token_len, Multi_token_len"
 
@@ -240,4 +236,8 @@ with open(str(args.log_name), 'a') as writer:
     writer.write(str(avg_token_num_mono))
     writer.write(',')
     writer.write(str(avg_token_num_multi))
+    writer.write(',')
+    writer.write(str(p_value_mono))
+    writer.write(',')
+    writer.write(str(p_value))
     writer.write(',')
