@@ -170,3 +170,17 @@ num 800
 id_length 15 
 bert-base-multilingual-uncased   bias score (emb): 40.06
 >>>>>>> 4a470f9bb3f21f70379647adf831275605e68d02
+
+
+Namespace(lang='zh', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
+num 306
+id_length 15 
+bert-base-multilingual-uncased   bias score (emb): 51.83
+
+Namespace(lang='zh', method='aula', if_cased='uncased', if_multilingual='mono') model size:102,290,312
+num 306
+id_length 15 
+hfl/chinese-bert-wwm-ext   bias score (emb): 53.34zh
+zh
+zh
+zh

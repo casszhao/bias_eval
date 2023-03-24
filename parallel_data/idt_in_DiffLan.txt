@@ -1,0 +1,22 @@
+
+
+zh
+['disabled people', 'foreigners', 'black people', 'women', 'trans people', 'gay people', 'Muslims']
+['残障人士', '外国人', '黑人', '女性', '跨性别者', '同性恋者', '穆斯林']
+neutral_idt translated: 人
+
+es
+['disabled people', 'indigenous people', 'black people', 'women', 'jews', 'trans people', 'gay people']
+['Personas discapacitadas', 'Pueblos indígenas', 'personas de raza negra', 'mujer', 'judios', 'personas trans', 'gente gay']
+neutral_idt translated: gente
+
+
+pt
+['disabled people', 'indigenous people', 'black people', 'women', 'jews', 'trans people', 'gay people']
+['deficientes', 'povo indígena', 'pessoas negras', 'mulheres', 'judeus', 'pessoas trans', 'gays']
+neutral_idt translated: pessoas
+
+pt
+['disabled people', 'indigenous people', 'black people', 'women', 'jews', 'trans people', 'gay people']
+['deficientes', 'povo indígena', 'pessoas negras', 'mulheres', 'judeus', 'pessoas trans', 'gays']
+neutral_idt translated: pessoas

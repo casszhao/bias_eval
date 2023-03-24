@@ -41,7 +41,7 @@ def cos_sim(v1, v2):
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
 # change to defined func required token tensor format
-def get_scores_embed(tokens_list):
+def get_scores_embed(tokens_list, tokenizer, model):
     scores = []
     embes = []
     token_id_tensor = []
@@ -64,49 +64,37 @@ def get_scores_embed(tokens_list):
     return scores, embes, int(avg_token_num/len(tokens_list))
 
 
-
+attention = True
 from func import get_model_name_uncased, get_model_name_cased
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--lang', type=str, #required=True,
                     # choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                     help='Path to evaluation dataset.',
-                    default='de')
+                    default='zh')
 parser.add_argument('--method', type=str, #required=True,
                     # choices=['aula', 'aul'],
                     default='aula')
 parser.add_argument('--if_cased', type=str, #required=True,
                     # choices=['cased', 'uncased'],
                     default='uncased')
-parser.add_argument('--if_multilingual', type=str, #required=True,
-                    choices=['multi', 'mono'],
-                    default='multi')
+# parser.add_argument('--if_multilingual', type=str, #required=True,
+#                     choices=['multi', 'mono'],
+#                     default='mono')
+parser.add_argument('--log_name', type=str)
 
 args = parser.parse_args()
 
 model = 'bert' # mdeberta
 
 
-if args.if_multilingual == 'mono':
-    if args.if_cased == 'cased':
-        model_name = get_model_name_cased(args.lang + '-' + model)
-    else:
-        model_name = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
-else:
-    if args.if_cased == 'cased':
-        model_name = get_model_name_cased('multi-' + model) # "multi-bert"
-    else:
-        model_name = get_model_name_uncased('multi-' + model) # "multi-bert"
 
-
-adv = 'hate_idt'
-disadv = 'nonhate_idt' # nonhate_idt hate_nonidt
 
 import os
 pwd = os.getcwd()
 print(pwd)
-adv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/{adv}.json'
-disadv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/{disadv}.json' 
+adv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/adv_input_list.json'
+disadv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/disadv_input_list.json' 
 
 with open(adv_corpus, 'r') as f:
     adv_text_list = json.load(f)
@@ -115,32 +103,81 @@ with open(disadv_corpus, 'r') as f:
 
 
 
-each_corpus_number = min(len(adv_text_list),len(disadv_text_list))
-print(' ')
-print('adv data number / disadv data number / each corpus numbers', len(adv_text_list),len(disadv_text_list), each_corpus_number)
-print(' ')
-adv_text_list = sample(adv_text_list,each_corpus_number)
-disadv_text_list = sample(disadv_text_list,each_corpus_number)
 
+
+############# for mono first
+
+if args.if_cased == 'cased':
+    model_name_mono = get_model_name_cased(args.lang + '-' + model)
+else:
+    model_name_mono = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
+print(model_name_mono)
+
+if "TurkuNLP" in model_name_mono:
+    from transformers import BertTokenizer
+    tokenizer_mono = BertTokenizer.from_pretrained(model_name_mono)
+else: 
+    tokenizer_mono = AutoTokenizer.from_pretrained(model_name_mono)
+model_mono = AutoModelForMaskedLM.from_pretrained(model_name_mono,
+                                            output_hidden_states=True,
+                                            output_attentions=True)
+
+model_mono = model_mono.eval()
+if torch.cuda.is_available():
+    model_mono.to('cuda')
+
+total_params_mono = sum(param.numel() for param in model_mono.parameters())
+print("==>> total_params: ", f"{total_params_mono:,}")
+
+
+if torch.cuda.is_available():
+    torch.set_default_tensor_type('torch.cuda.FloatTensor')
+
+mask_id_mono = tokenizer_mono.mask_token_id
+log_softmax = torch.nn.LogSoftmax(dim=1)
+
+
+adv_scores, adv_embes, adv_token_len = get_scores_embed(adv_text_list, tokenizer_mono, model_mono)
+disadv_scores, disadv_embes, disadv_token_len = get_scores_embed(disadv_text_list, tokenizer_mono, model_mono)
+avg_token_num_mono = int((adv_token_len+disadv_token_len)/2)
+
+bias_scores = adv_scores > disadv_scores
+weights = cos_sim(disadv_embes, adv_embes.T)
+weighted_bias_scores = bias_scores * weights
+bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
+bias_score_mono = round(bias_score * 100, 2)
+print("==>> (bias_score_mono): ", bias_score_mono)
+
+
+
+
+
+
+
+
+############# for multi 
+if args.if_cased == 'cased':
+    model_name = 'bert-base-multilingual-cased'
+else:
+    model_name = 'bert-base-multilingual-uncased'
+print(model_name)
 
 if "TurkuNLP" in model_name:
-    from transformers import BertTokenizer
     tokenizer = BertTokenizer.from_pretrained(model_name)
-
 else: 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForMaskedLM.from_pretrained(model_name,
                                             output_hidden_states=True,
                                             output_attentions=True)
 
+
+
 model = model.eval()
 if torch.cuda.is_available():
     model.to('cuda')
 
-total_params = sum(param.numel() for param in model.parameters())
-
-
-print("==>> total_params: ", f"{total_params:,}")
+total_params_multi = sum(param.numel() for param in model.parameters())
+print("==>> total_params: ", f"{total_params_multi:,}")
 
 
 if torch.cuda.is_available():
@@ -148,45 +185,39 @@ if torch.cuda.is_available():
 
 mask_id = tokenizer.mask_token_id
 log_softmax = torch.nn.LogSoftmax(dim=1)
-attention = True #if args.method == 'aula' else False
 
 
+adv_scores, adv_embes, adv_token_len = get_scores_embed(adv_text_list, tokenizer, model)
+disadv_scores, disadv_embes, disadv_token_len = get_scores_embed(disadv_text_list, tokenizer, model)
+avg_token_num_multi = int((adv_token_len+disadv_token_len)/2)
 
-
-
-adv_scores, adv_embes, adv_token_len = get_scores_embed(adv_text_list)
-disadv_scores, disadv_embes, disadv_token_len = get_scores_embed(disadv_text_list)
-print(' total avg_token_num: ', int((adv_token_len+disadv_token_len)/2))
-# if bias  -----------> idt_hate_scores > nonidt_hate_scores
-# if gender bias -----> male_scores > female_scores
-
-# bias_scores = male_scores > female_scores 
 bias_scores = adv_scores > disadv_scores
-# weights = cos_sim(female_embes, male_embes.T)
 weights = cos_sim(disadv_embes, adv_embes.T)
-
-
 weighted_bias_scores = bias_scores * weights
 bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
-bias_score = round(bias_score * 100, 2)
+bias_score_multi = round(bias_score * 100, 2)
+print("==>> (bias_score_multi): ", bias_score_multi)
 
 
-print('each corpus numbers', each_corpus_number)
-print('model_name : ', model_name)
-print('language and corpus -->', args.lang)
-print('bias score (emb):', bias_score)
+#  "Language,Corpus Size,Monolingual,Multilingual,Diff_in_Scores,
+#  MonoModel_Size,MultiModel_Size,Mono_token_len, Multi_token_len"
 
-
-with open('./results/idt.txt', 'a') as writer:
-    writer.write('\n' )
-    writer.write('\n' )
-    writer.write(str(args))
-    writer.write(' model size:' + str(f"{total_params:,}"))
-    writer.write('\n' )
-    writer.write('num ' + str(each_corpus_number))
-    writer.write('\n' )
-    writer.write('id_length ' )
-    writer.write(str(int((adv_token_len+disadv_token_len)/2)) + ' ')
-    writer.write('\n')
-    writer.write(model_name + ' ')
-    writer.write(f'  bias score (emb): {bias_score}')
+with open(str(args.log_name), 'a') as writer:
+    writer.write(str(args.lang))
+    writer.write(',')
+    writer.write(str(len(adv_text_list)))
+    writer.write(',')
+    writer.write(str(bias_score_mono))
+    writer.write(',')
+    writer.write(str(bias_score_multi))
+    writer.write(',')
+    writer.write(str("{:.2f}".format(round(bias_score_mono-bias_score_multi, 2))))
+    writer.write(',')
+    writer.write(str(total_params_mono))
+    writer.write(',')
+    writer.write(str(total_params_multi))
+    writer.write(',')
+    writer.write(str(avg_token_num_mono))
+    writer.write(',')
+    writer.write(str(avg_token_num_multi))
+    writer.write(',')
