@@ -8,7 +8,7 @@ import regex as re
 import numpy as np
 import MeCab
 import pickle
-
+from random import sample
 from tqdm import tqdm
 from collections import defaultdict
 from transformers import AutoModelForMaskedLM, AutoTokenizer, AutoModelForSeq2SeqLM
@@ -64,6 +64,7 @@ def get_scores_embed(tokens_list):
     return scores, embes, int(avg_token_num/len(tokens_list))
 
 
+
 from func import get_model_name_uncased, get_model_name_cased
 
 parser = argparse.ArgumentParser()
@@ -98,13 +99,13 @@ else:
         model_name = get_model_name_uncased('multi-' + model) # "multi-bert"
 
 
-
+adv = 'hate_idt'
 disadv = 'nonhate_idt' # nonhate_idt hate_nonidt
 
 import os
 pwd = os.getcwd()
 print(pwd)
-adv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/hate_idt.json'
+adv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/{adv}.json'
 disadv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/{disadv}.json' 
 
 with open(adv_corpus, 'r') as f:
@@ -118,8 +119,8 @@ each_corpus_number = min(len(adv_text_list),len(disadv_text_list))
 print(' ')
 print('adv data number / disadv data number / each corpus numbers', len(adv_text_list),len(disadv_text_list), each_corpus_number)
 print(' ')
-adv_text_list = adv_text_list[:each_corpus_number]
-disadv_text_list = disadv_text_list[:each_corpus_number]
+adv_text_list = sample(adv_text_list,each_corpus_number)
+disadv_text_list = sample(disadv_text_list,each_corpus_number)
 
 
 if "TurkuNLP" in model_name:
@@ -159,9 +160,10 @@ print(' total avg_token_num: ', int((adv_token_len+disadv_token_len)/2))
 # if bias  -----------> idt_hate_scores > nonidt_hate_scores
 # if gender bias -----> male_scores > female_scores
 
-
-bias_scores = disadv_scores > adv_scores
-weights = cos_sim(adv_embes, disadv_embes.T)
+# bias_scores = male_scores > female_scores 
+bias_scores = adv_scores > disadv_scores
+# weights = cos_sim(female_embes, male_embes.T)
+weights = cos_sim(disadv_embes, adv_embes.T)
 
 
 weighted_bias_scores = bias_scores * weights

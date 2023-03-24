@@ -247,3 +247,7 @@ def main(args):
 if __name__ == "__main__":
     args = parse_args()
     main(args)
+
+
+
+def get_random_scores():

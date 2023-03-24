@@ -149,7 +149,24 @@ num 842
 id_length 13 
 dkleczek/bert-base-polish-uncased-v1   bias score (emb): 55.52
 
+<<<<<<< HEAD
 Namespace(lang='de', method='aula', if_cased='uncased', if_multilingual='multi') model size:167,463,831
 num 800
 id_length 15 
 bert-base-multilingual-uncased   bias score (emb): 58.07
+=======
+Namespace(if_cased='uncased', if_multilingual='multi', lang='de', method='aula') model size:167,463,831
+num 800
+id_length 15 
+bert-base-multilingual-uncased   bias score (emb): 43.7
+
+Namespace(if_cased='uncased', if_multilingual='multi', lang='de', method='aula') model size:167,463,831
+num 800
+id_length 15 
+bert-base-multilingual-uncased   bias score (emb): 38.81
+
+Namespace(if_cased='uncased', if_multilingual='multi', lang='de', method='aula') model size:167,463,831
+num 800
+id_length 15 
+bert-base-multilingual-uncased   bias score (emb): 40.06
+>>>>>>> 4a470f9bb3f21f70379647adf831275605e68d02
