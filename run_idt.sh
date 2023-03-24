@@ -2,14 +2,14 @@
 
 
 filename="results/idt"
-date=$(date +"%m-%d_%H-%M")
-extension=".txt"
+date=$(date +"%m%d_%H%M")
+extension=".csv"
 
 # Concatenate variables to create filename
 new_filename="${filename}_${date}${extension}"
 
 # Create new file with concatenated filename
-echo "Language,Corpus Size,Monolingual,Multilingual,Diff_in_Scores,MonoModel_Size,MultiModel_Size,Mono_token_len, Multi_token_len,Mono_Pvalue, Multi_Pvalue" > "$new_filename"
+echo "Language,Corpus Size,Monolingual,Multilingual,Mono_Pvalue,Multi_Pvalue,Diff_in_Scores,MonoModel_Size,MultiModel_Size,Mono_token_len,Multi_token_len" > "$new_filename"
 
 
 

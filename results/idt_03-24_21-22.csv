@@ -1,4 +1,4 @@
-Language,Corpus Size,Monolingual,Multilingual,Diff_in_Scores,MonoModel_Size,MultiModel_Size,Mono_token_len, Multi_token_len,Mono_Pvalue, Multi_Pvalue
+Language,Corpus Size,Monolingual,Multilingual,Diff_in_Scores,MonoModel_Size,MultiModel_Size,Mono_token_len,Multi_token_len,Mono_Pvalue,Multi_Pvalue
 ar,316,48.97,66.04,-17.07,135258880,167463831,12,17,0.3545394797735013,1.982668058999776e-06
 de,301,32.6,54.21,-21.61,109960318,167463831,12,14,2.147818204218367e-06,0.04851973828025081
 du,349,36.68,69.72,-33.04,109169017,167463831,12,14,1.641464317006442e-05,1.1619088379624576e-05
