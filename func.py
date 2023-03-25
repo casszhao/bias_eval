@@ -1,4 +1,6 @@
 
+
+
 def get_model_name_cased(lang_model):
     if lang_model == 'de-bert':
         model_name = "TurkuNLP/wikibert-base-de-cased" # 'deepset/gbert-base' 

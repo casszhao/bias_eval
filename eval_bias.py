@@ -14,6 +14,14 @@ from tqdm import tqdm
 from collections import defaultdict
 from transformers import AutoModelForMaskedLM, AutoTokenizer, AutoModelForSeq2SeqLM
 
+def get_tops(arr_2d, top_k):
+    arr_1d = arr_2d.flatten()
+    sorted_arr = np.sort(arr_1d)[::-1]
+    top_3_max = sorted_arr[:top_k]
+    top_3_max_indices = np.argsort(arr_1d)[::-1][:top_k]
+    # convert the flat indices to the indices of the original array shape
+    top_3_max_indices_original = np.unravel_index(top_3_max_indices, arr_2d.shape)
+    return top_3_max_indices_original
 
 def calculate_aul(model, token_ids, log_softmax, attention):
     '''
@@ -71,7 +79,7 @@ from func import get_model_name_uncased, get_model_name_cased
 parser = argparse.ArgumentParser()
 parser.add_argument('--lang', type=str, #required=True, choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                     help='Path to evaluation dataset.',
-                    default='pt')
+                    default='zh')
 parser.add_argument('--method', type=str, #required=True, choices=['aula', 'aul'],
                     default='aula')
 parser.add_argument('--if_cased', type=str, #required=True, choices=['cased', 'uncased'],
@@ -165,7 +173,16 @@ def sig_test(bias_scores, weighted_bias_scores, weights):
 
 p_value_mono, chi_squared_mono, degree_freedom_mono = sig_test(bias_scores, weighted_bias_scores, weights)
 
+top_index_1d, top_index_2d = get_tops(weighted_bias_scores, 3)
+print(' most biased sentence  (MONO)')
+print(adv_text_list[top_index_1d[0]]) #sae
+print(disadv_text_list[top_index_2d[0]])
 
+print(' the 2 and 3 most biased sentence')
+print(adv_text_list[top_index_1d[1]]) #sae
+print(disadv_text_list[top_index_2d[1]])
+print(adv_text_list[top_index_1d[2]]) #sae
+print(disadv_text_list[top_index_2d[2]])
 
 
 
@@ -221,6 +238,16 @@ print("==>> (bias_score_multi): ", bias_score_multi)
 p_value, chi_squared, degree_freedom = sig_test(bias_scores, weighted_bias_scores, weights)
 #  "Language,Corpus Size,Monolingual,Multilingual,Diff_in_Scores,
 #  MonoModel_Size,MultiModel_Size,Mono_token_len, Multi_token_len"
+top_index_1d, top_index_2d = get_tops(weighted_bias_scores, 3)
+print(' most biased sentence  (MULTI)')
+print(adv_text_list[top_index_1d[0]]) #sae
+print(disadv_text_list[top_index_2d[0]])
+
+print(' the 2 and 3 most biased sentence')
+print(adv_text_list[top_index_1d[1]]) #sae
+print(disadv_text_list[top_index_2d[1]])
+print(adv_text_list[top_index_1d[2]]) #sae
+print(disadv_text_list[top_index_2d[2]])
 
 with open(str(args.log_name), 'a') as writer:
     writer.write(str(args.lang))

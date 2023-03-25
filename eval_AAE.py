@@ -92,7 +92,7 @@ print(' -------- ', str(args.lang))
 import os
 pwd = os.getcwd()
 print(pwd)
-adv_corpus = str(pwd) + f'/parallel_data/AAE/sae_samples.txt'
+adv_corpus = str(pwd) + f'/parallel_data/AAE/sae_samples.txt' # bias writing in sae
 disadv_corpus = str(pwd) + f'/parallel_data/AAE/aave_samples.txt' 
 
 with open(adv_corpus, 'r') as f:
@@ -137,9 +137,34 @@ print("==>> (avg_token_num_mono): ", avg_token_num_mono)
 bias_scores = adv_scores > disadv_scores
 weights = cos_sim(disadv_embes, adv_embes.T)
 weighted_bias_scores = bias_scores * weights
+print("==>> type(weighted_bias_scores): ", type(weighted_bias_scores))
+print("==>> shape(weighted_bias_scores): ", weighted_bias_scores.shape)
 bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
 bias_score_mono = round(bias_score * 100, 2)
 print("==>> (bias_score_mono): ", bias_score_mono)
+
+
+def get_tops(arr_2d, top_k):
+    arr_1d = arr_2d.flatten()
+    sorted_arr = np.sort(arr_1d)[::-1]
+    top_3_max = sorted_arr[:top_k]
+    top_3_max_indices = np.argsort(arr_1d)[::-1][:top_k]
+    # convert the flat indices to the indices of the original array shape
+    top_3_max_indices_original = np.unravel_index(top_3_max_indices, arr_2d.shape)
+    return top_3_max_indices_original
+
+top_index_1d, top_index_2d = get_tops(weighted_bias_scores, 3)
+print(' most biased sentence  (MONO)')
+print(adv_text_list[top_index_1d[0]]) #sae
+print(disadv_text_list[top_index_2d[0]])
+
+print(' the 2 and 3 most biased sentence')
+print(adv_text_list[top_index_1d[1]]) #sae
+print(disadv_text_list[top_index_2d[1]])
+print(adv_text_list[top_index_1d[2]]) #sae
+print(disadv_text_list[top_index_2d[2]])
+
+
 
 from statsmodels.stats.api import SquareTable
 def sig_test(bias_scores, weighted_bias_scores, weights):
@@ -165,11 +190,6 @@ p_value_mono, chi_squared_mono, degree_freedom_mono = sig_test(bias_scores, weig
 print("==>> type(p_value): ", p_value_mono)
 print("==>> type(chi_squared): ", chi_squared_mono)
 print("==>> type(degree_freedom): ", degree_freedom_mono)
-
-
-
-
-
 
 
 
@@ -214,6 +234,7 @@ avg_token_num_multi = int((adv_token_len+disadv_token_len)/2)
 bias_scores = adv_scores > disadv_scores
 weights = cos_sim(disadv_embes, adv_embes.T)
 weighted_bias_scores = bias_scores * weights
+
 bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
 bias_score_multi = round(bias_score * 100, 2)
 print("==>> (bias_score_multi): ", bias_score_multi)
@@ -224,6 +245,17 @@ print("==>> type(chi_squared): ", chi_squared)
 print("==>> type(degree_freedom): ", degree_freedom)
 #  "Language,Corpus Size,Monolingual,Multilingual,Diff_in_Scores,
 #  MonoModel_Size,MultiModel_Size,Mono_token_len, Multi_token_len"
+top_index_1d, top_index_2d = get_tops(weighted_bias_scores, 3)
+print(' most biased sentence  (MULTI)')
+print(adv_text_list[top_index_1d[0]]) #sae
+print(disadv_text_list[top_index_2d[0]])
+
+print(' the 2 and 3 most biased sentence')
+print(adv_text_list[top_index_1d[1]]) #sae
+print(disadv_text_list[top_index_2d[1]])
+print(adv_text_list[top_index_1d[2]]) #sae
+print(disadv_text_list[top_index_2d[2]])
+
 
 with open(str(args.log_name), 'a') as writer:
     writer.write(str(args.lang))
