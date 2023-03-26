@@ -79,12 +79,13 @@ from func import get_model_name_uncased, get_model_name_cased
 parser = argparse.ArgumentParser()
 parser.add_argument('--lang', type=str, #required=True, choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                     help='Path to evaluation dataset.',
-                    default='zh')
+                    default='en')
 parser.add_argument('--method', type=str, #required=True, choices=['aula', 'aul'],
                     default='aula')
 parser.add_argument('--if_cased', type=str, #required=True, choices=['cased', 'uncased'],
                     default='uncased')
 parser.add_argument('--log_name', type=str)
+parser.add_argument('--dataset_name', type=str, default='hate')
 
 args = parser.parse_args()
 
@@ -100,8 +101,12 @@ print(' -------- ', str(args.lang))
 import os
 pwd = os.getcwd()
 print(pwd)
-adv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/adv_input_list.json'
-disadv_corpus = str(pwd) + f'/parallel_data/hate/{args.lang}/disadv_input_list.json' 
+
+# adv_corpus = str(pwd) + f'/parallel_data/{args.dataset_name}/{args.lang}/adv_input_list.json'
+# disadv_corpus = str(pwd) + f'/parallel_data/{args.dataset_name}/{args.lang}/disadv_input_list.json' 
+
+adv_corpus = str(pwd) + f'/parallel_data/{args.dataset_name}/{args.lang}/hate_idt.json'
+disadv_corpus = str(pwd) + f'/parallel_data/{args.dataset_name}/{args.lang}/nonhate_idt.json' 
 
 with open(adv_corpus, 'r') as f:
     adv_text_list = json.load(f)
