@@ -241,8 +241,7 @@ bias_score_multi = round(bias_score * 100, 2)
 print("==>> (bias_score_multi): ", bias_score_multi)
 
 p_value, chi_squared, degree_freedom = sig_test(bias_scores, weighted_bias_scores, weights)
-#  "Language,Corpus Size,Monolingual,Multilingual,Diff_in_Scores,
-#  MonoModel_Size,MultiModel_Size,Mono_token_len, Multi_token_len"
+
 top_index_1d, top_index_2d = get_tops(weighted_bias_scores, 3)
 print(' most biased sentence  (MULTI)')
 print(adv_text_list[top_index_1d[0]]) #sae
@@ -254,6 +253,11 @@ print(disadv_text_list[top_index_2d[1]])
 print(adv_text_list[top_index_1d[2]]) #sae
 print(disadv_text_list[top_index_2d[2]])
 
+
+# "Language,Corpus_Size,Monolingual,Mono_Pvalue,Multilingual,Multi_Pvalue,Diff_in_Scores,
+# MonoModel_Size,MultiModel_Size,Mono_token_len,Multi_token_len" 
+
+
 with open(str(args.log_name), 'a') as writer:
     writer.write(str(args.lang))
     writer.write(',')
@@ -261,7 +265,11 @@ with open(str(args.log_name), 'a') as writer:
     writer.write(',')
     writer.write(str(bias_score_mono))
     writer.write(',')
+    writer.write(str(p_value_mono))
+    writer.write(',')
     writer.write(str(bias_score_multi))
+    writer.write(',')
+    writer.write(str(p_value))
     writer.write(',')
     writer.write(str("{:.2f}".format(round(bias_score_mono-bias_score_multi, 2))))
     writer.write(',')
@@ -272,8 +280,4 @@ with open(str(args.log_name), 'a') as writer:
     writer.write(str(avg_token_num_mono))
     writer.write(',')
     writer.write(str(avg_token_num_multi))
-    writer.write(',')
-    writer.write(str(p_value_mono))
-    writer.write(',')
-    writer.write(str(p_value))
     writer.write('\n')
