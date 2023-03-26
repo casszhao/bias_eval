@@ -2,3 +2,8 @@
 
 en
 ['women', 'trans people', 'Muslims', 'gay people', 'black people', 'disabled people', 'immigrants']
+
+
+es
+['disabled people', 'black people', 'trans people', 'gay people', 'jews', 'indigenous people', 'women']
+['Personas discapacitadas', 'personas de raza negra', 'personas trans', 'gente gay', 'judios', 'Pueblos indígenas', 'mujer']
