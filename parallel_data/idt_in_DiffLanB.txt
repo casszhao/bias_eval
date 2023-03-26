@@ -1,9 +1,52 @@
 
+es
+['black people', 'indigenous people', 'women', 'trans people', 'gay people', 'jews', 'disabled people']
+['personas de raza negra', 'Pueblos indígenas', 'mujer', 'personas trans', 'gente gay', 'judios', 'Personas discapacitadas']
+
+zh
+['black people', 'trans people', 'disabled people', 'gay people', 'foreigners', 'Muslims', 'women']
+['穆斯林', '残障人', '变性人', '女人', '黑人', '同性恋', '外国人']
+
+pt
+['jews', 'black people', 'trans people', 'disabled people', 'gay people', 'indigenous people', 'women']
+['judeus', 'pessoas negras', 'pessoas trans', 'deficientes', 'gays', 'povo indígena', 'mulheres']
+
+de
+['jews', 'black people', 'trans people', 'disabled people', 'refugees', 'gay people', 'women']
+['Juden', 'Schwarze', 'Transmenschen', 'Menschen mit Behinderung', 'Flüchtlinge', 'schwule Menschen', 'Frauen']
+
+it
+['black people', 'trans people', 'disabled people', 'gay people', 'immigrants', 'Muslims', 'women']
+['persone di colore', 'persone trans', 'disabili', 'persone omosessuali', 'immigrati', 'musulmani', 'donne']
+
+ar
+['black people', 'trans people', 'disabled people', 'gay people', 'immigrants', 'women', 'Jews']
+['الاناس السود', 'الناس المتحولين', 'أناس معوقين', 'المثليين', 'مهاجرين', 'نحيف', 'يهود']
+
+du
+['black people', 'trans people', 'disabled people', 'gay people', 'immigrants', 'Muslims', 'women']
+['zwarte mensen', 'trans mensen', 'mensen met een handicap', "homo's", 'immigranten', 'moslims', 'vrouwen']
+
+fr
+['black people', 'trans people', 'disabled people', 'refugees', 'gay people', 'Muslims', 'women']
+['les noirs', 'personnes trans', 'personnes handicapées', 'réfugiés', 'les homosexuels', 'les musulmans', 'femmes']
+
+po
+['asian people', 'trans people', 'disabled people', 'gay people', 'immigrant', 'immigrants', 'women', 'jewish people']
+['Azjaci', 'osoby transpłciowe', 'niepełnosprawni', 'geje', 'imigrant', 'imigranci', 'kobiety', 'Żydzi']
+
+hi
+['North-East Indians', 'trans people', 'Black people', 'gay people', 'Lower Caste', 'Muslims', 'women']
+['उत्तर-पूर्वी भारतीय', 'ट्रांस लोग', 'काले लोग', 'समलैंगिक लोग', 'निचली जाति', 'मुसलमानों', 'औरत']
+
+hi
+['North-East Indians', 'trans people', 'Black people', 'gay people', 'Lower Caste', 'Muslims', 'women']
+['उत्तर-पूर्वी भारतीय', 'ट्रांस लोग', 'काले लोग', 'समलैंगिक लोग', 'निचली जाति', 'मुसलमानों', 'औरत']
 
 en
-['women', 'trans people', 'Muslims', 'gay people', 'black people', 'disabled people', 'immigrants']
+['black people', 'trans people', 'disabled people', 'gay people', 'immigrants', 'Muslims', 'women']
+['black people', 'trans people', 'disabled people', 'gay people', 'immigrants', 'Muslims', 'women']
 
-
-es
-['disabled people', 'black people', 'trans people', 'gay people', 'jews', 'indigenous people', 'women']
-['Personas discapacitadas', 'personas de raza negra', 'personas trans', 'gente gay', 'judios', 'Pueblos indígenas', 'mujer']
+en
+['women', 'disabled people', 'immigrants', 'gay people', 'black people', 'Muslims', 'trans people']
+['women', 'disabled people', 'immigrants', 'gay people', 'black people', 'Muslims', 'trans people']
