@@ -95,3 +95,8 @@ en
 ['disabled people', 'immigrants', 'black people', 'women', 'trans people', 'gay people', 'Muslims']
 ['disabled people', 'immigrants', 'black people', 'women', 'trans people', 'gay people', 'Muslims']
 neutral_idt translated: people
+
+hi
+['Muslims', 'women', 'Lower Caste', 'North-East Indians', 'trans people', 'Black people', 'gay people']
+['मुसलमानों', 'औरत', 'निचली जाति', 'उत्तर-पूर्वी भारतीय', 'ट्रांस लोग', 'काले लोग', 'समलैंगिक लोग']
+neutral_idt translated: लोग

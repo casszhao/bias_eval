@@ -71,7 +71,7 @@ for i in dataset:
                 if '[IDENTITY_P]' in i['case_templ']: non_case_templ_list.append(i['case_templ'])
                 else: pass
             elif '[IDENT_P]' in i['case_templ']: non_case_templ_list.append(i['case_templ'])
-            else: print(' NON hate speech of NON english, and NON template')
+            else: pass #print(' NON hate speech of NON english, and NON template')
         elif i['gender_male'] != None:
             if '[male_IDENT_P]' in i['gender_male']: non_case_templ_list.append(i['gender_male'])
         elif i['gender_female'] != None:
@@ -91,37 +91,47 @@ corpus_num = min(len(non_case_templ_list), len(case_templ_list))
 
 
 #### get translated idt
-translated_idt_list = []
+idt_dic = {}
 for idt in idt_list:
-    print(idt)
-    if lang == 'zh': 
+    if lang == 'zh':
         pass
-    else: 
+    else:
+        print(idt)
         if lang == 'du': translated_idt = GoogleTranslator(source='auto', target='nl').translate(idt) 
         elif lang == 'po': translated_idt = GoogleTranslator(source='auto', target='pl').translate(idt) 
         else: translated_idt = GoogleTranslator(source='auto', target=lang).translate(idt) 
         print(translated_idt)
-        translated_idt_list.append(translated_idt)
+        idt_dic[idt] = translated_idt
 
 if lang == 'zh':
-    translated_idt_list = ['穆斯林', '残障人', '变性人', '女人', '黑人', '同性恋', '外国人']
+    idt_dic = {'Muslims': '穆斯林', 'disabled people':'残疾人', 'trans people':'变性人', 'women':'女人', 'black people':'黑人', 'gay people':'同性恋', 'foreigners':'外国人'}
 elif lang == 'hi':
-    translated_idt_list = ['Musalmaanon', 'kaale log', 'aurat', 'nichli jaati', 'uttar-poorvi bhartiya', 'hijada', 'samlaingik log']
+    idt_dic = {'Muslims': 'Musalmaanon', 'Black people':'kaale log', 'women':'aurat', 'Lower Caste':'nichli jaati', 'North-East Indians':'uttar-poorvi bhartiya', 'trans people':'hijada', 'gay people':'samlaingik log'}
 ##########
-
-idt_filename = f'idt_list.csv'
-with open(idt_filename, 'a') as f:    
-    f.write(str(lang)+',')
-    f.write(idt_list+',')
-    f.write(translated_idt_list)
-    f.write('\n')
+print(idt_dic)
 
 
-case_templ_name = f'{lang}/hate_templ.json'
-with open(case_templ_name, 'w') as f:
+
+import pickle
+
+
+idt_dic_name = f'parallel_data/hate/{lang}/idt_dict.pkl'
+with open(idt_dic_name, 'wb') as f:
+    pickle.dump(idt_dic, f)
+
+
+# open the file containing the serialized object
+with open(idt_dic_name, 'rb') as f:
+    loaded_dict = pickle.load(f)
+print(loaded_dict)
+
+
+
+case_templ_name = f'parallel_data/hate/{lang}/hate_templ.json'
+with open(case_templ_name, 'w+') as f:
     json.dump(case_templ_list, f, indent=4, ensure_ascii=False) 
 
 
-non_case_templ_name = f'{lang}/nonhate_templ.json'
-with open(non_case_templ_name, 'w') as f:
+non_case_templ_name = f'parallel_data/hate/{lang}/nonhate_templ.json'
+with open(non_case_templ_name, 'w+') as f:
     json.dump(non_case_templ_list, f, indent=4, ensure_ascii=False) 
