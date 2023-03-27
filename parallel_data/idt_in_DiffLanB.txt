@@ -50,3 +50,19 @@ en
 en
 ['women', 'disabled people', 'immigrants', 'gay people', 'black people', 'Muslims', 'trans people']
 ['women', 'disabled people', 'immigrants', 'gay people', 'black people', 'Muslims', 'trans people']
+
+hi
+['Muslims', 'Black people', 'women', 'Lower Caste', 'North-East Indians', 'trans people', 'gay people']
+['मुसलमानों', 'काले लोग', 'औरत', 'निचली जाति', 'उत्तर-पूर्वी भारतीय', 'ट्रांस लोग', 'समलैंगिक लोग']
+
+es
+['jews', 'women', 'disabled people', 'black people', 'trans people', 'indigenous people', 'gay people']
+['judios', 'mujer', 'Personas discapacitadas', 'personas de raza negra', 'personas trans', 'Pueblos indígenas', 'gente gay']
+
+hi
+['Muslims', 'Black people', 'women', 'Lower Caste', 'North-East Indians', 'trans people', 'gay people']
+['मुसलमानों', 'काले लोग', 'औरत', 'निचली जाति', 'उत्तर-पूर्वी भारतीय', 'हिज़डा', 'समलैंगिक लोग']
+
+hi
+['Muslims', 'Black people', 'women', 'Lower Caste', 'North-East Indians', 'trans people', 'gay people']
+['Musalmaanon', 'kaale log', 'aurat', 'nichli jaati', 'uttar-poorvi bhartiya', 'hijada', 'samlaingik log']
