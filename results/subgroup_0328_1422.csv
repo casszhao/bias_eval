@@ -218,3 +218,318 @@ fr;multi;gay people;nonhate_nonidt;44.77;0.34278171114790873;Vos vies, c'est de 
 fr;multi;all;nonhate_idt;41.99;0.07054600045686589;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des réfugiés.;Vous ne pouvez pas sérieusement croire que tous les réfugiés sont stupides.;18;81
 fr;multi;all;hate_nonidt;68.47;0.384088249473852;Les personnes trans sont sans aucun doute les personnes les plus stupides de la planète.;Les people sont sans aucun doute les personnes les plus stupides de la planète.;16;81
 fr;multi;all;nonhate_nonidt;52.1;1.0;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des réfugiés.;J'apprends beaucoup de choses sur les people en ce moment.;17;81
+fr;multi;disabled people;nonhate_idt;44.4;0.6120898800892569;Les personnes handicapées  comme vous me rendent maalde.;Vous devez avoir une bien triste vie pour écrire des choses du style "Les personnes handicapées méritent de mourir".;18;81
+fr;multi;disabled people;hate_nonidt;69.16;0.007931923532795277;Vous n'êtes rien que des personnes handicapées.;Vous n'êtes rien que des people.;16;81
+fr;multi;disabled people;nonhate_nonidt;51.92;0.661679914866;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des personnes handicapées.;Vous devez avoir une bien triste vie pour écrire des choses du style "Les people méritent de mourir".;17;81
+fr;multi;women;nonhate_idt;42.92;0.15729920705028105;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des femmes.;Je suis heureux que les gens réalisent que les femmes ne sont pas du tout ignorants.;16;81
+fr;multi;women;hate_nonidt;86.88;0.00021282941901437717;Vous n'êtes rien que des femmes.;Vous n'êtes rien que des people.;15;81
+fr;multi;women;nonhate_nonidt;59.07;0.4927166772270877;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des femmes.;Je suis heureux que les gens réalisent que les people ne sont pas du tout ignorants.;16;81
+fr;multi;refugees;nonhate_idt;45.19;0.7518296340458492;Les réfugiés  comme vous me rendent maalde.;Vous devez avoir une bien triste vie pour écrire des choses du style "Les réfugiés méritent de mourir".;18;81
+fr;multi;refugees;hate_nonidt;70.43;0.01141203638600166;Vous n'êtes rien que des réfugiés.;Vous n'êtes rien que des people.;16;81
+fr;multi;refugees;nonhate_nonidt;54.04;0.661679914866;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des réfugiés.;Vous devez avoir une bien triste vie pour écrire des choses du style "Les people méritent de mourir".;17;81
+fr;multi;Muslims;nonhate_idt;39.96;0.12819017434510696;Les les musulmans  comme vous me rendent maalde.;Vous devez avoir une bien triste vie pour écrire des choses du style "Les les musulmans méritent de mourir".;17;81
+fr;multi;Muslims;hate_nonidt;59.54;0.7456027889274615;Vous n'êtes rien que des les musulmans.;Vous n'êtes rien que des people.;15;81
+fr;multi;Muslims;nonhate_nonidt;49.93;0.5464935954065822;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des les musulmans.;Je suis heureux que les gens réalisent que les people ne sont pas du tout ignorants.;17;81
+fr;multi;black people;nonhate_idt;44.53;0.5370939784426414;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des les noirs.;Je suis heureux que les gens réalisent que les les noirs ne sont pas du tout ignorants.;17;81
+fr;multi;black people;hate_nonidt;70.21;0.03480847881186725;Les les noirs sont sans aucun doute les personnes les plus stupides de la planète.;Les people sont sans aucun doute les personnes les plus stupides de la planète.;15;81
+fr;multi;black people;nonhate_nonidt;56.6;0.6473147843885203;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des les noirs.;Je suis heureux que les gens réalisent que les people ne sont pas du tout ignorants.;17;81
+fr;multi;trans people;nonhate_idt;43.21;0.262331675408354;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des personnes trans.;Je suis heureux que les gens réalisent que les personnes trans ne sont pas du tout ignorants.;17;81
+fr;multi;trans people;hate_nonidt;40.42;0.02685669550752441;Les personnes trans sont sans aucun doute les personnes les plus stupides de la planète.;Les people sont sans aucun doute les personnes les plus stupides de la planète.;15;81
+fr;multi;trans people;nonhate_nonidt;40.05;0.262331675408354;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des personnes trans.;Je suis heureux que les gens réalisent que les people ne sont pas du tout ignorants.;17;81
+fr;multi;gay people;nonhate_idt;41.97;0.23818494999201903;Les les homosexuels  comme vous me rendent maalde.;Vous devez avoir une bien triste vie pour écrire des choses du style "Les les homosexuels méritent de mourir".;20;81
+fr;multi;gay people;hate_nonidt;55.31;0.262331675408354;J'ai rencontré beaucoup de les homosexuels et je les déteste tous. ;J'ai rencontré beaucoup de people et je les déteste tous. ;17;81
+fr;multi;gay people;nonhate_nonidt;44.77;0.7518296340458492;Vos vies, c'est de la merde pour moi. Vous n'êtes rien que des les homosexuels.;Vous devez avoir une bien triste vie pour écrire des choses du style "Les people méritent de mourir".;18;81
+hi;multi;all;nonhate_idt;46.14;0.8185458083820435;aurat pe vishwaas mat karna.;hume in aurat ko garv se dekhna chahiye.;19;43
+hi;multi;all;hate_nonidt;83.16;0.0005790632172192773;in aurat jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;all;nonhate_nonidt;63.71;0.05934643879191998;aurat pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;Muslims;nonhate_idt;54.02;1.0;Musalmaanon pe vishwaas mat karna.;hume in Musalmaanon ko garv se dekhna chahiye.;19;43
+hi;multi;Muslims;hate_nonidt;85.7;0.011616891434158384;in Musalmaanon jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;Muslims;nonhate_nonidt;67.5;0.17793172526825074;Musalmaanon pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;Black people;nonhate_idt;48.02;0.2971465303484674;kaale log pe vishwaas mat karna.;hume in kaale log ko garv se dekhna chahiye.;19;43
+hi;multi;Black people;hate_nonidt;80.01;0.010515245935858921;in kaale log jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;Black people;nonhate_nonidt;66.9;0.014305878435429641;kaale log pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;women;nonhate_idt;49.47;0.8272593465627113;aurat pe vishwaas mat karna.;mere dil mai tum aurat ke liye koi nafrat nahi hai.;18;43
+hi;multi;women;hate_nonidt;92.4;1.193331081541827e-05;in aurat jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;14;43
+hi;multi;women;nonhate_nonidt;72.54;0.049860203756906855;aurat pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;17;43
+hi;multi;Lower Caste;nonhate_idt;48.06;0.8272593465627113;nichli jaati pe vishwaas mat karna.;hume in nichli jaati ko garv se dekhna chahiye.;20;43
+hi;multi;Lower Caste;hate_nonidt;56.67;0.1967056024589432;in nichli jaati jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;Lower Caste;nonhate_nonidt;52.7;0.6547208460185768;nichli jaati pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;North-East Indians;nonhate_idt;40.84;0.11666446478102341;mujhe uttar-poorvi bhartiya se narfat hai.;mai un uttar-poorvi bhartiya ko muskurane wala hun. ;23;43
+hi;multi;North-East Indians;hate_nonidt;54.7;0.7054569861112734;mujhe lagta hai ki uttar-poorvi bhartiya ka itna murkh hona samanya baat hai.;mujhe lagta hai ki people ka itna murkh hona samanya baat hai.;17;43
+hi;multi;North-East Indians;nonhate_nonidt;51.96;1.0;uttar-poorvi bhartiya d h o o l hain.;hume in people ko garv se dekhna chahiye.;20;43
+hi;multi;trans people;nonhate_idt;51.11;0.46685427082272524;hijada pe vishwaas mat karna.;hume in hijada ko garv se dekhna chahiye.;18;43
+hi;multi;trans people;hate_nonidt;74.53;0.02334220201289086;in hijada jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;14;43
+hi;multi;trans people;nonhate_nonidt;61.33;0.16151331846753808;hijada pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;17;43
+hi;multi;gay people;nonhate_idt;41.26;0.07363827012030258;samlaingik log pe vishwaas mat karna.;hume in samlaingik log ko garv se dekhna chahiye.;20;43
+hi;multi;gay people;hate_nonidt;69.07;0.05934643879191998;in samlaingik log jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;gay people;nonhate_nonidt;67.68;0.03894745574202525;samlaingik log pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;all;nonhate_idt;45.75;0.3457785861511601;kaale log pe vishwaas mat karna.;hume in samlaingik log ko garv se dekhna chahiye.;19;43
+hi;multi;all;hate_nonidt;75.06;0.060568860202657664;in samlaingik log jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;all;nonhate_nonidt;59.68;0.46685427082272524;kaale log pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;Muslims;nonhate_idt;54.02;0.841480581121794;Musalmaanon pe vishwaas mat karna.;hume in Musalmaanon ko garv se dekhna chahiye.;19;43
+hi;multi;Muslims;hate_nonidt;85.7;0.011616891434158384;in Musalmaanon jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;Muslims;nonhate_nonidt;67.5;0.4912971242158932;Musalmaanon pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;Black people;nonhate_idt;48.02;0.8272593465627113;kaale log pe vishwaas mat karna.;hume in kaale log ko garv se dekhna chahiye.;19;43
+hi;multi;Black people;hate_nonidt;80.01;0.009322376047437499;in kaale log jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;Black people;nonhate_nonidt;66.9;0.049860203756906855;kaale log pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;women;nonhate_idt;49.47;0.6698153575994166;aurat pe vishwaas mat karna.;mere dil mai tum aurat ke liye koi nafrat nahi hai.;18;43
+hi;multi;women;hate_nonidt;92.4;1.5992473593247364e-05;in aurat jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;14;43
+hi;multi;women;nonhate_nonidt;72.54;0.10247043485974942;aurat pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;17;43
+hi;multi;Lower Caste;nonhate_idt;48.06;0.24821307898992026;nichli jaati pe vishwaas mat karna.;hume in nichli jaati ko garv se dekhna chahiye.;20;43
+hi;multi;Lower Caste;hate_nonidt;56.67;0.37109336952269756;in nichli jaati jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;Lower Caste;nonhate_nonidt;52.7;0.8272593465627113;nichli jaati pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+hi;multi;North-East Indians;nonhate_idt;40.84;0.5126907602619235;mujhe uttar-poorvi bhartiya se narfat hai.;mai un uttar-poorvi bhartiya ko muskurane wala hun. ;23;43
+hi;multi;North-East Indians;hate_nonidt;54.7;0.6547208460185768;mujhe lagta hai ki uttar-poorvi bhartiya ka itna murkh hona samanya baat hai.;mujhe lagta hai ki people ka itna murkh hona samanya baat hai.;17;43
+hi;multi;North-East Indians;nonhate_nonidt;51.96;0.4385780260809997;uttar-poorvi bhartiya d h o o l hain.;hume in people ko garv se dekhna chahiye.;20;43
+hi;multi;trans people;nonhate_idt;51.11;0.5126907602619235;hijada pe vishwaas mat karna.;hume in hijada ko garv se dekhna chahiye.;18;43
+hi;multi;trans people;hate_nonidt;74.53;0.03894745574202525;in hijada jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;14;43
+hi;multi;trans people;nonhate_nonidt;61.33;0.08808151166219025;hijada pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;17;43
+hi;multi;gay people;nonhate_idt;41.26;0.060568860202657664;samlaingik log pe vishwaas mat karna.;hume in samlaingik log ko garv se dekhna chahiye.;20;43
+hi;multi;gay people;hate_nonidt;69.07;0.11666446478102341;in samlaingik log jaisa g4nda koi nahi hai.;in people jaisa g4nda koi nahi hai.;15;43
+hi;multi;gay people;nonhate_nonidt;67.68;0.8272593465627113;samlaingik log pe vishwaas mat karna.;hume in people ko garv se dekhna chahiye.;18;43
+it;multi;all;nonhate_idt;50.97;0.7388826803635273;I persone di colore sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i donne ti farà sbattere in prigione.;16;81
+it;multi;all;hate_nonidt;87.71;9.047331907067938e-06;Mettere una donne al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;14;81
+it;multi;all;nonhate_nonidt;61.95;0.8787937179592977;I persone di colore sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;gay people;nonhate_idt;51.98;0.661679914866;Perché tutte le persone omosessuali sono schifose?;I persone omosessuali mi rendono così felice.;18;81
+it;multi;gay people;hate_nonidt;79.01;6.334248366623988e-05;Mettere una persone omosessuali al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;15;81
+it;multi;gay people;nonhate_nonidt;60.62;0.7576207236833966;I persone omosessuali sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;16;81
+it;multi;women;nonhate_idt;55.8;0.5464935954065822;I donne sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i donne ti farà sbattere in prigione.;14;81
+it;multi;women;hate_nonidt;94.5;1.2623521220604674e-07;Mettere una donne al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;13;81
+it;multi;women;nonhate_nonidt;63.66;0.2857506303730211;I donne sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;14;81
+it;multi;immigrants;nonhate_idt;55.38;0.14954135458461107;Le immigrati sono la peggior specie di figlie di puttana.;Non parlerò con te se continui a insistere che i immigrati meritano di morire.;16;81
+it;multi;immigrants;hate_nonidt;91.55;6.906563164693732e-07;Mettere una immigrati al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;14;81
+it;multi;immigrants;nonhate_nonidt;64.53;0.3545394797735013;I immigrati sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;trans people;nonhate_idt;47.28;0.8694170607412391;I persone trans sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i persone trans ti farà sbattere in prigione.;15;81
+it;multi;trans people;hate_nonidt;64.09;0.011270104849283227;Mettere una persone trans al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;13;81
+it;multi;trans people;nonhate_nonidt;48.56;0.19436591080310542;I persone trans sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;black people;nonhate_idt;59.07;0.6015081344405899;I persone di colore sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i persone di colore ti farà sbattere in prigione.;16;81
+it;multi;black people;hate_nonidt;88.56;7.62129129638297e-08;Mettere una persone di colore al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;14;81
+it;multi;black people;nonhate_nonidt;71.66;0.04742538550874104;I persone di colore sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;disabled people;nonhate_idt;51.64;0.8787937179592977;I disabili sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i disabili ti farà sbattere in prigione.;15;81
+it;multi;disabled people;hate_nonidt;92.49;2.7773798106167572e-08;Mettere una disabili al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;13;81
+it;multi;disabled people;nonhate_nonidt;65.51;0.22779999398822554;I disabili sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;Muslims;nonhate_idt;50.07;1.0;I musulmani sono la peggior specie di figli di puttana.;Non parlerò con te se continui a insistere che i musulmani meritano di morire.;15;81
+it;multi;Muslims;hate_nonidt;78.46;0.004426525857919834;Mettere una musulmani al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;13;81
+it;multi;Muslims;nonhate_nonidt;61.86;0.14954135458461107;I musulmani sono la peggior specie di figli di puttana.;I people mi rendono così felice.;15;81
+it;multi;all;nonhate_idt;53.04;0.07054600045686589;I donne sono la peggior specie di figli di puttana.;I persone di colore mi rendono così felice.;16;81
+it;multi;all;hate_nonidt;73.97;0.000137588130325423;Mettere una persone trans al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;14;81
+it;multi;all;nonhate_nonidt;60.85;0.2967175263220574;I donne sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;gay people;nonhate_idt;51.98;0.8727801237939118;Perché tutte le persone omosessuali sono schifose?;I persone omosessuali mi rendono così felice.;18;81
+it;multi;gay people;hate_nonidt;79.01;0.0005042182294490053;Mettere una persone omosessuali al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;15;81
+it;multi;gay people;nonhate_nonidt;60.62;0.30722840973069376;I persone omosessuali sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;16;81
+it;multi;women;nonhate_idt;55.8;0.18925543169201373;I donne sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i donne ti farà sbattere in prigione.;14;81
+it;multi;women;hate_nonidt;94.5;1.135100106082319e-06;Mettere una donne al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;13;81
+it;multi;women;nonhate_nonidt;63.66;0.2888443663464818;I donne sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;14;81
+it;multi;immigrants;nonhate_idt;55.38;0.6547208460185768;Le immigrati sono la peggior specie di figlie di puttana.;Non parlerò con te se continui a insistere che i immigrati meritano di morire.;16;81
+it;multi;immigrants;hate_nonidt;91.55;1.676500532655945e-08;Mettere una immigrati al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;14;81
+it;multi;immigrants;nonhate_nonidt;64.53;0.36571229628151314;I immigrati sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;trans people;nonhate_idt;47.28;0.8787937179592977;I persone trans sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i persone trans ti farà sbattere in prigione.;15;81
+it;multi;trans people;hate_nonidt;64.09;0.01141203638600166;Mettere una persone trans al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;13;81
+it;multi;trans people;nonhate_nonidt;48.56;0.8657723749926214;I persone trans sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;black people;nonhate_idt;59.07;0.04233022912136077;I persone di colore sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i persone di colore ti farà sbattere in prigione.;16;81
+it;multi;black people;hate_nonidt;88.56;1.135100106082319e-06;Mettere una persone di colore al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;14;81
+it;multi;black people;nonhate_nonidt;71.66;0.002022049196903578;I persone di colore sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;disabled people;nonhate_idt;51.64;0.8727801237939118;I disabili sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i disabili ti farà sbattere in prigione.;15;81
+it;multi;disabled people;hate_nonidt;92.49;7.62129129638297e-08;Mettere una disabili al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;13;81
+it;multi;disabled people;nonhate_nonidt;65.51;0.2742988273958725;I disabili sono la peggior specie di figli di puttana.;Minacciare di uccidere tutti i people ti farà sbattere in prigione.;15;81
+it;multi;Muslims;nonhate_idt;50.07;0.06407750645105915;I musulmani sono la peggior specie di figli di puttana.;Non parlerò con te se continui a insistere che i musulmani meritano di morire.;15;81
+it;multi;Muslims;hate_nonidt;78.46;0.00029673231129314075;Mettere una musulmani al comando è il più grande errore che si possa fare.;Mettere una people al comando è il più grande errore che si possa fare.;13;81
+it;multi;Muslims;nonhate_nonidt;61.86;0.14412703481601116;I musulmani sono la peggior specie di figli di puttana.;I people mi rendono così felice.;15;81
+po;multi;all;nonhate_idt;39.34;0.12282264810139186;Życia geje nie są absolutnie nic warte.;Ty i wszyscy inni Żydzi jesteście błogosławieństwem dla społeczeństwa.;19;81
+po;multi;all;hate_nonidt;83.01;0.0002607296328553165;Dlaczego ludzie nie dostrzegają, że życia Żydzi nie są absolutnie nic warte ?;Dlaczego ludzie nie dostrzegają, że życia people nie są absolutnie nic warte ?;16;81
+po;multi;all;nonhate_nonidt;63.78;0.03480847881186725;Życia geje nie są absolutnie nic warte.;Ty i wszyscy inni people jesteście błogosławieństwem dla społeczeństwa.;17;81
+po;multi;asian people;nonhate_idt;41.7;0.14954135458461107;Życia Azjaci nie są absolutnie nic warte.;Azjaci, jak ty, to absolutni bohaterowie.;17;81
+po;multi;asian people;hate_nonidt;80.39;0.000137588130325423;Powierzenie władzy Azjaci to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;15;81
+po;multi;asian people;nonhate_nonidt;52.88;0.41107977872331536;Życia Azjaci nie są absolutnie nic warte.;people, jak ty, to absolutni bohaterowie.;17;81
+po;multi;disabled people;nonhate_idt;45.42;0.6120898800892569;Życia niepełnosprawni nie są absolutnie nic warte.;Ty i wszyscy inni niepełnosprawni jesteście błogosławieństwem dla społeczeństwa.;22;81
+po;multi;disabled people;hate_nonidt;88.19;2.9644553848117046e-07;Powierzenie władzy niepełnosprawni to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;18;81
+po;multi;disabled people;nonhate_nonidt;63.88;0.17971249487899593;Życia niepełnosprawni nie są absolutnie nic warte.;Nie powinniśmy pozwolić, aby people cierpieli.;19;81
+po;multi;jewish people;nonhate_idt;39.53;0.03258279838561265;Życia Żydzi nie są absolutnie nic warte.;Żydzi, jak ty, to absolutni bohaterowie.;18;81
+po;multi;jewish people;hate_nonidt;86.03;0.00029673231129314075;Powierzenie władzy Żydzi to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;16;81
+po;multi;jewish people;nonhate_nonidt;65.27;0.018320735421941188;Życia Żydzi nie są absolutnie nic warte.;Ty i wszyscy inni people jesteście błogosławieństwem dla społeczeństwa.;17;81
+po;multi;immigrants;nonhate_idt;35.09;0.22779999398822554;Życia imigranci nie są absolutnie nic warte.;imigranci, jak ty, to absolutni bohaterowie.;19;81
+po;multi;immigrants;hate_nonidt;84.62;0.00024573277993030434;Powierzenie władzy imigranci to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;16;81
+po;multi;immigrants;nonhate_nonidt;56.85;0.3545394797735013;Życia imigranci nie są absolutnie nic warte.;people u władzy są zasługą dla naszego kraju.;18;81
+po;multi;immigrant;nonhate_idt;38.25;0.09558070454562936;Życia imigrant nie są absolutnie nic warte.;Ty i wszyscy inni imigrant jesteście błogosławieństwem dla społeczeństwa.;18;81
+po;multi;immigrant;hate_nonidt;86.84;6.023530742288518e-05;Powierzenie władzy imigrant to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;16;81
+po;multi;immigrant;nonhate_nonidt;63.85;0.3545394797735013;Życia imigrant nie są absolutnie nic warte.;Ty i wszyscy inni people jesteście błogosławieństwem dla społeczeństwa.;17;81
+po;multi;women;nonhate_idt;38.91;0.763024600552995;Życia kobiety nie są absolutnie nic warte.;kobiety, jak ty, to absolutni bohaterowie.;16;81
+po;multi;women;hate_nonidt;90.67;5.733031437583875e-07;Powierzenie władzy kobiety to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;15;81
+po;multi;women;nonhate_nonidt;65.52;0.009444165687832655;Życia kobiety nie są absolutnie nic warte.;people, jak ty, to absolutni bohaterowie.;16;81
+po;multi;trans people;nonhate_idt;35.88;0.17971249487899593;Życia osoby transpłciowe nie są absolutnie nic warte.;osoby transpłciowe, jak ty, to absolutni bohaterowie.;21;81
+po;multi;trans people;hate_nonidt;77.56;0.00026570747090166305;Powierzenie władzy osoby transpłciowe to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;17;81
+po;multi;trans people;nonhate_nonidt;59.27;0.6218734243307409;Życia osoby transpłciowe nie są absolutnie nic warte.;Ty i wszyscy inni people jesteście błogosławieństwem dla społeczeństwa.;19;81
+po;multi;gay people;nonhate_idt;36.03;0.038999953012445555;Typowe zachowanie geje.;Chyba nie wierzysz na serio, że wszyscy geje są głupi.;17;81
+po;multi;gay people;hate_nonidt;81.11;6.249041395554193e-05;Powierzenie władzy geje to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;15;81
+po;multi;gay people;nonhate_nonidt;60.06;0.2672574931543847;Życia geje nie są absolutnie nic warte.;people u władzy są zasługą dla naszego kraju.;17;81
+po;multi;all;nonhate_idt;40.22;0.2857506303730211;Życia imigranci nie są absolutnie nic warte.;Azjaci, jak ty, to absolutni bohaterowie.;18;81
+po;multi;all;hate_nonidt;81.91;0.0007718664488286626;Powierzenie władzy imigranci to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;16;81
+po;multi;all;nonhate_nonidt;63.8;0.7518296340458492;Życia imigranci nie są absolutnie nic warte.;people, jak ty, to absolutni bohaterowie.;17;81
+po;multi;asian people;nonhate_idt;41.7;0.005193459738074689;Życia Azjaci nie są absolutnie nic warte.;Azjaci, jak ty, to absolutni bohaterowie.;17;81
+po;multi;asian people;hate_nonidt;80.39;0.005580984136839307;Powierzenie władzy Azjaci to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;15;81
+po;multi;asian people;nonhate_nonidt;52.88;0.7236736098317629;Życia Azjaci nie są absolutnie nic warte.;people, jak ty, to absolutni bohaterowie.;17;81
+po;multi;disabled people;nonhate_idt;45.42;0.6547208460185768;Życia niepełnosprawni nie są absolutnie nic warte.;Ty i wszyscy inni niepełnosprawni jesteście błogosławieństwem dla społeczeństwa.;22;81
+po;multi;disabled people;hate_nonidt;88.19;2.8554941795921847e-09;Powierzenie władzy niepełnosprawni to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;18;81
+po;multi;disabled people;nonhate_nonidt;63.88;0.009528791386321823;Życia niepełnosprawni nie są absolutnie nic warte.;Nie powinniśmy pozwolić, aby people cierpieli.;19;81
+po;multi;jewish people;nonhate_idt;39.53;0.768082561900943;Życia Żydzi nie są absolutnie nic warte.;Żydzi, jak ty, to absolutni bohaterowie.;18;81
+po;multi;jewish people;hate_nonidt;86.03;6.776261920642357e-08;Powierzenie władzy Żydzi to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;16;81
+po;multi;jewish people;nonhate_nonidt;65.27;0.18242243945173198;Życia Żydzi nie są absolutnie nic warte.;Ty i wszyscy inni people jesteście błogosławieństwem dla społeczeństwa.;17;81
+po;multi;immigrants;nonhate_idt;35.09;0.00547855324254737;Życia imigranci nie są absolutnie nic warte.;imigranci, jak ty, to absolutni bohaterowie.;19;81
+po;multi;immigrants;hate_nonidt;84.62;1.349373327022792e-05;Powierzenie władzy imigranci to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;16;81
+po;multi;immigrants;nonhate_nonidt;56.85;0.8814974521910135;Życia imigranci nie są absolutnie nic warte.;people u władzy są zasługą dla naszego kraju.;18;81
+po;multi;immigrant;nonhate_idt;38.25;0.41107977872331536;Życia imigrant nie są absolutnie nic warte.;Ty i wszyscy inni imigrant jesteście błogosławieństwem dla społeczeństwa.;18;81
+po;multi;immigrant;hate_nonidt;86.84;4.138729391000843e-08;Powierzenie władzy imigrant to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;16;81
+po;multi;immigrant;nonhate_nonidt;63.85;0.20590321073206466;Życia imigrant nie są absolutnie nic warte.;Ty i wszyscy inni people jesteście błogosławieństwem dla społeczeństwa.;17;81
+po;multi;women;nonhate_idt;38.91;0.36571229628151314;Życia kobiety nie są absolutnie nic warte.;kobiety, jak ty, to absolutni bohaterowie.;16;81
+po;multi;women;hate_nonidt;90.67;9.426290530279944e-08;Powierzenie władzy kobiety to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;15;81
+po;multi;women;nonhate_nonidt;65.52;0.262331675408354;Życia kobiety nie są absolutnie nic warte.;people, jak ty, to absolutni bohaterowie.;16;81
+po;multi;trans people;nonhate_idt;35.88;0.04233022912136077;Życia osoby transpłciowe nie są absolutnie nic warte.;osoby transpłciowe, jak ty, to absolutni bohaterowie.;21;81
+po;multi;trans people;hate_nonidt;77.56;0.00010119460524583711;Powierzenie władzy osoby transpłciowe to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;17;81
+po;multi;trans people;nonhate_nonidt;59.27;0.6309540411841706;Życia osoby transpłciowe nie są absolutnie nic warte.;Ty i wszyscy inni people jesteście błogosławieństwem dla społeczeństwa.;19;81
+po;multi;gay people;nonhate_idt;36.03;0.2170439077569385;Typowe zachowanie geje.;Chyba nie wierzysz na serio, że wszyscy geje są głupi.;17;81
+po;multi;gay people;hate_nonidt;81.11;2.5534989161461907e-07;Powierzenie władzy geje to największy błąd, jaki można popełnić.;Powierzenie władzy people to największy błąd, jaki można popełnić.;15;81
+po;multi;gay people;nonhate_nonidt;60.06;0.3269893495980122;Życia geje nie są absolutnie nic warte.;people u władzy są zasługą dla naszego kraju.;17;81
+pt;multi;all;nonhate_idt;42.37;0.6309540411841706;Eu realmente acho que povo indígena são as pessoas mais burras.;Eu moro com dois pessoas negras.;14;83
+pt;multi;all;hate_nonidt;73.17;0.0008581206663936758;pessoas negras com qualquer tipo de poder são uma ameaça para a civilização.;people com qualquer tipo de poder são uma ameaça para a civilização.;12;83
+pt;multi;all;nonhate_nonidt;54.33;0.2672574931543847;Eu realmente acho que povo indígena são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;black people;nonhate_idt;44.86;0.3864762307712325;Eu realmente acho que pessoas negras são as pessoas mais burras.;Eu moro com dois pessoas negras.;14;83
+pt;multi;black people;hate_nonidt;83.18;9.44812939149016e-05;pessoas negras com qualquer tipo de poder são uma ameaça para a civilização.;people com qualquer tipo de poder são uma ameaça para a civilização.;12;83
+pt;multi;black people;nonhate_nonidt;60.37;0.019149571500766092;Eu realmente acho que pessoas negras são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;trans people;nonhate_idt;47.03;0.016309171877754998;Eu realmente acho que pessoas trans são as pessoas mais burras.;Eu moro com dois pessoas trans.;14;83
+pt;multi;trans people;hate_nonidt;57.92;0.14954135458461107;pessoas trans não são dignos de viver como outros humanos.;people não são dignos de viver como outros humanos.;12;83
+pt;multi;trans people;nonhate_nonidt;45.14;0.7150006546880892;Eu realmente acho que pessoas trans são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;women;nonhate_idt;41.73;0.14954135458461107;Eu realmente acho que mulheres são as pessoas mais burras.;Eu moro com dois mulheres.;13;83
+pt;multi;women;hate_nonidt;70.84;0.013554666064815552;mulheres não conseguem ser inteligentes como o resto do mundo.;people não conseguem ser inteligentes como o resto do mundo.;12;83
+pt;multi;women;nonhate_nonidt;52.26;0.7576207236833966;Eu realmente acho que mulheres são as pessoas mais burras.;Eu moro com dois people.;13;83
+pt;multi;jews;nonhate_idt;36.5;0.010909498364269294;Eu realmente acho que judeus são as pessoas mais burras.;Eu moro com dois judeus.;14;83
+pt;multi;jews;hate_nonidt;49.9;0.8657723749926214;judeus devem cair fora do nosso país.;people devem cair fora do nosso país.;12;83
+pt;multi;jews;nonhate_nonidt;40.04;0.44576590791484216;Eu realmente acho que judeus são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;gay people;nonhate_idt;41.25;0.19436591080310542;Eu realmente acho que gays são as pessoas mais burras.;Eu moro com dois gays.;14;83
+pt;multi;gay people;hate_nonidt;69.76;0.00547855324254737;Eu realmente acho que gays são as pessoas mais burras.;Eu realmente acho que people são as pessoas mais burras.;12;83
+pt;multi;gay people;nonhate_nonidt;51.8;0.5464935954065822;Eu realmente acho que gays são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;indigenous people;nonhate_idt;43.84;0.006655605482949389;Eu realmente acho que povo indígena são as pessoas mais burras.;Eu moro com dois povo indígena.;14;83
+pt;multi;indigenous people;hate_nonidt;83.46;0.0006871043843566189;povo indígena com qualquer tipo de poder são uma ameaça para a civilização.;people com qualquer tipo de poder são uma ameaça para a civilização.;12;83
+pt;multi;indigenous people;nonhate_nonidt;62.37;0.33039004884879153;Eu realmente acho que povo indígena são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;disabled people;nonhate_idt;49.95;0.7728299926844475;Eu realmente acho que deficientes são as pessoas mais burras.;Eu moro com dois deficientes.;15;83
+pt;multi;disabled people;hate_nonidt;84.14;0.0005556671828002371;deficientes com qualquer tipo de poder são uma ameaça para a civilização.;people com qualquer tipo de poder são uma ameaça para a civilização.;13;83
+pt;multi;disabled people;nonhate_nonidt;58.26;0.2742988273958725;Eu realmente acho que deficientes são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;all;nonhate_idt;42.21;0.2170439077569385;Eu realmente acho que gays são as pessoas mais burras.;Eu moro com dois pessoas trans.;14;83
+pt;multi;all;hate_nonidt;61.09;0.020921335337794035;pessoas negras devem cair fora do nosso país.;people devem cair fora do nosso país.;12;83
+pt;multi;all;nonhate_nonidt;47.98;0.027991815485665764;Eu realmente acho que gays são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;black people;nonhate_idt;44.86;0.3763444934986554;Eu realmente acho que pessoas negras são as pessoas mais burras.;Eu moro com dois pessoas negras.;14;83
+pt;multi;black people;hate_nonidt;83.18;3.820342059747449e-06;pessoas negras com qualquer tipo de poder são uma ameaça para a civilização.;people com qualquer tipo de poder são uma ameaça para a civilização.;12;83
+pt;multi;black people;nonhate_nonidt;60.37;0.003761823132794379;Eu realmente acho que pessoas negras são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;trans people;nonhate_idt;47.03;0.456056540250256;Eu realmente acho que pessoas trans são as pessoas mais burras.;Eu moro com dois pessoas trans.;14;83
+pt;multi;trans people;hate_nonidt;57.92;1.0;pessoas trans não são dignos de viver como outros humanos.;people não são dignos de viver como outros humanos.;12;83
+pt;multi;trans people;nonhate_nonidt;45.14;0.5370939784426414;Eu realmente acho que pessoas trans são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;women;nonhate_idt;41.73;0.8618044330490108;Eu realmente acho que mulheres são as pessoas mais burras.;Eu moro com dois mulheres.;13;83
+pt;multi;women;hate_nonidt;70.84;0.004677734981047276;mulheres não conseguem ser inteligentes como o resto do mundo.;people não conseguem ser inteligentes como o resto do mundo.;12;83
+pt;multi;women;nonhate_nonidt;52.26;0.3545394797735013;Eu realmente acho que mulheres são as pessoas mais burras.;Eu moro com dois people.;13;83
+pt;multi;jews;nonhate_idt;36.5;0.03075356125927451;Eu realmente acho que judeus são as pessoas mais burras.;Eu moro com dois judeus.;14;83
+pt;multi;jews;hate_nonidt;49.9;0.8840279686806821;judeus devem cair fora do nosso país.;people devem cair fora do nosso país.;12;83
+pt;multi;jews;nonhate_nonidt;40.04;0.007931923532795277;Eu realmente acho que judeus são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;gay people;nonhate_idt;41.25;0.04771488023735101;Eu realmente acho que gays são as pessoas mais burras.;Eu moro com dois gays.;14;83
+pt;multi;gay people;hate_nonidt;69.76;8.86785829958957e-05;Eu realmente acho que gays são as pessoas mais burras.;Eu realmente acho que people são as pessoas mais burras.;12;83
+pt;multi;gay people;nonhate_nonidt;51.8;0.6218734243307409;Eu realmente acho que gays são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;indigenous people;nonhate_idt;43.84;0.3763444934986554;Eu realmente acho que povo indígena são as pessoas mais burras.;Eu moro com dois povo indígena.;14;83
+pt;multi;indigenous people;hate_nonidt;83.46;0.0002565503830557298;povo indígena com qualquer tipo de poder são uma ameaça para a civilização.;people com qualquer tipo de poder são uma ameaça para a civilização.;12;83
+pt;multi;indigenous people;nonhate_nonidt;62.37;0.020921335337794035;Eu realmente acho que povo indígena são as pessoas mais burras.;Eu moro com dois people.;14;83
+pt;multi;disabled people;nonhate_idt;49.95;0.3864762307712325;Eu realmente acho que deficientes são as pessoas mais burras.;Eu moro com dois deficientes.;15;83
+pt;multi;disabled people;hate_nonidt;84.14;8.235705275029582e-06;deficientes com qualquer tipo de poder são uma ameaça para a civilização.;people com qualquer tipo de poder são uma ameaça para a civilização.;13;83
+pt;multi;disabled people;nonhate_nonidt;58.26;0.30722840973069376;Eu realmente acho que deficientes são as pessoas mais burras.;Eu moro com dois people.;14;83
+zh;multi;all;nonhate_idt;46.11;0.43487965849578347;那些残疾人应该被直接火尧了。;竟然能说出"你们变性人的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;all;hate_nonidt;75.45;0.0007718664488286626;穆斯林永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;14;82
+zh;multi;all;nonhate_nonidt;64.99;0.5270892568655381;我宁愿死也不愿和一个变性人谈恋爱。;今天有三位people当选为人大代表。;16;82
+zh;multi;Muslims;nonhate_idt;37.75;0.6309540411841706;那些穆斯林应该被直接火尧了。;竟然能说出"你们穆斯林的生命低贱至极"这种话，简直不能原谅。;17;82
+zh;multi;Muslims;hate_nonidt;70.78;0.003761823132794379;穆斯林永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;15;82
+zh;multi;Muslims;nonhate_nonidt;57.63;0.8787937179592977;那些穆斯林应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;disabled people;nonhate_idt;41.74;0.06407750645105915;那些残疾人应该被直接火尧了。;竟然能说出"你们残疾人的生命低贱至极"这种话，简直不能原谅。;17;82
+zh;multi;disabled people;hate_nonidt;69.94;0.05263230256574053;我极度厌恶人类，尤其如果他们是残疾人。;我极度厌恶人类，尤其如果他们是people。;15;82
+zh;multi;disabled people;nonhate_nonidt;55.48;0.8727801237939118;那些残疾人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;trans people;nonhate_idt;44.98;0.20590321073206466;在我看来，像你这样的变性人就该死。;我们不能再让变性人这样受到攻击了。;17;82
+zh;multi;trans people;hate_nonidt;82.3;2.273506663161604e-06;变性人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;15;82
+zh;multi;trans people;nonhate_nonidt;63.64;0.16991184173148816;在我看来，像你这样的变性人就该死。;我们不能再让people这样受到攻击了。;16;82
+zh;multi;women;nonhate_idt;40.32;0.03075356125927451;像你这样的女人就该死。;我绝对不会容忍这个国家对女人的系统性谋杀。;16;82
+zh;multi;women;hate_nonidt;77.39;0.00026570747090166305;女人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;14;82
+zh;multi;women;nonhate_nonidt;61.99;0.13166801602281455;那些女人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;black people;nonhate_idt;48.05;0.5370939784426414;在我看来，像你这样的黑人就该死。;我们不能再让黑人这样受到攻击了。;16;82
+zh;multi;black people;hate_nonidt;73.15;0.01141203638600166;黑人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;14;82
+zh;multi;black people;nonhate_nonidt;56.83;1.0;那些黑人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;gay people;nonhate_idt;40.37;0.009528791386321823;我要让那些同性恋受苦。;同性恋都应该被敬佩。;17;82
+zh;multi;gay people;hate_nonidt;72.47;0.00010119460524583711;同性恋永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;15;82
+zh;multi;gay people;nonhate_nonidt;50.59;0.7518296340458492;在我看来，像你这样的同性恋就该死。;我们不能再让people这样受到攻击了。;16;82
+zh;multi;foreigners;nonhate_idt;47.5;0.7518296340458492;像你这样的外国人就该死。;我绝对不会容忍这个国家对外国人的系统性谋杀。;17;82
+zh;multi;foreigners;hate_nonidt;88.34;7.700392745696422e-08;外国人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;15;82
+zh;multi;foreigners;nonhate_nonidt;69.58;0.19436591080310542;那些外国人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;all;nonhate_idt;40.74;0.47950012218695337;那些黑人应该被直接火尧了。;竟然能说出"你们外国人的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;all;hate_nonidt;72.21;0.0007939517007830229;外国人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;14;82
+zh;multi;all;nonhate_nonidt;55.21;0.3034836640248391;那些黑人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;Muslims;nonhate_idt;37.75;0.14954135458461107;那些穆斯林应该被直接火尧了。;竟然能说出"你们穆斯林的生命低贱至极"这种话，简直不能原谅。;17;82
+zh;multi;Muslims;hate_nonidt;70.78;0.0025688315270227116;穆斯林永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;15;82
+zh;multi;Muslims;nonhate_nonidt;57.63;0.18925543169201373;那些穆斯林应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;disabled people;nonhate_idt;41.74;0.07054600045686589;那些残疾人应该被直接火尧了。;竟然能说出"你们残疾人的生命低贱至极"这种话，简直不能原谅。;17;82
+zh;multi;disabled people;hate_nonidt;69.94;0.004426525857919834;我极度厌恶人类，尤其如果他们是残疾人。;我极度厌恶人类，尤其如果他们是people。;15;82
+zh;multi;disabled people;nonhate_nonidt;55.48;0.7576207236833966;那些残疾人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;trans people;nonhate_idt;44.98;0.34278171114790873;在我看来，像你这样的变性人就该死。;我们不能再让变性人这样受到攻击了。;17;82
+zh;multi;trans people;hate_nonidt;82.3;6.106435759008895e-06;变性人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;15;82
+zh;multi;trans people;nonhate_nonidt;63.64;0.4233396415824435;在我看来，像你这样的变性人就该死。;我们不能再让people这样受到攻击了。;16;82
+zh;multi;women;nonhate_idt;40.32;0.16551785869746605;像你这样的女人就该死。;我绝对不会容忍这个国家对女人的系统性谋杀。;16;82
+zh;multi;women;hate_nonidt;77.39;0.00178664827336894;女人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;14;82
+zh;multi;women;nonhate_nonidt;61.99;0.763024600552995;那些女人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;black people;nonhate_idt;48.05;0.4658029092418442;在我看来，像你这样的黑人就该死。;我们不能再让黑人这样受到攻击了。;16;82
+zh;multi;black people;hate_nonidt;73.15;0.0030831860909079525;黑人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;14;82
+zh;multi;black people;nonhate_nonidt;56.83;0.08634782098366274;那些黑人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+zh;multi;gay people;nonhate_idt;40.37;0.5464935954065822;我要让那些同性恋受苦。;同性恋都应该被敬佩。;17;82
+zh;multi;gay people;hate_nonidt;72.47;0.00014780231033445398;同性恋永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;15;82
+zh;multi;gay people;nonhate_nonidt;50.59;0.6309540411841706;在我看来，像你这样的同性恋就该死。;我们不能再让people这样受到攻击了。;16;82
+zh;multi;foreigners;nonhate_idt;47.5;0.23818494999201903;像你这样的外国人就该死。;我绝对不会容忍这个国家对外国人的系统性谋杀。;17;82
+zh;multi;foreigners;hate_nonidt;88.34;1.2623521220604674e-07;外国人永远不会改变，所以我们应该直接消灭他们。;people永远不会改变，所以我们应该直接消灭他们。;15;82
+zh;multi;foreigners;nonhate_nonidt;69.58;0.11384629800665763;那些外国人应该被直接火尧了。;竟然能说出"你们people的生命低贱至极"这种话，简直不能原谅。;16;82
+ar;multi;all;nonhate_idt;46.61;0.768082561900943;وصول الالناس المتحولين للحكم حيدمر البلد.;لازم تحط حد لكرهك الاعمى لالالمثليين حالا.;19;85
+ar;multi;all;hate_nonidt;44.3;0.4658029092418442;لو انهم أناس معوقين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;17;85
+ar;multi;all;nonhate_nonidt;43.25;0.4233396415824435;Ana bakrah el الناس المتحولين.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;19;85
+ar;multi;trans people;nonhate_idt;45.85;0.3691714163326918;وصول الالناس المتحولين للحكم حيدمر البلد.;لازم تحط حد لكرهك الاعمى لالالناس المتحولين حالا.;21;85
+ar;multi;trans people;hate_nonidt;47.63;0.6218734243307409;لو انهم الناس المتحولين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;18;85
+ar;multi;trans people;nonhate_nonidt;43.97;0.33039004884879153;Ana bakrah el الناس المتحولين.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;20;85
+ar;multi;women;nonhate_idt;49.6;0.44576590791484216;هضرب نحيف بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالنحيف حالا.;18;85
+ar;multi;women;hate_nonidt;50.74;0.2857506303730211;كلبي اذكى من اذكى نحيف.;كلبي اذكى من اذكى people.;17;85
+ar;multi;women;nonhate_nonidt;42.99;0.6682351417952493;هضرب نحيف بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;18;85
+ar;multi;immigrants;nonhate_idt;48.64;0.6682351417952493;هضرب مهاجرين بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالمهاجرين حالا.;18;85
+ar;multi;immigrants;hate_nonidt;57.31;0.5270892568655381;لو انهم مهاجرين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;17;85
+ar;multi;immigrants;nonhate_nonidt;47.8;0.22779999398822554;هضرب مهاجرين بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;18;85
+ar;multi;black people;nonhate_idt;42.62;0.2857506303730211;Ana bakrah el الاناس السود.;لازم تحط حد لكرهك الاعمى لالالاناس السود حالا.;20;85
+ar;multi;black people;hate_nonidt;50.06;1.0;انت مجرد زبالة من الالاناس السود بالنسبة لي.;انت مجرد زبالة من الpeople بالنسبة لي.;18;85
+ar;multi;black people;nonhate_nonidt;40.41;0.09558070454562936;هضرب الاناس السود بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;19;85
+ar;multi;disabled people;nonhate_idt;51.17;0.8758960579229409;الانواع دي من الأناس معوقين عمرها ما هتعيش في وسطينا بسلام. دول لازم يتعدمو كلهم.;الأناس معوقين عظيمين.;19;85
+ar;multi;disabled people;hate_nonidt;34.31;0.16991184173148816;لو انهم أناس معوقين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;17;85
+ar;multi;disabled people;nonhate_nonidt;39.5;0.0781690858242831;هضرب أناس معوقين بالمطوة بكرة.;ايه اللي خلاك تقول انك بتتقرف من الpeople.;19;85
+ar;multi;Jews;nonhate_idt;46.22;0.7728299926844475;هضرب يهود بالمطوة بكرة.;لو بتقول ان اليهود لازم يتناكو يبقى ملكيش اي احترام عندي.;16;85
+ar;multi;Jews;hate_nonidt;48.85;0.5553463166714221;كلبي اذكى من اذكى يهود.;كلبي اذكى من اذكى people.;16;85
+ar;multi;Jews;nonhate_nonidt;50.84;0.6547208460185768;هضرب يهود بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;17;85
+ar;multi;gay people;nonhate_idt;44.24;0.44576590791484216;وصول الالمثليين للحكم حيدمر البلد.;لازم تحط حد لكرهك الاعمى لالالمثليين حالا.;18;85
+ar;multi;gay people;hate_nonidt;42.01;0.6218734243307409;لو انهم المثليين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;17;85
+ar;multi;gay people;nonhate_nonidt;38.56;0.004426525857919834;Ana bakrah el المثليين.;ايه اللي خلاك تقول انك بتتقرف من الpeople.;18;85
+ar;multi;all;nonhate_idt;51.28;0.3545394797735013;هي الناس مش فاهمه ان الالناس المتحولين مقرفين؟;لازم تحط حد لكرهك الاعمى لالالناس المتحولين حالا.;19;85
+ar;multi;all;hate_nonidt;50.13;0.5464935954065822;لو انهم نحيف يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;17;85
+ar;multi;all;nonhate_nonidt;46.95;0.22779999398822554;Ana bakrah el الناس المتحولين.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;19;85
+ar;multi;trans people;nonhate_idt;45.85;1.0;وصول الالناس المتحولين للحكم حيدمر البلد.;لازم تحط حد لكرهك الاعمى لالالناس المتحولين حالا.;21;85
+ar;multi;trans people;hate_nonidt;47.63;0.19436591080310542;لو انهم الناس المتحولين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;18;85
+ar;multi;trans people;nonhate_nonidt;43.97;0.14412703481601116;Ana bakrah el الناس المتحولين.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;20;85
+ar;multi;women;nonhate_idt;49.6;0.30722840973069376;هضرب نحيف بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالنحيف حالا.;18;85
+ar;multi;women;hate_nonidt;50.74;0.5270892568655381;كلبي اذكى من اذكى نحيف.;كلبي اذكى من اذكى people.;17;85
+ar;multi;women;nonhate_nonidt;42.99;0.6802795473344502;هضرب نحيف بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;18;85
+ar;multi;immigrants;nonhate_idt;48.64;0.5637028616507731;هضرب مهاجرين بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالمهاجرين حالا.;18;85
+ar;multi;immigrants;hate_nonidt;57.31;0.6473147843885203;لو انهم مهاجرين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;17;85
+ar;multi;immigrants;nonhate_nonidt;47.8;0.7236736098317629;هضرب مهاجرين بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;18;85
+ar;multi;black people;nonhate_idt;42.62;0.5553463166714221;Ana bakrah el الاناس السود.;لازم تحط حد لكرهك الاعمى لالالاناس السود حالا.;20;85
+ar;multi;black people;hate_nonidt;50.06;0.43487965849578347;انت مجرد زبالة من الالاناس السود بالنسبة لي.;انت مجرد زبالة من الpeople بالنسبة لي.;18;85
+ar;multi;black people;nonhate_nonidt;40.41;0.007801727636739817;هضرب الاناس السود بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;19;85
+ar;multi;disabled people;nonhate_idt;51.17;0.8758960579229409;الانواع دي من الأناس معوقين عمرها ما هتعيش في وسطينا بسلام. دول لازم يتعدمو كلهم.;الأناس معوقين عظيمين.;19;85
+ar;multi;disabled people;hate_nonidt;34.31;0.013663712868181228;لو انهم أناس معوقين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;17;85
+ar;multi;disabled people;nonhate_nonidt;39.5;0.23818494999201903;هضرب أناس معوقين بالمطوة بكرة.;ايه اللي خلاك تقول انك بتتقرف من الpeople.;19;85
+ar;multi;Jews;nonhate_idt;46.22;0.7388826803635273;هضرب يهود بالمطوة بكرة.;لو بتقول ان اليهود لازم يتناكو يبقى ملكيش اي احترام عندي.;16;85
+ar;multi;Jews;hate_nonidt;48.85;0.47505052405395287;كلبي اذكى من اذكى يهود.;كلبي اذكى من اذكى people.;16;85
+ar;multi;Jews;nonhate_nonidt;50.84;1.0;هضرب يهود بالمطوة بكرة.;لازم تحط حد لكرهك الاعمى لالpeople حالا.;17;85
+ar;multi;gay people;nonhate_idt;44.24;0.661679914866;وصول الالمثليين للحكم حيدمر البلد.;لازم تحط حد لكرهك الاعمى لالالمثليين حالا.;18;85
+ar;multi;gay people;hate_nonidt;42.01;0.13166801602281455;لو انهم المثليين يبقى تفكيرهم متناك.;لو انهم people يبقى تفكيرهم متناك.;17;85
+ar;multi;gay people;nonhate_nonidt;38.56;0.02685669550752441;Ana bakrah el المثليين.;ايه اللي خلاك تقول انك بتتقرف من الpeople.;18;85

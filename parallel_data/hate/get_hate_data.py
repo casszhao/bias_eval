@@ -19,7 +19,7 @@ from transformers import AutoModelForMaskedLM, AutoTokenizer
 from datasets import load_dataset_builder, load_dataset, get_dataset_split_names, get_dataset_config_names
 from deep_translator import GoogleTranslator, MicrosoftTranslator, DeeplTranslator
 
-lang = 'hi'
+lang = 'es'
 
 def get_dataset_name(lang):
     if lang == 'zh':
@@ -99,6 +99,7 @@ for idt in idt_list:
         print(idt)
         if lang == 'du': translated_idt = GoogleTranslator(source='auto', target='nl').translate(idt) 
         elif lang == 'po': translated_idt = GoogleTranslator(source='auto', target='pl').translate(idt) 
+        elif lang == 'en': translated_idt = idt
         else: translated_idt = GoogleTranslator(source='auto', target=lang).translate(idt) 
         print(translated_idt)
         idt_dic[idt] = translated_idt
@@ -107,6 +108,12 @@ if lang == 'zh':
     idt_dic = {'Muslims': '穆斯林', 'disabled people':'残疾人', 'trans people':'变性人', 'women':'女人', 'black people':'黑人', 'gay people':'同性恋', 'foreigners':'外国人'}
 elif lang == 'hi':
     idt_dic = {'Muslims': 'Musalmaanon', 'Black people':'kaale log', 'women':'aurat', 'Lower Caste':'nichli jaati', 'North-East Indians':'uttar-poorvi bhartiya', 'trans people':'hijada', 'gay people':'samlaingik log'}
+elif lang == 'es':
+    idt_dic = {'jews':'judios','women':'mujer','disabled people':'personas con discapacidad',
+               'black people':'personas de raza negra', 'trans people':'personas transgénero',
+               'indigenous people':'personas indígenas','gay people':'personas gay'}
+
+
 ##########
 print(idt_dic)
 
@@ -124,7 +131,6 @@ with open(idt_dic_name, 'wb') as f:
 with open(idt_dic_name, 'rb') as f:
     loaded_dict = pickle.load(f)
 print(loaded_dict)
-
 
 
 case_templ_name = f'parallel_data/hate/{lang}/hate_templ.json'

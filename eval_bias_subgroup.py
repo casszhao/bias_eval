@@ -3,6 +3,7 @@ import pandas as pd
 import argparse
 import torch
 import random
+import os
 import difflib
 import nltk
 import regex as re
@@ -12,21 +13,20 @@ import pickle
 from random import sample
 from tqdm import tqdm
 from collections import defaultdict
-from transformers import AutoModelForMaskedLM, AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoModelForMaskedLM, AutoTokenizer, AutoModelForSeq2SeqLM, BertTokenizer
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--lang', type=str, #required=True, choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                     help='Path to evaluation dataset.',
-                    default='en')
+                    default='es')
 parser.add_argument('--method', type=str, #required=True, choices=['aula', 'aul'],
                     default='aula')
 parser.add_argument('--if_cased', type=str, #required=True, choices=['cased', 'uncased'],
                     default='uncased')
-parser.add_argument('--log_name', type=str)
 parser.add_argument('--dataset_name', type=str, default='hate')
 parser.add_argument('--model', type=str, default='bert')
-parser.add_argument('--group', type=str, default='all')
+parser.add_argument('--save_results', type=str, default='subgroup_results.csv')
 
 
 args = parser.parse_args()
@@ -89,79 +89,7 @@ def get_scores_embed(tokens_list, tokenizer, model):
     scores = np.array(scores)
     scores = scores.reshape([1, -1])
     embes = np.concatenate(embes)
-    print(' avg_token_num: ', int(avg_token_num/len(tokens_list)))
     return scores, embes, int(avg_token_num/len(tokens_list))
-
-
-attention = True
-from func import get_model_name_uncased, get_model_name_cased
-
-
-
-
-print(' ')
-print(' ')
-print(' ')
-print(' ')
-print(' -------- ', str(args.lang))
-
-import os
-pwd = os.getcwd()
-print(pwd)
-
-# adv_corpus = str(pwd) + f'/parallel_data/{args.dataset_name}/{args.lang}/adv_input_list.json'
-# disadv_corpus = str(pwd) + f'/parallel_data/{args.dataset_name}/{args.lang}/disadv_input_list.json' 
-
-adv_corpus = str(pwd) + f'/parallel_data/{args.dataset_name}/{args.lang}/hate_idt.json'
-disadv_corpus = str(pwd) + f'/parallel_data/{args.dataset_name}/{args.lang}/nonhate_idt.json' 
-
-with open(adv_corpus, 'r') as f:
-    adv_text_list = json.load(f)
-with open(disadv_corpus, 'r') as f:
-    disadv_text_list = json.load(f)
-
-
-
-
-
-############# for mono first
-
-if args.if_cased == 'cased': model_name_mono = get_model_name_cased(args.lang + '-' + model)
-else: model_name_mono = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
-print(model_name_mono)
-
-if "TurkuNLP" in model_name_mono:
-    from transformers import BertTokenizer
-    tokenizer_mono = BertTokenizer.from_pretrained(model_name_mono)
-else: tokenizer_mono = AutoTokenizer.from_pretrained(model_name_mono)
-model_mono = AutoModelForMaskedLM.from_pretrained(model_name_mono,
-                                            output_hidden_states=True,
-                                            output_attentions=True)
-
-model_mono = model_mono.eval()
-if torch.cuda.is_available():
-    model_mono.to('cuda')
-
-total_params_mono = sum(param.numel() for param in model_mono.parameters())
-print("==>> total_params: ", f"{total_params_mono:,}")
-
-if torch.cuda.is_available():
-    torch.set_default_tensor_type('torch.cuda.FloatTensor')
-
-mask_id_mono = tokenizer_mono.mask_token_id
-log_softmax = torch.nn.LogSoftmax(dim=1)
-
-
-adv_scores, adv_embes, adv_token_len = get_scores_embed(adv_text_list, tokenizer_mono, model_mono)
-disadv_scores, disadv_embes, disadv_token_len = get_scores_embed(disadv_text_list, tokenizer_mono, model_mono)
-avg_token_num_mono = int((adv_token_len+disadv_token_len)/2)
-
-bias_scores = adv_scores > disadv_scores
-weights = cos_sim(disadv_embes, adv_embes.T)
-weighted_bias_scores = bias_scores * weights
-bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
-bias_score_mono = round(bias_score * 100, 2)
-print("==>> (bias_score_mono): ", bias_score_mono)
 
 from statsmodels.stats.api import SquareTable
 def sig_test(bias_scores, weighted_bias_scores, weights):
@@ -176,115 +104,242 @@ def sig_test(bias_scores, weighted_bias_scores, weights):
     df = pd.DataFrame(list(zip(bias_list_random, bias_list)), columns =['Random', 'MBE'])
     myCross = pd.crosstab(df['Random'], df['MBE'])
     stats = SquareTable(myCross, shift_zeros=False).symmetry()
-    print(stats)
     chi_squared = stats.statistic
     p_value = stats.pvalue
     degree_freedom = stats.df
     return p_value, chi_squared, degree_freedom
 
-
-p_value_mono, chi_squared_mono, degree_freedom_mono = sig_test(bias_scores, weighted_bias_scores, weights)
-
-top_index_1d, top_index_2d = get_tops(weighted_bias_scores, 3)
-print(' most biased sentence  (MONO)')
-print(adv_text_list[top_index_1d[0]]) #sae
-print(disadv_text_list[top_index_2d[0]])
-
-print(' the 2 and 3 most biased sentence')
-print(adv_text_list[top_index_1d[1]]) #sae
-print(disadv_text_list[top_index_2d[1]])
-print(adv_text_list[top_index_1d[2]]) #sae
-print(disadv_text_list[top_index_2d[2]])
+attention = True
+from func import get_model_name_uncased, get_model_name_cased
 
 
 
 
 
 
+# pwd = os.getcwd()
+
+idt_dic_name = f'parallel_data/hate/{args.lang}/idt_dict.pkl'
+with open(idt_dic_name, 'rb') as f:
+    idt_dict = pickle.load(f)
+print(idt_dict)
+
+hate_templ_name = f'parallel_data/hate/{args.lang}/hate_templ.json'
+with open(hate_templ_name, 'r') as f:
+    hate_templ_list = json.load(f)
+
+nonhate_templ_name = f'parallel_data/hate/{args.lang}/nonhate_templ.json'
+with open(nonhate_templ_name, 'r') as f:
+    nonhate_templ_list = json.load(f)
+
+templ_num = min(len(hate_templ_list), len(nonhate_templ_list))
+hate_templ_list = hate_templ_list[:templ_num]
+nonhate_templ_list = nonhate_templ_list[:templ_num]
+assert len(hate_templ_list) == len(nonhate_templ_list)
 
 
 
-############# for multi 
-if args.if_cased == 'cased':
-    model_name = 'bert-base-multilingual-cased'
+from random import sample
+import random
+
+
+if args.lang == 'en': neural_idt = 'people'
+elif args.lang == 'de': neural_idt = 'Leute'
+elif args.lang == 'du': neural_idt = 'mensen'
+elif args.lang == 'es': neural_idt = 'gente'
+elif args.lang == 'fr': neural_idt = 'pessoas'
+elif args.lang == 'hi': neural_idt = 'log' # janata
+elif args.lang == 'it': neural_idt = 'persone'
+elif args.lang == 'pt': neural_idt = 'pessoas'
+elif args.lang == 'zh': neural_idt = '人'
+elif args.lang == 'ar': neural_idt = 'الناس'
+elif args.lang == 'po': neural_idt = 'ludzie'
+else: 
+    print(' no neural words!!!!')
+
+
+def create_corpus(target, idt_dict, hate_templ_list, nonhate_templ_list, neural_idt):
+    hate_idt = []
+    nonhate_idt = []
+    hate_nonidt = []
+    nonhate_nonidt = []
+
+    if target == 'all':
+            
+        idt_temp_list = []
+        
+        for case_templ in hate_templ_list:
+            idt = random.sample(list(idt_dict.values()), 1)[0]
+            idt_temp_list.append(idt)
+
+            input = re.sub("\[[^\]]*\]", idt, case_templ)
+            hate_idt.append(input)
+
+            input = re.sub("\[[^\]]*\]", neural_idt, case_templ)
+            hate_nonidt.append(input)
+
+        for i, non_case_templ in enumerate(nonhate_templ_list):
+            input = re.sub("\[[^\]]*\]", idt_temp_list[i], non_case_templ)
+            nonhate_idt.append(input)
+
+            input = re.sub("\[[^\]]*\]", neural_idt, non_case_templ)
+            nonhate_nonidt.append(input)
+        
+        #print(' temp idt list: ', idt_temp_list)
+
+    else:
+        for case_templ in hate_templ_list:
+            input = re.sub("\[[^\]]*\]", target, case_templ)
+            hate_idt.append(input)
+            input = re.sub("\[[^\]]*\]", neural_idt, case_templ)
+            hate_nonidt.append(input)
+        for non_case_templ in nonhate_templ_list:
+            input = re.sub("\[[^\]]*\]", target, non_case_templ)
+            nonhate_idt.append(input)
+            input = re.sub("\[[^\]]*\]", neural_idt, non_case_templ)
+            nonhate_nonidt.append(input)
+
+    return hate_idt,nonhate_idt,hate_nonidt,nonhate_nonidt
+
+
+def get_scores(adv_text_list, disadv_text_list, tokenizer, model):
+
+    adv_scores, adv_embes, adv_token_len = get_scores_embed(adv_text_list, tokenizer, model)
+    disadv_scores, disadv_embes, disadv_token_len = get_scores_embed(disadv_text_list, tokenizer, model)
+    avg_token_num = int((adv_token_len+disadv_token_len)/2)
+
+    bias_scores = adv_scores > disadv_scores
+    weights = cos_sim(disadv_embes, adv_embes.T)
+    weighted_bias_scores = bias_scores * weights
+    bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
+    bias_score_final = round(bias_score * 100, 2)
+
+    p_value, chi_squared, degree_freedom = sig_test(bias_scores, weighted_bias_scores, weights)
+
+    top_index_1d, top_index_2d = get_tops(weighted_bias_scores, 3)
+
+    return bias_score_final, p_value, avg_token_num, adv_text_list[top_index_1d[0]],disadv_text_list[top_index_2d[0]]
+
+
+def write(disadv_corpus_name):
+    with open(args.save_results, 'a+') as writer:
+        writer.write(str(args.lang))
+        writer.write(';')
+        writer.write(str((mono_multi)))
+        writer.write(';')
+        if bias_target != 'all':writer.write(str(one_target))
+        else:writer.write('all')
+        writer.write(';')
+        writer.write(disadv_corpus_name)
+        writer.write(';')
+        writer.write(str(bias_score))
+        writer.write(';')
+        writer.write(str(p_value))
+        writer.write(';')
+        writer.write(str(most_biasedpair_hate_idt))
+        writer.write(';')
+        writer.write(str(most_biasedpair_disadv))
+        writer.write(';')
+        writer.write(str(token_num))
+        writer.write(';')
+        writer.write(str(len(hate_idt)))
+        writer.write('\n')
+
+
+
+# do mono
+mono_multi = 'mono'
+
+if mono_multi == 'mono':
+    if args.if_cased == 'cased': model_name = get_model_name_cased(args.lang + '-' + model)
+    else: model_name = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
 else:
-    model_name = 'bert-base-multilingual-uncased'
-print(model_name)
+    if args.if_cased == 'cased':
+        model_name = 'bert-base-multilingual-cased'
+    else:
+        model_name = 'bert-base-multilingual-uncased'
 
 if "TurkuNLP" in model_name:
     tokenizer = BertTokenizer.from_pretrained(model_name)
 else: 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForMaskedLM.from_pretrained(model_name,
-                                            output_hidden_states=True,
-                                            output_attentions=True)
-
-
-
+model = AutoModelForMaskedLM.from_pretrained(model_name,output_hidden_states=True,output_attentions=True)
 model = model.eval()
-if torch.cuda.is_available():
-    model.to('cuda')
-
-total_params_multi = sum(param.numel() for param in model.parameters())
-print("==>> total_params: ", f"{total_params_multi:,}")
-
-
-if torch.cuda.is_available():
-    torch.set_default_tensor_type('torch.cuda.FloatTensor')
-
+if torch.cuda.is_available(): model.to('cuda'), torch.set_default_tensor_type('torch.cuda.FloatTensor')
 mask_id = tokenizer.mask_token_id
 log_softmax = torch.nn.LogSoftmax(dim=1)
 
 
-adv_scores, adv_embes, adv_token_len = get_scores_embed(adv_text_list, tokenizer, model)
-disadv_scores, disadv_embes, disadv_token_len = get_scores_embed(disadv_text_list, tokenizer, model)
-avg_token_num_multi = int((adv_token_len+disadv_token_len)/2)
 
-bias_scores = adv_scores > disadv_scores
-weights = cos_sim(disadv_embes, adv_embes.T)
-weighted_bias_scores = bias_scores * weights
-bias_score = np.sum(weighted_bias_scores) / np.sum(weights)
-bias_score_multi = round(bias_score * 100, 2)
-print("==>> (bias_score_multi): ", bias_score_multi)
+bias_target = 'all'
+hate_idt,nonhate_idt,hate_nonidt,nonhate_nonidt = create_corpus(str(bias_target), idt_dict, hate_templ_list, nonhate_templ_list,neural_idt)
 
-p_value, chi_squared, degree_freedom = sig_test(bias_scores, weighted_bias_scores, weights)
-
-top_index_1d, top_index_2d = get_tops(weighted_bias_scores, 3)
-print(' most biased sentence  (MULTI)')
-print(adv_text_list[top_index_1d[0]]) #sae
-print(disadv_text_list[top_index_2d[0]])
-
-print(' the 2 and 3 most biased sentence')
-print(adv_text_list[top_index_1d[1]]) #sae
-print(disadv_text_list[top_index_2d[1]])
-print(adv_text_list[top_index_1d[2]]) #sae
-print(disadv_text_list[top_index_2d[2]])
+bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_idt, tokenizer, model)
+write('nonhate_idt')
+bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, hate_nonidt, tokenizer, model)
+write('hate_nonidt')
+bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_nonidt, tokenizer, model)
+write('nonhate_nonidt')
 
 
-# "Language,Corpus_Size,Monolingual,Mono_Pvalue,Multilingual,Multi_Pvalue,Diff_in_Scores,
-# MonoModel_Size,MultiModel_Size,Mono_token_len,Multi_token_len" 
+for one_target in idt_dict:
+    bias_target = idt_dict.get(one_target)
+    
+    hate_idt,nonhate_idt,hate_nonidt,nonhate_nonidt = create_corpus(str(bias_target), idt_dict, hate_templ_list, nonhate_templ_list,neural_idt)
+    bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_idt, tokenizer, model)
+    write('nonhate_idt')
+    bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, hate_nonidt, tokenizer, model)
+    write('hate_nonidt')
+    bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_nonidt, tokenizer, model)
+    write('nonhate_nonidt')
 
 
-with open(str(args.log_name), 'a') as writer:
-    writer.write(str(args.lang))
-    writer.write(',')
-    writer.write(str(len(adv_text_list)))
-    writer.write(',')
-    writer.write(str(bias_score_mono))
-    writer.write(',')
-    writer.write(str(p_value_mono))
-    writer.write(',')
-    writer.write(str(bias_score_multi))
-    writer.write(',')
-    writer.write(str(p_value))
-    writer.write(',')
-    writer.write(str("{:.2f}".format(round(bias_score_mono-bias_score_multi, 2))))
-    writer.write(',')
-    writer.write(str(total_params_mono))
-    writer.write(',')
-    writer.write(str(total_params_multi))
-    writer.write(',')
-    writer.write(str(avg_token_num_mono))
-    writer.write(',')
-    writer.write(str(avg_token_num_multi))
-    writer.write('\n')
+
+# do multi
+mono_multi = 'multi'
+
+if mono_multi == 'mono':
+    if args.if_cased == 'cased': model_name = get_model_name_cased(args.lang + '-' + model)
+    else: model_name = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
+else:
+    if args.if_cased == 'cased':
+        model_name = 'bert-base-multilingual-cased'
+    else:
+        model_name = 'bert-base-multilingual-uncased'
+
+if "TurkuNLP" in model_name:
+    tokenizer = BertTokenizer.from_pretrained(model_name)
+else: 
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForMaskedLM.from_pretrained(model_name,output_hidden_states=True,output_attentions=True)
+model = model.eval()
+if torch.cuda.is_available(): model.to('cuda'), torch.set_default_tensor_type('torch.cuda.FloatTensor')
+mask_id = tokenizer.mask_token_id
+log_softmax = torch.nn.LogSoftmax(dim=1)
+
+
+
+bias_target = 'all'
+hate_idt,nonhate_idt,hate_nonidt,nonhate_nonidt = create_corpus(str(bias_target), idt_dict, hate_templ_list, nonhate_templ_list,neural_idt)
+
+bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_idt, tokenizer, model)
+write('nonhate_idt')
+bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, hate_nonidt, tokenizer, model)
+write('hate_nonidt')
+bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_nonidt, tokenizer, model)
+write('nonhate_nonidt')
+
+
+for one_target in idt_dict:
+    bias_target = idt_dict[one_target]
+    hate_idt,nonhate_idt,hate_nonidt,nonhate_nonidt = create_corpus(str(bias_target), idt_dict, hate_templ_list, nonhate_templ_list,neural_idt)
+    bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_idt, tokenizer, model)
+    write('nonhate_idt')
+    bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, hate_nonidt, tokenizer, model)
+    write('hate_nonidt')
+    bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_nonidt, tokenizer, model)
+    write('nonhate_nonidt')
+
+
+    
+# total_params_multi = sum(param.numel() for param in model.parameters())

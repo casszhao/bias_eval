@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-filename="results/idtB"
+filename="results/subgroup"
 date=$(date +"%m%d_%H%M")
 extension=".csv"
 
@@ -9,18 +9,19 @@ extension=".csv"
 new_filename="${filename}_${date}${extension}"
 
 # Create new file with concatenated filename
-echo "Language,Corpus_Size,Monolingual,Mono_Pvalue,Multilingual,Multi_Pvalue,Diff_in_Scores,MonoModel_Size,MultiModel_Size,Mono_token_len,Multi_token_len" > "$new_filename"
+echo "Language;Mono_MUlti;bias_group;disadv_corpus;bias_score;p-value;most_biasedpair_hate_idt;most_biasedpair_disadv;token_num;corpus_num" > "$new_filename"
 
 
 
-python eval_bias.py --lang 'ar' --log_name $new_filename
-python eval_bias.py --lang 'de' --log_name $new_filename
-python eval_bias.py --lang 'du' --log_name $new_filename
-python eval_bias.py --lang 'en' --log_name $new_filename
-python eval_bias.py --lang 'es' --log_name $new_filename
-python eval_bias.py --lang 'fr' --log_name $new_filename
-python eval_bias.py --lang 'hi' --log_name $new_filename
-python eval_bias.py --lang 'it' --log_name $new_filename
-python eval_bias.py --lang 'po' --log_name $new_filename
-python eval_bias.py --lang 'pt' --log_name $new_filename
-python eval_bias.py --lang 'zh' --log_name $new_filename
+
+python eval_bias_subgroup.py --lang 'de' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'du' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'en' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'es' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'fr' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'hi' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'it' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'po' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'pt' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'zh' --save_results $new_filename
+python eval_bias_subgroup.py --lang 'ar' --save_results $new_filename
