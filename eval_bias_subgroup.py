@@ -248,7 +248,7 @@ def write(disadv_corpus_name):
 
 
 # do mono
-mono_multi = 'mono'
+mono_multi = 'mono  '
 
 if mono_multi == 'mono':
     if args.if_cased == 'cased': model_name = get_model_name_cased(args.lang + '-' + model)
