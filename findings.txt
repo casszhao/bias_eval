@@ -1,3 +1,16 @@
 1. no bias towards nonhate-idt: no rows for bias scores > 50 and sig < 0.05 
 however,==> previous studies show the bias toward nonhate_idt after fine-tuning, which indicates the mode learn the bias from the data
-2.
+
+---------- compared to hate without idt
+2. for all included: french, dutch and arabic are biased with multilingual model, spanish is biased with mono
+   - for spanish, mono towards disabled people,jews, gay people,black people
+   - for spanish, multi towards indigenous people, gay people, disabled people
+3. different target for different languages and models
+
+
+- no language towards women on both mono and multi
+
+
+Q: aggrate analysis makes sense? 
+e.g. average of mono and average of multi cross all sig languages and target groups
+e.g. average of a target group cross all languages and models(mono/multi)
