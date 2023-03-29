@@ -1,0 +1,3 @@
+1. no bias towards nonhate-idt: no rows for bias scores > 50 and sig < 0.05 
+however,==> previous studies show the bias toward nonhate_idt after fine-tuning, which indicates the mode learn the bias from the data
+2.
