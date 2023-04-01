@@ -23,7 +23,7 @@ parser.add_argument('--lang', type=str, #required=True, choices=['en', 'de', 'ja
 parser.add_argument('--method', type=str, #required=True, choices=['aula', 'aul'],
                     default='aula')
 parser.add_argument('--if_cased', type=str, #required=True, choices=['cased', 'uncased'],
-                    default='uncased')
+                    default='cased')
 parser.add_argument('--dataset_name', type=str, default='hate')
 parser.add_argument('--model', type=str, default='bert')
 parser.add_argument('--save_results', type=str, default='subgroup_results.csv')
@@ -248,16 +248,11 @@ def write(disadv_corpus_name):
 
 
 # do mono
-mono_multi = 'mono  '
+mono_multi = 'mono'
 
-if mono_multi == 'mono':
-    if args.if_cased == 'cased': model_name = get_model_name_cased(args.lang + '-' + model)
-    else: model_name = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
-else:
-    if args.if_cased == 'cased':
-        model_name = 'bert-base-multilingual-cased'
-    else:
-        model_name = 'bert-base-multilingual-uncased'
+if args.if_cased == 'cased': model_name = get_model_name_cased(args.lang + '-' + model)
+else: model_name = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
+
 
 if "TurkuNLP" in model_name:
     tokenizer = BertTokenizer.from_pretrained(model_name)
@@ -298,14 +293,8 @@ for one_target in idt_dict:
 # do multi
 mono_multi = 'multi'
 
-if mono_multi == 'mono':
-    if args.if_cased == 'cased': model_name = get_model_name_cased(args.lang + '-' + model)
-    else: model_name = get_model_name_uncased(args.lang + '-' + model) # "multi-bert" lang
-else:
-    if args.if_cased == 'cased':
-        model_name = 'bert-base-multilingual-cased'
-    else:
-        model_name = 'bert-base-multilingual-uncased'
+if args.if_cased == 'cased': model_name = 'bert-base-multilingual-cased'
+else: model_name = 'bert-base-multilingual-uncased'
 
 if "TurkuNLP" in model_name:
     tokenizer = BertTokenizer.from_pretrained(model_name)
