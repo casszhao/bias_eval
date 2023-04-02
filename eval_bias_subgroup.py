@@ -19,7 +19,7 @@ from transformers import AutoModelForMaskedLM, AutoTokenizer, AutoModelForSeq2Se
 parser = argparse.ArgumentParser()
 parser.add_argument('--lang', type=str, #required=True, choices=['en', 'de', 'ja', 'ar', 'es', 'pt', 'ru', 'id', 'zh'],
                     help='Path to evaluation dataset.',
-                    default='es')
+                    default='hi')
 parser.add_argument('--method', type=str, #required=True, choices=['aula', 'aul'],
                     default='aula')
 parser.add_argument('--if_cased', type=str, #required=True, choices=['cased', 'uncased'],
