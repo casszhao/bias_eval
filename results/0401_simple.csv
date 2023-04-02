@@ -1,0 +1,110 @@
+,Language,Mono_MUlti,bias_group,bias_score
+1,de,mono,all,61.84
+10,de,mono,disabled people,78.62
+16,de,mono,trans people,76.5
+19,de,mono,women,68.85
+22,de,mono,gay people,77.59
+28,de,multi,black people,57.8
+31,de,multi,refugees,76.94
+40,de,multi,trans people,76.45
+46,de,multi,gay people,76.52
+70,du,mono,disabled people,62.85
+76,du,multi,gay people,80.3
+82,du,multi,Muslims,79.13
+88,du,multi,immigrants,67.82
+94,du,multi,disabled people,83.95
+100,en,mono,gay people,68.95
+106,en,mono,disabled people,80.81
+109,en,mono,black people,89.67
+115,en,mono,trans people,80.55
+121,en,multi,all,65.02
+124,en,multi,gay people,87.67
+130,en,multi,disabled people,73.86
+133,en,multi,black people,75.85
+139,en,multi,trans people,56.79
+145,es,mono,all,73.66
+148,es,mono,jews,88.77
+149,es,mono,jews,78.75
+150,es,mono,women,68.32
+154,es,mono,disabled people,86.15
+155,es,mono,disabled people,77.49
+157,es,mono,black people,77.52
+158,es,mono,black people,74.99
+160,es,mono,trans people,78.62
+166,es,mono,gay people,68.66
+178,es,multi,disabled people,73.64
+181,es,multi,black people,72.42
+185,es,multi,trans people,61.86
+186,es,multi,indigenous people,74.58
+190,es,multi,gay people,70.15
+191,es,multi,gay people,64.53
+217,fr,multi,all,94.51
+218,fr,multi,all,91.78
+220,fr,multi,disabled people,96.87
+221,fr,multi,disabled people,96.27
+223,fr,multi,women,95.6
+224,fr,multi,women,95.02
+226,fr,multi,refugees,96.82
+227,fr,multi,refugees,94.23
+229,fr,multi,Muslims,97.86
+230,fr,multi,Muslims,85.5
+232,fr,multi,black people,96.51
+233,fr,multi,black people,88.27
+235,fr,multi,trans people,95.48
+236,fr,multi,trans people,91.47
+238,fr,multi,gay people,97.73
+239,fr,multi,gay people,91.65
+244,it,mono,gay people,61.15
+252,it,mono,trans people,57.12
+256,it,mono,black people,90.37
+257,it,mono,black people,67.64
+265,it,multi,all,67.98
+268,it,multi,gay people,78.22
+280,it,multi,black people,74.68
+283,it,multi,disabled people,76.74
+286,it,multi,Muslims,75.52
+290,po,mono,all,55.56
+292,po,mono,asian people,85.33
+298,po,mono,jewish people,88.91
+301,po,mono,immigrants,72.8
+304,po,mono,immigrant,65.32
+307,po,mono,women,65.46
+310,po,mono,trans people,85.06
+322,po,multi,disabled people,78.62
+328,po,multi,immigrants,67.51
+337,po,multi,trans people,77.89
+353,pt,mono,women,56.37
+358,pt,mono,gay people,73.68
+364,pt,mono,disabled people,77.15
+365,pt,mono,disabled people,71.07
+367,pt,multi,all,66.73
+369,pt,multi,black people,59.04
+370,pt,multi,black people,76.76
+373,pt,multi,trans people,66.54
+376,pt,multi,women,76.11
+379,pt,multi,jews,74.23
+382,pt,multi,gay people,72.23
+388,pt,multi,disabled people,82.02
+391,zh,mono,all,82.14
+394,zh,mono,Muslims,87.91
+397,zh,mono,disabled people,82.31
+400,zh,mono,trans people,86.46
+403,zh,mono,women,75.48
+406,zh,mono,black people,68.31
+409,zh,mono,gay people,86.76
+412,zh,mono,foreigners,91.6
+415,zh,multi,all,78.21
+418,zh,multi,Muslims,80.92
+421,zh,multi,disabled people,81.24
+424,zh,multi,trans people,86.39
+425,zh,multi,trans people,66.58
+427,zh,multi,women,74.1
+430,zh,multi,black people,75.32
+433,zh,multi,gay people,72.51
+436,zh,multi,foreigners,82.6
+448,ar,mono,immigrants,77.75
+451,ar,mono,black people,61.7
+454,ar,mono,disabled people,65.96
+466,ar,multi,trans people,83.51
+472,ar,multi,immigrants,66.99
+475,ar,multi,black people,71.93
