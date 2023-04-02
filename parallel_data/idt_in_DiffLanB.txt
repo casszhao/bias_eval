@@ -66,3 +66,7 @@ hi
 hi
 ['Muslims', 'Black people', 'women', 'Lower Caste', 'North-East Indians', 'trans people', 'gay people']
 ['Musalmaanon', 'kaale log', 'aurat', 'nichli jaati', 'uttar-poorvi bhartiya', 'hijada', 'samlaingik log']
+
+de
+['women', 'disabled people', 'trans people', 'refugees', 'jews', 'gay people', 'black people']
+['Frauen', 'Menschen mit Behinderung', 'Transmenschen', 'Flüchtlinge', 'Juden', 'schwule Menschen', 'Schwarze']

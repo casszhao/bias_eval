@@ -19,7 +19,7 @@ from transformers import AutoModelForMaskedLM, AutoTokenizer
 from datasets import load_dataset_builder, load_dataset, get_dataset_split_names, get_dataset_config_names
 from deep_translator import GoogleTranslator, MicrosoftTranslator, DeeplTranslator
 
-lang = 'es'
+lang = 'hi'
 
 def get_dataset_name(lang):
     if lang == 'zh':
@@ -96,6 +96,9 @@ for idt in idt_list:
     if lang == 'zh':
         pass
     else:
+        
+        if idt == 'jewish people': idt = 'jews'
+        if idt == 'immigrant': idt = 'immigrants'
         print(idt)
         if lang == 'du': translated_idt = GoogleTranslator(source='auto', target='nl').translate(idt) 
         elif lang == 'po': translated_idt = GoogleTranslator(source='auto', target='pl').translate(idt) 
@@ -113,7 +116,6 @@ elif lang == 'es':
                'black people':'personas de raza negra', 'trans people':'personas transgénero',
                'indigenous people':'personas indígenas','gay people':'personas gay'}
 
-
 ##########
 print(idt_dic)
 
@@ -121,8 +123,7 @@ print(idt_dic)
 
 import pickle
 
-
-idt_dic_name = f'parallel_data/hate/{lang}/idt_dict.pkl'
+idt_dic_name = f'{lang}/idt_dict.pkl'
 with open(idt_dic_name, 'wb') as f:
     pickle.dump(idt_dic, f)
 
@@ -133,11 +134,11 @@ with open(idt_dic_name, 'rb') as f:
 print(loaded_dict)
 
 
-case_templ_name = f'parallel_data/hate/{lang}/hate_templ.json'
+case_templ_name = f'{lang}/hate_templ.json'
 with open(case_templ_name, 'w+') as f:
     json.dump(case_templ_list, f, indent=4, ensure_ascii=False) 
 
 
-non_case_templ_name = f'parallel_data/hate/{lang}/nonhate_templ.json'
+non_case_templ_name = f'{lang}/nonhate_templ.json'
 with open(non_case_templ_name, 'w+') as f:
     json.dump(non_case_templ_list, f, indent=4, ensure_ascii=False) 
