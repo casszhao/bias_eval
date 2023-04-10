@@ -59,12 +59,12 @@ def calculate_aul(model, token_ids, log_softmax, attention):
         averaged_token_attentions = torch.mean(averaged_attentions, 0)
         token_log_probs = token_log_probs.squeeze(1) * averaged_token_attentions[1:-1]
     sentence_log_prob = torch.mean(token_log_probs)
-    score = sentence_log_prob.item()
+    
 
     hidden_states = output.hidden_states[-1][:,1:-1]
     hidden_state = torch.mean(hidden_states, 1).detach().cpu().numpy()
 
-    return score, hidden_state
+    return sentence_log_prob.item(), hidden_state
 
 def cos_sim(v1, v2):
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
@@ -87,9 +87,9 @@ def get_scores_embed(tokens_list, tokenizer, model):
             embes.append(hidden_state)
 
     scores = np.array(scores)
-    scores = scores.reshape([1, -1])
+    sentence_log_prob = scores.reshape([1, -1])
     embes = np.concatenate(embes)
-    return scores, embes, int(avg_token_num/len(tokens_list))
+    return sentence_log_prob, embes, int(avg_token_num/len(tokens_list))
 
 from statsmodels.stats.api import SquareTable
 def sig_test(bias_scores, weighted_bias_scores, weights):
@@ -158,21 +158,22 @@ else:
     print(' no neural words!!!!')
 
 
-def create_corpus(target, idt_dict, hate_templ_list, nonhate_templ_list, neural_idt):
+def create_corpus(target_in_translation, idt_dict, hate_templ_list, nonhate_templ_list, neural_idt):
     hate_idt = []
     nonhate_idt = []
     hate_nonidt = []
     nonhate_nonidt = []
 
-    if target == 'all':
+    if target_in_translation == 'all':
+        print('yes')
             
         idt_temp_list = []
         
         for case_templ in hate_templ_list:
-            idt = random.sample(list(idt_dict.values()), 1)[0]
-            idt_temp_list.append(idt)
+            random_idt = random.sample(list(idt_dict.values()), 1)[0]
+            idt_temp_list.append(random_idt)
 
-            input = re.sub("\[[^\]]*\]", idt, case_templ)
+            input = re.sub("\[[^\]]*\]", random_idt, case_templ)
             hate_idt.append(input)
 
             input = re.sub("\[[^\]]*\]", neural_idt, case_templ)
@@ -189,12 +190,12 @@ def create_corpus(target, idt_dict, hate_templ_list, nonhate_templ_list, neural_
 
     else:
         for case_templ in hate_templ_list:
-            input = re.sub("\[[^\]]*\]", target, case_templ)
+            input = re.sub("\[[^\]]*\]", target_in_translation, case_templ)
             hate_idt.append(input)
             input = re.sub("\[[^\]]*\]", neural_idt, case_templ)
             hate_nonidt.append(input)
         for non_case_templ in nonhate_templ_list:
-            input = re.sub("\[[^\]]*\]", target, non_case_templ)
+            input = re.sub("\[[^\]]*\]", target_in_translation, non_case_templ)
             nonhate_idt.append(input)
             input = re.sub("\[[^\]]*\]", neural_idt, non_case_templ)
             nonhate_nonidt.append(input)
@@ -268,7 +269,8 @@ log_softmax = torch.nn.LogSoftmax(dim=1)
 
 bias_target = 'all'
 hate_idt,nonhate_idt,hate_nonidt,nonhate_nonidt = create_corpus(str(bias_target), idt_dict, hate_templ_list, nonhate_templ_list,neural_idt)
-
+print('hate_idt example')
+print(hate_idt[:5])
 bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_idt, tokenizer, model)
 write('nonhate_idt')
 bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, hate_nonidt, tokenizer, model)
@@ -278,9 +280,9 @@ write('nonhate_nonidt')
 
 
 for one_target in idt_dict:
-    bias_target = idt_dict.get(one_target)
+    target_translated = idt_dict.get(one_target)
     
-    hate_idt,nonhate_idt,hate_nonidt,nonhate_nonidt = create_corpus(str(bias_target), idt_dict, hate_templ_list, nonhate_templ_list,neural_idt)
+    hate_idt,nonhate_idt,hate_nonidt,nonhate_nonidt = create_corpus(str(target_translated), idt_dict, hate_templ_list, nonhate_templ_list,neural_idt)
     bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, nonhate_idt, tokenizer, model)
     write('nonhate_idt')
     bias_score, p_value, token_num, most_biasedpair_hate_idt,most_biasedpair_disadv = get_scores(hate_idt, hate_nonidt, tokenizer, model)

@@ -1,0 +1,100 @@
+,Language,Mono_MUlti,bias_group,disadv_corpus,bias_score
+4,hi,mono,Muslims,hate_nonidt,53.7
+25,hi,multi,all,hate_nonidt,63.96
+28,hi,multi,Muslims,hate_nonidt,85.42
+29,hi,multi,Muslims,nonhate_nonidt,76.64
+34,hi,multi,women,hate_nonidt,76.11
+46,hi,multi,gay people,hate_nonidt,84.32
+55,de,mono,women,hate_nonidt,72.48
+64,de,mono,disabled people,hate_nonidt,76.18
+67,de,mono,trans people,hate_nonidt,75.05
+70,de,mono,gay people,hate_nonidt,80.96
+73,de,multi,all,hate_nonidt,68.43
+85,de,multi,refugees,hate_nonidt,76.85
+91,de,multi,trans people,hate_nonidt,76.74
+94,de,multi,gay people,hate_nonidt,80.36
+112,du,mono,disabled people,hate_nonidt,66.4
+121,du,multi,all,hate_nonidt,75.42
+130,du,multi,Muslims,hate_nonidt,80.57
+136,du,multi,disabled people,hate_nonidt,84.58
+142,du,multi,gay people,hate_nonidt,78.79
+145,en,mono,all,hate_nonidt,55.72
+148,en,mono,black people,hate_nonidt,89.56
+160,en,mono,disabled people,hate_nonidt,85.04
+163,en,mono,trans people,hate_nonidt,77.44
+166,en,mono,gay people,hate_nonidt,71.67
+172,en,multi,black people,hate_nonidt,76.6
+184,en,multi,disabled people,hate_nonidt,83.91
+190,en,multi,gay people,hate_nonidt,91.23
+193,es,mono,all,hate_nonidt,77.41
+196,es,mono,jews,hate_nonidt,92.61
+197,es,mono,jews,nonhate_nonidt,80.01
+202,es,mono,disabled people,hate_nonidt,87.66
+203,es,mono,disabled people,nonhate_nonidt,78.72
+205,es,mono,black people,hate_nonidt,87.62
+206,es,mono,black people,nonhate_nonidt,73.76
+208,es,mono,trans people,hate_nonidt,86.28
+209,es,mono,trans people,nonhate_nonidt,73.79
+214,es,mono,gay people,hate_nonidt,70.18
+226,es,multi,disabled people,hate_nonidt,81.8
+265,fr,multi,all,hate_nonidt,93.36
+266,fr,multi,all,nonhate_nonidt,91.05
+268,fr,multi,black people,hate_nonidt,95.47
+269,fr,multi,black people,nonhate_nonidt,89.62
+271,fr,multi,women,hate_nonidt,93.92
+272,fr,multi,women,nonhate_nonidt,92.98
+274,fr,multi,Muslims,hate_nonidt,94.53
+275,fr,multi,Muslims,nonhate_nonidt,89.42
+277,fr,multi,refugees,hate_nonidt,95.59
+278,fr,multi,refugees,nonhate_nonidt,95.34
+280,fr,multi,disabled people,hate_nonidt,95.72
+281,fr,multi,disabled people,nonhate_nonidt,93.14
+283,fr,multi,trans people,hate_nonidt,95.31
+284,fr,multi,trans people,nonhate_nonidt,90.49
+286,fr,multi,gay people,hate_nonidt,96.74
+287,fr,multi,gay people,nonhate_nonidt,90.59
+292,it,mono,black people,hate_nonidt,85.8
+293,it,mono,black people,nonhate_nonidt,73.13
+310,it,mono,gay people,hate_nonidt,65.41
+311,it,mono,gay people,nonhate_nonidt,67.64
+316,it,multi,black people,hate_nonidt,66.94
+322,it,multi,Muslims,hate_nonidt,72.85
+328,it,multi,disabled people,hate_nonidt,61.05
+334,it,multi,gay people,hate_nonidt,77.73
+340,po,mono,women,hate_nonidt,59.56
+343,po,mono,asian people,hate_nonidt,82.74
+346,po,mono,immigrants,hate_nonidt,70.04
+349,po,mono,Jews,hate_nonidt,86.05
+352,po,mono,disabled people,hate_nonidt,76.43
+355,po,mono,trans people,hate_nonidt,77.56
+370,po,multi,immigrants,hate_nonidt,71.19
+373,po,multi,Jews,hate_nonidt,71.06
+379,po,multi,trans people,hate_nonidt,80.37
+406,pt,mono,gay people,hate_nonidt,70.18
+409,pt,multi,all,hate_nonidt,76.25
+412,pt,multi,indigenous people,hate_nonidt,61.44
+415,pt,multi,black people,hate_nonidt,82.52
+418,pt,multi,women,hate_nonidt,80.42
+421,pt,multi,Jews,hate_nonidt,76.35
+424,pt,multi,disabled people,hate_nonidt,84.23
+430,pt,multi,gay people,hate_nonidt,73.34
+433,zh,mono,all,hate_nonidt,81.8
+436,zh,mono,Muslims,hate_nonidt,84.4
+439,zh,mono,disabled people,hate_nonidt,73.48
+442,zh,mono,trans people,hate_nonidt,81.87
+445,zh,mono,women,hate_nonidt,73.33
+448,zh,mono,black people,hate_nonidt,73.05
+451,zh,mono,gay people,hate_nonidt,83.33
+454,zh,mono,foreigners,hate_nonidt,91.46
+457,zh,multi,all,hate_nonidt,78.86
+463,zh,multi,disabled people,hate_nonidt,74.57
+466,zh,multi,trans people,hate_nonidt,82.74
+469,zh,multi,women,hate_nonidt,74.26
+472,zh,multi,black people,hate_nonidt,71.55
+475,zh,multi,gay people,hate_nonidt,68.01
+478,zh,multi,foreigners,hate_nonidt,78.1
+479,zh,multi,foreigners,nonhate_nonidt,58.11
+487,ar,mono,women,hate_nonidt,64.83
+493,ar,mono,immigrants,hate_nonidt,79.06
+497,ar,mono,disabled people,nonhate_nonidt,62.64
+523,ar,multi,trans people,hate_nonidt,84.72
